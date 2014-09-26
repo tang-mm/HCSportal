@@ -1,0 +1,84 @@
+/* CSS Document */
+
+#calendrier {
+	width:95%;
+}
+
+#calendrier a{
+	text-decoration:none;
+/*	color:#0033FF;*/
+	cursor:pointer;
+}
+#calendrier table{
+	border-collapse:collapse;
+	width:100%;
+	border:2px solid #4682B4;
+}
+#calendrier th{
+	background-color: #C2DFFF;
+	font-size:13px;
+	border:1px solid #4682B4;
+/*	border-bottom:1px solid #000000;*/
+}
+#calendrier th.mois{
+	font-size:14px;
+	padding:3px;
+}
+#calendrier th.semaine{
+	width:20px;
+	border-bottom:1px solid;
+}
+#calendrier th.jour{
+	width:20px;
+}
+#calendrier td{
+	font-size:12px;
+	text-align:center;
+	border:1px solid #4682B4;
+/*	border-bottom:1px solid #DBEAF5;*/
+	width:25px;
+	padding:2px;
+	font-weight:bold;
+}
+#calendrier td.today{
+	background-color:#66CCFF;
+}
+#calendrier .today a{
+	color:#FFFFFF;
+}
+#calendrier td.inactif{
+	font-style:italic;
+	color:#999999;
+}
+#calendrier .inactif a{
+	color:#FFFFFF;
+}
+
+#calendrier td.sunday{
+	background-color:#AFC7C7;
+}
+#calendrier td.actif{
+}
+#calendrier td.event,td.eventtoday,td.eventpast{
+	background-color:#ff0000;
+}
+#calendrier .event a{
+	color:#FFFFFF;
+}
+#calendrier .eventtoday a{
+	color:#FFFFFF;
+}
+#calendrier_events{
+	font-size:12px;
+	background-color:#FFFF99;
+}
+#calendrier_events .event{
+	margin:2px;
+	padding:2px;
+}
+#calendrier .eventpast {
+	color:#FFFFFF;
+}
+
+
+

@@ -1,0 +1,482 @@
+body {
+	font-family: Helvetica, sans-serif;
+	font-size: 12px; 
+	background: transparent url('../images/top.png') repeat-x top left;
+}
+
+.view th, .view td {
+	background-color: #DFDFDF;/*DFDFDF*/
+}
+
+/*******************************
+Tables dans div grc-application
+********************************/
+
+.grc-application-title h1 {
+    background: url("../images/puce.png") no-repeat scroll 10px 5px transparent;
+    border-bottom: 2px solid #C3C3C3;
+    color: #FF6600;
+    font-size: 14px;
+    height: 24px;
+    padding-left: 20px;
+    width: 83%;
+}
+.grc-application-list a:hover {
+    color: #FFFFFF;
+}
+.grc-application-list table {
+    border-left: 1px solid #C3C3C3;
+    border-top: 1px solid #C3C3C3;
+    /*margin-bottom: 20px;*/
+    overflow: auto;
+    /*width: 95%;*/
+}
+.grc-application-list table thead th {
+    background-color: #E1E1E1;
+    border-bottom: 1px solid #C3C3C3;
+    border-right: 1px solid #C3C3C3;
+    color: #666666;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px;
+    text-align: center;
+}
+.grc-application-list thead a {
+    color: #666666;
+}
+.grc-application-list tbody tr:hover {
+    background-color: #FF6600;
+}
+.grc-application-list table tbody td {
+    border-bottom: 1px solid #C3C3C3;
+    border-right: 1px solid #C3C3C3;
+    font-size: 12px;
+    text-align: center;
+}
+
+.grc-application-list table tbody td:first-child {
+    padding: 5px;
+  
+}
+
+.grc-application-list tbody a {
+    color: #000000;
+}
+
+/*************************************
+		FIELDSET
+*************************************/
+fieldset{
+   margin-bottom: 10px;
+/*   margin-left: auto;
+    margin-right: auto;
+*/
+ /*   width: 80%;*/
+}
+
+fieldset legend {
+    color: #444749;
+    font-weight: bold;
+ /*   text-transform: lowercase;*/
+}
+
+/************************************
+		Onglets showSite
+************************************/
+#onglets
+{
+/*	margin-bottom: 15px;*/
+/*	display: none;*/
+/*	border-bottom : 1px solid #9EA0A1;*/
+}
+
+#onglets li
+{
+	display: inline-block;
+  /*  margin : 0px; /*0px 0 0px !important;  /* Pour les navigateurs autre que IE */
+ /*   margin : 0px 0px 0 0px;  /* Pour IE  */
+    border : 1px solid #9EA0A1;
+	padding : 4px;
+	cursor: pointer;
+
+}
+
+#onglets li.active
+{
+    border-bottom: 1px solid #FF6600;
+    color: #FF6600;
+}
+/*
+#onglets a
+{
+    display : block;
+    color : #666;
+    text-decoration : none;
+    padding : 4px;
+}
+
+#onglets a:hover
+{
+    background : #F0F0F0;
+}
+*/
+#contenu{
+	/*width: 700px;*/
+	overflow: hidden;
+/*	border-radius: 15px;*/
+}
+
+/*************************************
+		Tableau des horaires
+*************************************/
+
+.view table
+{
+    border-collapse: collapse;
+/*	max-width:800px;*/
+	border:2px solid #606060;
+	margin:0px;
+}
+
+table.horaire
+{
+    border-collapse: collapse;
+/*	max-width:800px;*/
+/*	border:2px solid #606060;*/
+	margin-bottom:0px;
+}
+
+.view td  /* Mettre une bordure sur les td ET les th */
+{
+    font-size:12px;
+	text-align:center;
+	border:1px solid #606060;
+	width:25px;
+	padding:2px;
+	font-weight:bold;
+}
+
+.view th{
+	background-color: #DFDFDF;
+	font-size:13px;
+	font-weight: bold;
+	border:1px solid #606060;
+}
+
+.view td:hover{
+	background-color: #DFDFDF;
+}
+
+
+#horaire table{
+	border-collapse:collapse;
+	max-width:800px;
+/*	border:2px solid #606060;*/
+	
+}
+
+.view table tbody td:first-child{
+/*	padding:0px;*/
+}
+
+/*
+#horaire th{
+	background-color: #DFDFDF;
+	font-size:13px;
+	font-weight: bold;
+	border:1px solid #606060;
+}
+
+#horaire td{
+	font-size:12px;
+	text-align:center;
+	border:1px solid #606060;
+	width:25px;
+	padding:2px;
+	font-weight:bold;
+}
+*/
+/*
+#horaire td:hover{
+	background-color: #DFDFDF;
+}
+*/
+/*************************************
+			INFOBULLE
+**************************************/
+a.info {
+   position: relative;
+   color: black;
+   text-decoration: none;
+   display: block;
+   height: 100%;
+   width: 100%;
+ /*  border-bottom: 1px gray dotted; /* On souligne le texte. */
+}
+a.info span {
+   display: none; /* On masque l'infobulle. */
+}
+a.info:hover {
+   background: none; /* Correction d'un bug d'Internet Explorer. */
+   z-index: 500; /* On définit une valeur pour l'ordre d'affichage. */
+
+ /*  cursor: help; /* On change le curseur par défaut par un curseur d'aide. */
+}
+a.info:hover span {
+   display: inline; /* On affiche l'infobulle. */
+   position: absolute;
+
+   white-space: nowrap; /* On change la valeur de la propriété white-space pour qu'il n'y ait pas de retour à la ligne non désiré. */
+
+ /* top: auto; /* On positionne notre infobulle. */
+ /*  left: auto;*/
+
+   background: white;
+
+   color: green;
+   padding: 3px;
+
+   border: 1px solid green;
+   border-left: 4px solid green;
+}
+
+
+/*************************************
+			INFOBULLE EMERGENCY
+**************************************/
+div.info {
+   position: relative;
+   color: black;
+   text-decoration: none;
+   display: block;
+   height: 100%;
+   width: 100%;
+   cursor: pointer;
+ /*  border-bottom: 1px gray dotted; /* On souligne le texte. */
+}
+div.info span {
+   display: none; /* On masque l'infobulle. */
+}
+div.info:hover {
+   background: none; /* Correction d'un bug d'Internet Explorer. */
+   z-index: 500; /* On définit une valeur pour l'ordre d'affichage. */
+   
+ /*  cursor: help; /* On change le curseur par défaut par un curseur d'aide. */
+}
+div.info:hover span {
+   display: inline; /* On affiche l'infobulle. */
+   position: absolute;
+
+   white-space: nowrap; /* On change la valeur de la propriété white-space pour qu'il n'y ait pas de retour à la ligne non désiré. */
+
+ /* top: auto; /* On positionne notre infobulle. */
+ /*  left: auto;*/
+
+   background: white;
+
+   color: green;
+   padding: 3px;
+
+   border: 1px solid green;
+   border-left: 4px solid green;
+}
+
+/*
+.grc-embedded {
+	background: none;
+}
+*/
+
+/************************************
+		CORPS DE LA PAGE
+************************************/
+.grc-wrapper {
+	width: 90%;
+	margin: auto;
+	height:90%;
+}
+
+.grc-wrapper a {
+	text-decoration: none;
+	color: #000000;
+}
+
+label#application-title {
+	font-size: 10px;
+	color: #F50;
+	margin-top:0px;
+	margin-left : 5px;
+	margin-right : 5px;
+	padding-left: 20px;
+	text-align: left;
+	background:transparent url('../images/arrow.gif') no-repeat;
+	background-position: 5px 50%;
+	line-height:3em;
+	display:inline;
+}
+
+.grc-header {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+}
+
+.grc-page {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.grc-application-list {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.grc-page-login {
+
+	margin-left:auto;
+	margin-right:auto;
+
+}
+
+.grc-footer {
+	margin: auto;
+	margin-top: 30px;
+	padding-top: 3px;
+	border-top: solid 1px #C3C3C3;
+	text-align: center;
+	font-size: 12px;
+	width: 100%;
+	
+
+}
+
+.grc-title {
+	color: #FF5500;
+	font-size: 24px;
+}
+
+.grc-status-box {
+	position:relative;
+	height: 5px;
+}
+
+.grc-status-box p span {
+	font-size: 13px;
+	clear:both;
+	float:right;
+	padding-top: 5px;
+}
+
+.grc-status-box p {
+	float: right;
+	font-size: 12px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	text-align: right;
+}
+
+.grc-status-box p a {
+	color: #5F5C5C;
+}
+
+.grc-status-box p a:hover {
+	color: #FF6600;
+}
+
+/*
+.grc-page-appli label {
+	font-size: 10px;
+	color: #F50;
+	margin-left : 5px;
+	margin-right : 5px;
+        padding-left: 20px;
+        text-align: left;
+        background:transparent url('../images/arrow.gif') no-repeat;
+        background-position: 5px 50%;
+	line-height:3em;
+	display:none;
+}
+/*
+.grc-page-appli {
+        width: 100%;
+	height:25px;
+}
+
+.grc-content {
+	width: 100%;
+	margin: 30px 0;
+	border: solid 1px #C3C3C3;
+	height: 500px;
+}
+
+*/
+/**********************************************/
+/*
+.grc-menu-box {
+	width: 100%;
+	margin: 20px 0;
+}
+
+.grc-menu-box a:hover {
+	color: #FF6600;
+}
+
+.grc-menu-box table {
+	width: 100%;
+	border: solid 1px #C3C3C3;
+}
+
+.grc-menu-box table thead td {
+	background-color: #E1E1E1;
+	font-size: 14px;
+	border-bottom: solid 1px #C3C3C3;
+	text-align: center;
+	color: #666666;
+}
+
+.grc-menu-box table thead td:first-child {
+	padding: 5px 0 5px 15px;
+	border-right: solid 1px #C3C3C3;
+	text-align: left;
+	width: 80%;
+}
+
+.grc-menu-box thead a {
+	color: #666666;
+}
+
+.grc-menu-box tbody tr:hover {
+	background-color: #FFF0E1;
+}
+
+.grc-menu-box table tbody td {
+	border-bottom: solid 1px #C3C3C3;
+	text-align: center;
+	width: 10%;
+}
+
+.grc-menu-box table tbody td:first-child {
+	padding: 10px 0 10px 55px;
+	border-right: solid 1px #C3C3C3;
+	background: transparent url('../images/puce.png') no-repeat;
+	background-position: 40px 50%;
+	text-align: left;
+}
+
+.grc-menu-box tbody a {
+	color: #000000;
+}
+
+
+.grc-embedded-content {
+	float: left;
+	width: 80%;
+}
+*/
+
+.grc-liste  {
+list-style: url(../images/puce.png);
+}

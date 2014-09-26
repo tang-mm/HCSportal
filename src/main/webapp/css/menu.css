@@ -1,0 +1,166 @@
+/**************************************************************
+ *         Main Menus 
+ **************************************************************/
+ .grc-menu {
+	width: 100%;
+	height: 30px;
+	margin: auto;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	background: url('../images/bgnav.gif') repeat-x left top;
+	border: solid 1px #C3C3C3;
+} 
+
+.grc-menu ul {
+	padding: 0; 
+	margin: 0; 
+	display: inline; 
+	list-style-type: none;
+}
+
+.grc-menu ul.navigation-1 li {
+	float: left;
+	padding: 0 15px;
+	line-height: 30px;
+	height: 30px;
+	font-size: 12px;
+	text-decoration: none; 
+	text-align: center; 
+	position: relative;
+	border-right: solid 1px #C3C3C3;
+} 
+
+.grc-menu ul.navigation-1 li a {
+	display: block; 
+	text-decoration: none; 
+	padding: 0; 
+	cursor: pointer;
+}
+
+.grc-menu ul.navigation-2 {
+	display: none;
+	list-style-type: none;
+	background-color: #FFFFFF;
+	border-top: solid 1px #C3C3C3;
+	position: absolute; 
+	z-index: 10;
+	top: 30px; 
+	left: -1px;
+}
+
+.grc-menu ul.navigation-2 li {
+	float: none;
+	padding: 1px 10px 1px 5px;
+	line-height: 25px;
+	border: none;
+	border-left: 1px solid #C3C3C3;
+	border-right: 1px solid #C3C3C3;
+	border-bottom: 1px solid #C3C3C3; 
+	text-transform: none;
+	text-align: left;
+	height: auto;
+}
+
+.grc-menu ul.navigation-2 li a {
+	padding-left: 20px;
+	text-transform:none; 
+	text-align: left; 
+	background:transparent url('../images/arrow.gif') no-repeat;
+	background-position: 5px 50%;
+	white-space: nowrap;
+}
+
+.grc-menu ul.navigation-2 span {
+	font-size: 0.9em; 
+	text-align: left; 
+	text-transform: none;
+	cursor: pointer;
+}
+
+.grc-menu li:selected {
+	background-color: #FFFFFF;
+	border-bottom: solid 1px #FFFFFF;
+}
+
+.grc-menu a:selected {
+	color: #FF6600;
+}
+
+.grc-menu li:hover {
+	background-color: #F1F1F1;
+}
+
+.grc-menu a:hover {
+	color: #FF6600;
+}
+
+.grc-menu  li:hover .navigation-2{
+	display: block;
+}
+
+/* menu 3rd level */
+.grc-menu li li .navigation-3{
+	display: none;
+	background-color: #FFFFFF;
+	position: absolute;
+	top: 0;
+	left: 100%;
+}
+
+.grc-menu li li:hover .navigation-3{
+	display: block;
+}
+
+
+/**************************************************************
+ *          Embedded application left menu
+ **************************************************************/
+.grc-menu-left {
+display: inline-block;
+vertical-align: top;
+/*	float: left;*/
+/*	left:200px;*/
+/*	position: absolute;*/
+	margin-right: 30px;
+}
+
+.grc-menu-left td {
+   height: 20px;
+   line-height: 20px;
+   font-size: 11px;
+   color: #333333;
+   overflow: hidden;
+   padding: 0px 6px 0px 6px;
+
+}
+
+.grc-menu-left-section-element span {
+	margin-left: 10px;
+}
+
+.grc-menu-left a{
+	text-decoration:none;
+	color:black;
+	font-weight: bold;
+}
+
+.grc-menu-left a:hover{
+	text-decoration:none;
+	color:#f60;
+}
+
+.grc-menu-left-section-title td {
+	border-bottom:1px solid #cccccc;
+	padding-top: 15px;
+}
+
+.grc-menu-left-section-title-first td {
+	padding-top: 0;
+}
+
+.grc-menu-left-section-title span {
+	margin-bottom:10px;
+	padding-left: 25px;
+	font-weight:bold;
+	background: transparent url('../images/arrow_box_ft.gif') no-repeat 5px -3px;
+}
