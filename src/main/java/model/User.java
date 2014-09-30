@@ -13,6 +13,8 @@ public class User {
 	@NotNull @Size(min=6, max=20)
 	private String password;
 
+	@NotNull
+	private int userType;
 	
 	public String getPassword() {
 		return password;
@@ -29,5 +31,13 @@ public class User {
 	public void setUsername(String username) {
 		this.username = username;
 
+	}
+
+	public int getUserType() {
+		return userType;
+	}
+
+	public void setUserType(int userType) {
+		this.userType = userType;
 	}
 }
