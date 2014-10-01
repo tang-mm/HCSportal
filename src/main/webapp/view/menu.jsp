@@ -1,20 +1,35 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<div class="grc-status-box">
+	<c:if test="${not empty pageContext.request.userPrincipal}">
+	
+		<!-- ************* User Roles **********************-->
+		<c:set var="isSuperAdmin" scope="session"
+			value="${pageContext.request.isUserInRole('ROLE_SUPERADMIN')?  'true' : 'false'}" />
+		<c:set var="isExpert" scope="session"
+			value="${pageContext.request.isUserInRole('ROLE_EXPERT')?  'true' : 'false'}" />
+		<c:set var="isAdmin" scope="session"
+			value="${pageContext.request.isUserInRole('ROLE_ADMIN')?  'true' : 'false'}" />
+		<c:set var="isSupervisor" scope="session"
+			value="${pageContext.request.isUserInRole('ROLE_SUPERVISOR')?  'true' : 'false'}" />
+		<c:set var="isAgent" scope="session"
+			value="${pageContext.request.isUserInRole('ROLE_AGENT')?  'true' : 'false'}" />
+		<p>
+			<!-- Print User Role -->
+			<span>User: <c:out
+					value="${pageContext.request.userPrincipal.name}" /> (<c:if
+					test="${isSuperAdmin}">SuperAdministrator</c:if> <c:if
+					test="${isExpert}">Expert</c:if> <c:if test="${isAdmin}">Administrator</c:if>
+				<c:if test="${isSupervisor}">Supervisor</c:if> <c:if
+					test="${isAgent}">Agent</c:if>)
+			</span> <span><a href="login?logout">Logout</a></span>
+		</p>
+	</c:if>
+</div>
 
 <div class="grc-menu">
 	<ul class="navigation-1">
 		<c:if test="${not empty pageContext.request.userPrincipal}">
-
-			<!-- User Roles -->
-			<c:set var="isSuperAdmin" scope="session"
-				value="${pageContext.request.isUserInRole('ROLE_SUPERADMIN')?  'true' : 'false'}" />
-			<c:set var="isExpert" scope="session"
-				value="${pageContext.request.isUserInRole('ROLE_EXPERT')?  'true' : 'false'}" />
-			<c:set var="isAdmin" scope="session"
-				value="${pageContext.request.isUserInRole('ROLE_ADMIN')?  'true' : 'false'}" />
-			<c:set var="isSupervisor" scope="session"
-				value="${pageContext.request.isUserInRole('ROLE_SUPERVISOR')?  'true' : 'false'}" />
-			<c:set var="isAgent" scope="session"
-				value="${pageContext.request.isUserInRole('ROLE_AGENT')?  'true' : 'false'}" />
 
 			<!-- MENU -->
 			<c:if test="${!isAgent}">
@@ -22,7 +37,8 @@
 				</a>
 					<ul class="navigation-2">
 						<c:if test="${isSuperAdmin}">
-							<li><a class="" href="#"> <span>Manage Customers</span></a></li></c:if>
+							<li><a class="" href="#"> <span>Manage Customers</span></a></li>
+						</c:if>
 						<li><a class="" href="#"> <span>Manage Users</span></a></li>
 					</ul></li>
 			</c:if>
@@ -120,7 +136,7 @@
 						<li><a class="" href="#"> <span>EIM / WIM User</span></a></li>
 					</ul></li>
 			</c:if>
-			
+
 			<c:if test="${isExpert || isAdmin || isSupervisor }">
 				<li><a class="" href="#"> <span>MediaSense</span>
 				</a>
@@ -132,6 +148,6 @@
 
 			<li><a class="" href="#"> <span>System Settings</span>
 			</a></li>
+		</c:if>
 	</ul>
 </div>
-</c:if>

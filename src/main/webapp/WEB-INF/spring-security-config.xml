@@ -14,7 +14,7 @@
 			authentication-failure-url="/login?error" always-use-default-target="false" />
 		<logout logout-success-url="/login?logout" />
 		
-		<intercept-url pattern="/login*" access="isAnonymous()" /> <!-- permitAll --> 
+		<intercept-url pattern="/login*" access="isAnonymous() || isAuthenticated()" /> <!-- permitAll --> 
 		<intercept-url pattern="/**" access="isAuthenticated()" />
 		<!-- <intercept-url pattern="/**" access="hasAnyRole('ROLE_SUPERADMIN', 
 			'ROLE_EXPERT', 'ROLE_ADMIN', 'ROLE_SUPERVISOR', 'ROLE_AGENT')" /> -->
