@@ -11,7 +11,7 @@
 	<properties>
 		<spring.version>4.0.6.RELEASE</spring.version>
 		<security.version>3.2.5.RELEASE</security.version>
-		<jdk.version>1.7</jdk.version> 
+		<jdk.version>1.7</jdk.version>
 	</properties>
 
 	<dependencies>
@@ -20,7 +20,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
-			<version>${spring.version}</version> 
+			<version>${spring.version}</version>
 		</dependency>
 
 		<dependency>
@@ -45,15 +45,22 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
 			<version>${security.version}</version>
-		</dependency> 
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
 			<version>${security.version}</version>
 		</dependency>
-		
+
 		<!-- Java EE -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
@@ -82,7 +89,7 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
- 
+
 	</dependencies>
 
 

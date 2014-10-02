@@ -1,5 +1,7 @@
 package controller;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,23 +13,26 @@ import org.springframework.web.servlet.ModelAndView;
 public class LoginController {
 
 	@Autowired
-	private LoginValidator loginValidator;
- 
+//	private LoginValidator loginValidator;
+	private static final Log LOG = LogFactory.getLog(LoginController.class);
 	
-	@RequestMapping(value = "/login", method = RequestMethod.GET) // 
+	@RequestMapping(value = "login", method = RequestMethod.GET) // 
 	public ModelAndView login(
 		@RequestParam(value = "error", required = false) String error,
 		@RequestParam(value = "logout", required = false) String logout) {
- 
+
+		LOG.info("********LoginController being called********");
+		System.out.println("********LoginController being called********");
+		
 		ModelAndView model = new ModelAndView();
-		if (error != null) {
-			model.addObject("error", "Invalid username and password!");
-		}
- 
-		if (logout != null) {
-			model.addObject("logoutMsg", "You've been logged out successfully.");
-		}
-		model.setViewName("index");
+//		if (error != null) {
+//			model.addObject("error", "Invalid username and password!");
+//		}
+// 
+//		if (logout != null) {
+//			model.addObject("logoutMsg", "You've been logged out successfully.");
+//		}
+//		model.setViewName("index");
  
 		return model;
  

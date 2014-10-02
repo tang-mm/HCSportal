@@ -5,8 +5,8 @@
 		<li><a class="" href="#"> <span>User Administration</span>
 		</a>
 			<ul class="navigation-2">
-				<li><a class="" href="#"> <span>Manage Customers</span></a></li>
-				<li><a class="" href="#"> <span>Manage Users</span></a></li>
+				<li><a class="" href="customers"> <span>Manage Customers</span></a></li>
+				<li><a class="" href="users"> <span>Manage Users</span></a></li>
 			</ul></li>
 
 		<li><a class="" href="#"> <span>Equipment</span>
@@ -19,11 +19,10 @@
 			</ul></li>
 
 		<li><a class="" href="https://172.31.14.195/Portal"
-			target="iframe-main"> <span>CCDM Admin</span>
+			target="_blank"> <span>CCDM Admin</span>
 		</a></li>
 
-		<li><a class="" href="#" target="iframe-main"> <span>CUCDM
-					Admin</span>
+		<li><a class="" href="#" target="iframe-main"> <span>CUCDM Admin</span>
 		</a></li>
 
 		<li><a class="" href="#"> <span>Routing</span>

@@ -325,7 +325,7 @@ label#application-title {
 
 .grc-page {
 	display: inline-block;
-	vertical-align: top;
+	vertical-align: top;   
 }
 
 .grc-application-list {
@@ -347,9 +347,7 @@ label#application-title {
 	border-top: solid 1px #C3C3C3;
 	text-align: center;
 	font-size: 12px;
-	width: 100%;
-	
-
+	width: 100%;  
 }
 
 .grc-title {

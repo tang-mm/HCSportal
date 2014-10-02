@@ -16,13 +16,15 @@
 			value="${pageContext.request.isUserInRole('ROLE_AGENT')?  'true' : 'false'}" />
 		<p>
 			<!-- Print User Role -->
-			<span>User: <c:out
-					value="${pageContext.request.userPrincipal.name}" /> (<c:if
-					test="${isSuperAdmin}">SuperAdministrator</c:if> <c:if
-					test="${isExpert}">Expert</c:if> <c:if test="${isAdmin}">Administrator</c:if>
-				<c:if test="${isSupervisor}">Supervisor</c:if> <c:if
-					test="${isAgent}">Agent</c:if>)
-			</span> <span><a href="login?logout">Logout</a></span>
+			<span>
+				<c:out value="${pageContext.request.userPrincipal.name}" /> (
+				<c:if test="${isSuperAdmin}">SuperAdministrator</c:if> 
+				<c:if test="${isExpert}">Expert</c:if> 
+				<c:if test="${isAdmin}">Administrator</c:if>
+				<c:if test="${isSupervisor}">Supervisor</c:if> 
+				<c:if test="${isAgent}">Agent</c:if>)
+			</span> 
+			<span><a href="login?logout">Logout</a></span>
 		</p>
 	</c:if>
 </div>
@@ -37,9 +39,9 @@
 				</a>
 					<ul class="navigation-2">
 						<c:if test="${isSuperAdmin}">
-							<li><a class="" href="#"> <span>Manage Customers</span></a></li>
+							<li><a class="" href="customers"> <span>Manage Customers</span></a></li>
 						</c:if>
-						<li><a class="" href="#"> <span>Manage Users</span></a></li>
+						<li><a class="" href="users"> <span>Manage Users</span></a></li>
 					</ul></li>
 			</c:if>
 
@@ -56,7 +58,7 @@
 
 			<c:if test="${isExpert || isAdmin || isSupervisor}">
 				<li><a class="" href="https://172.31.14.195/Portal"
-					target="iframe-main"> <span>CCDM Admin</span>
+					target="_blank"> <span>CCDM Admin</span>
 				</a></li>
 			</c:if>
 

@@ -8,10 +8,12 @@
 <html>
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" >
 <title>Hello</title>
 <link type="text/css"
-	href="${pageContext.request.contextPath}/css/main.css" rel="stylesheet">
+	href="${pageContext.servletContext.contextPath}/css/main.css" rel="stylesheet"> <!-- path = "webapp/css" -->
+<!-- <link type="text/css"
+	href="css/main.css" rel="stylesheet"> --> <!-- path = "webapp/WEB-INF/css" -->
 <style>
 html, body {
 	height: 100%
@@ -26,8 +28,8 @@ html, body {
 		<div id="pageMenu">
 			<jsp:invoke fragment="menu" />
 		</div>
-		<div class="grc-page">
-			<div id="body">
+		<div id="body" style="min-height: 80%">
+			<div class="grc-page">
 				<jsp:doBody />
 			</div>
 		</div>

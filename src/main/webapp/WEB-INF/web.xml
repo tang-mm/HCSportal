@@ -14,14 +14,14 @@
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/myDispatcher-servlet.xml, /WEB-INF/spring-security-config.xml</param-value>
+		<param-value>/WEB-INF/myDispatcher-servlet.xml, /WEB-INF/spring-security-config.xml</param-value> <!--   -->
 	</context-param>
 
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-	<!-- servlet definition -->
+ 		<!-- servlet definition -->  
 	<servlet>
 		<servlet-name>myDispatcher</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

@@ -4,10 +4,12 @@
 
 <t:genericpage>
 	<jsp:attribute name="header">
-    	<%@ include file="/view/header.jsp"%>
+    	<%@ include file="/view/header.jsp"%>  <!-- path = "webapp/view" -->
 	</jsp:attribute>
 	<jsp:attribute name="menu">
-	    <%@ include file="/view/menu.jsp"%>
+<%-- 	    <%@ include file="../view/menu.jsp"%> --%> <!-- path = "webapp/WEB-INF/view" -->
+<%-- 		<%@ include file="/view/menu_full.jsp"%> --%>
+		<%@ include file="/view/menu.jsp"%>
 	</jsp:attribute>
 	<jsp:attribute name="footer">
 	    <%@ include file="/view/footer.jsp"%>
