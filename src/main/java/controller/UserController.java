@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 
 import model.User;
@@ -13,25 +15,35 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class UserController {
 
-	@RequestMapping(value = "users", method = RequestMethod.GET)
-	public String showAllUser(HttpServletRequest request) {
+	@RequestMapping(value = "manageUsers", method = RequestMethod.GET)
+	public ModelAndView showAllUser(HttpServletRequest request) {
 
-		System.out.println("********UserController being called: show all users********"); 
-		return "users";
+		System.out.println("********[UserController] show all users********"); 
+		
+		// TEST: read from DB 
+		ArrayList<User> listUser = new ArrayList<User>();
+		listUser.add(new User("userTest1", "p1", "agent1"));
+		listUser.add(new User("userTest2", "p1", "agent2"));
+		listUser.add(new User("userTest3", "p1", "agent3"));
+		
+		request.setAttribute("listUser", listUser);
+		return new ModelAndView("UserAdmin/manageUsers");
 	}
+	
 	
 	@RequestMapping(value = "createNewUser", method = RequestMethod.GET)
 	public ModelAndView createNewUser(HttpServletRequest request) {
 
-		System.out.println("********UserController being called: create new user********");
+		System.out.println("********[UserController] create new user********");
 		String[] userTypes = {"SuperAdministrator", "Expert", "Customer Administrator", "Supervisor", "Agent"};
 		request.setAttribute("userTypes", userTypes);
-		return new ModelAndView("newUser", "registerView", new User());
+		return new ModelAndView("UserAdmin/newUser", "newUserCmd", new User());
 	}
 
+	
 	@RequestMapping(value = "submitNewUser", method = RequestMethod.POST)
 	public ModelAndView submitNewUser(@ModelAttribute User user) {
-		return new ModelAndView("success", "registerInfo", user);
+		return new ModelAndView("UserAdmin/success", "registerInfo", user);
 	}
 //	
 //	@RequestMapping(value = "register", method = RequestMethod.GET)

@@ -8,17 +8,29 @@
 <html>
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" >
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Hello</title>
 <link type="text/css"
-	href="${pageContext.servletContext.contextPath}/css/main.css" rel="stylesheet"> <!-- path = "webapp/css" -->
+	href="${pageContext.servletContext.contextPath}/css/main.css"
+	rel="stylesheet">
+<!-- path = "webapp/css" -->
 <!-- <link type="text/css"
-	href="css/main.css" rel="stylesheet"> --> <!-- path = "webapp/WEB-INF/css" -->
+		href="css/main.css" rel="stylesheet"> -->
+<!-- path = "webapp/WEB-INF/css" -->
 <style>
 html, body {
 	height: 100%
 }
 </style>
+
+
+<script src="${pageContext.servletContext.contextPath}/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+	function changeAppliTitle(myTitle) {
+		document.getElementById("application_title").innerHTML = myTitle;
+	}
+</script>
+
 </head>
 <body>
 	<div class="grc-wrapper">
@@ -29,6 +41,9 @@ html, body {
 			<jsp:invoke fragment="menu" />
 		</div>
 		<div id="body" style="min-height: 80%">
+			<div class="grc-page-appli">
+				<label id="application-title" onload="changeAppliTitle('${pageContext.servletContext.contextPath}')">[Title here]</label>
+			</div>
 			<div class="grc-page">
 				<jsp:doBody />
 			</div>

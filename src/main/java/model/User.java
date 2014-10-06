@@ -7,6 +7,12 @@ public class User {
 	public User() {
 	}
 
+	public User(String username, String password, String userType){ 
+		this.username = username;
+		this.password = password;
+		this.username = username;
+	}
+	
 	@NotNull
 	private String username;
 	

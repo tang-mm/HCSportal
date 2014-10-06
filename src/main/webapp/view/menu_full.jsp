@@ -5,8 +5,8 @@
 		<li><a class="" href="#"> <span>User Administration</span>
 		</a>
 			<ul class="navigation-2">
-				<li><a class="" href="customers"> <span>Manage Customers</span></a></li>
-				<li><a class="" href="users"> <span>Manage Users</span></a></li>
+				<li><a class="" href="manageCustomers"> <span>Manage Customers</span></a></li>
+				<li><a class="" href="manageUsers"> <span>Manage Users</span></a></li>
 			</ul></li>
 
 		<li><a class="" href="#"> <span>Equipment</span>
@@ -14,7 +14,7 @@
 			<ul class="navigation-2">
 				<li><a class="" href="#"> <span>General</span>
 				</a></li>
-				<li><a class="" href="#"> <span>Equipment Map</span>
+				<li><a class="" href="manageEquipment"> <span>Equipment Map</span> <!-- searchEquipment -->
 				</a></li>
 			</ul></li>
 

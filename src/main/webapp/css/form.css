@@ -277,17 +277,41 @@ color: green;
 .code {	width: 123px; }
 
 /*input {font-family:Arial, Helvetica, sans-serif;border:1px solid #ccc;}*/
-input {font-size:12px;border:1px solid #ccc;}
-input.btn {height:20px;border:0 none;background-repeat:no-repeat;cursor:pointer;}
-input.submit {border:none;margin-top:20px;margin-right: 20px; padding-bottom:4px; float:right;}
+input {
+	font-size: 12px;
+	border: 1px solid #ccc;
+}
 
-.btn-submit {
-	width:80px;
-	background-image:url(../images/btn-submit.gif);
-  font-weight: bold;
-  font-size:11px;
-  text-transform: lowercase;
-	}
+input.btn {
+	height: 20px;
+	border: 0 none;
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+
+input.submit {
+	border: none;
+	margin-top: 20px;
+	margin-right: 20px;
+	padding-bottom: 4px;
+	float: right;
+}
+
+.btn-submit { 
+	background: #FFFFFF  url('../images/icone_valider.png') no-repeat;	
+	background-color: #FFFFFF;
+	background-position: 5px 50%;
+	padding: 5px 7px 5px 27px; /* top, right, bottom, left */ 
+	height: 25px;
+	line-height: 35px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #E1E1E1 #C3C3C3 #C3C3C3 #E1E1E1;
+	cursor: pointer;
+	font-size: 11px; 
+	font-weight: bold;   
+} 
+
 .btn-submit:hover {color: #FF5500;}
 
 .boxMidInner a {
@@ -450,13 +474,13 @@ input.submit-800px {border:none;margin-top:20px;margin-right: 44px; padding-bott
 
 .grc-form-auth-800px label.error { color: #FF0000; width: 300px; margin-top:20px; }
 
-.btn-submit-800px {
+/* .btn-submit-800px {
 	width:80px;
 	background-image:url(../images/btn-submit.gif);
   font-weight: bold;
   font-size:11px;
   text-transform: lowercase;
-	}
+	} */
 
 .boxMidImg-800px {
 	float: left;
