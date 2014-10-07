@@ -29,6 +29,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Program Files/apache-tomcat-7.0.55/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/TangMM/workspace/HCSWebApp/lib/resourceManager.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

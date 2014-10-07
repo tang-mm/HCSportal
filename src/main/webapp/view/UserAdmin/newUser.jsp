@@ -18,8 +18,10 @@
 								<td style="width: 35%"><form:label path="username">Username: </form:label></td>
 								<td colspan="2"><form:input path="username" /></td>
 							</tr>
+							
+							<!-- Attention: consistency userTypeId & userType -->
 							<tr class="grc-form-input-select">
-								<td><form:label path="userType">User Type: </form:label></td>
+								<td><form:label path="userTypeId">User Type: </form:label></td>
 								<td colspan="2">
 								<form:select path="userType">
 										<form:options items="${userTypes}" />

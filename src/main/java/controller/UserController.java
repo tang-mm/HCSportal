@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
-import model.User;
+import model.users.User;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,11 +20,12 @@ public class UserController {
 
 		System.out.println("********[UserController] show all users********"); 
 		
+		
 		// TEST: read from DB 
 		ArrayList<User> listUser = new ArrayList<User>();
-		listUser.add(new User("userTest1", "p1", "agent1"));
-		listUser.add(new User("userTest2", "p1", "agent2"));
-		listUser.add(new User("userTest3", "p1", "agent3"));
+		listUser.add(new User("userTest1", "p1", 7));
+		listUser.add(new User("userTest2", "p1", 7));
+		listUser.add(new User("userTest3", "p1", 7));
 		
 		request.setAttribute("listUser", listUser);
 		return new ModelAndView("UserAdmin/manageUsers");

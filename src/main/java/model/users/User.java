@@ -1,26 +1,28 @@
-package model;
+package model.users;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class User {
-	public User() {
-	}
 
-	public User(String username, String password, String userType){ 
-		this.username = username;
-		this.password = password;
-		this.username = username;
-	}
-	
 	@NotNull
 	private String username;
 	
 	@NotNull @Size(min=6, max=20)
 	private String password;
-
+	
 	@NotNull
-	private String userType;
+	private int userTypeId;
+	 
+	
+	public User() {
+	}
+
+	public User(String username, String password, int userTypeId){ 
+		this.username = username;
+		this.password = password;
+		this.userTypeId = userTypeId;
+	}
 	
 	public String getPassword() {
 		return password;
@@ -36,14 +38,13 @@ public class User {
 
 	public void setUsername(String username) {
 		this.username = username;
-
 	}
 
-	public String getUserType() {
-		return userType;
+	public int getUserTypeId() {
+		return userTypeId;
 	}
 
-	public void setUserType(String userType) {
-		this.userType = userType;
+	public void setUserTypeId(int userTypeId) {
+		this.userTypeId = userTypeId;
 	}
 }
