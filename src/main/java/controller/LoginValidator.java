@@ -1,11 +1,11 @@
 package controller;
  
 
-import model.users.User;
+import model.users.inEnum.User;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
-import org.springframework.validation.Validator; 
+import org.springframework.validation.Validator;
 
 public class LoginValidator implements Validator {
 

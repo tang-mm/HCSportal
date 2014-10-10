@@ -1,29 +1,22 @@
 package model.users;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
 public class User {
-
-	@NotNull
+//	@NotNull
 	private String username;
-	
-	@NotNull @Size(min=6, max=20)
+// @NotNull Size(min = 6, max = 20)
 	private String password;
-	
-	@NotNull
+//	@NotNull
 	private int userTypeId;
-	 
-	
+
 	public User() {
 	}
 
-	public User(String username, String password, int userTypeId){ 
+	public User(String username, String password, int userTypeId) {
 		this.username = username;
 		this.password = password;
 		this.userTypeId = userTypeId;
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}

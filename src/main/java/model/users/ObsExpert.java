@@ -1,8 +1,6 @@
 package model.users;
 
-
 public class ObsExpert extends User {
-
 	public ObsExpert() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -13,12 +11,12 @@ public class ObsExpert extends User {
 		// TODO Auto-generated constructor stub
 	}
 
-	private int level;  // must be 1/2/3
+	private int level; // must be 1/2/3
 
 	public ObsExpert(int level) {
 		this.setLevel(level);
 	}
-	
+
 	public int getLevel() {
 		return level;
 	}
@@ -26,5 +24,4 @@ public class ObsExpert extends User {
 	public void setLevel(int level) {
 		this.level = level;
 	}
-
 }
