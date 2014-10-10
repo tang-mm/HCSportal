@@ -5,25 +5,26 @@
 
 <t:wrapper>
 	<div class="grc-page-application" style="margin: 0 auto;">
-		<a href="createNewUser" class="btn-submit" style="margin: 0 auto;">Create
-			New User</a> <br />
+		<a href="createNewAgent" class="btn-submit" style="margin: 0 auto;">Create
+			New Agent</a> <br />
 		<br />
 		<br />
 		<div class="grc-application-list" style="margin: 0 auto;">
+			<!-- 		<h2>Customer Name</h2> -->
 			<table>
 				<thead>
 					<tr>
-						<th width="150px">Username</th>
-						<th width="150px">Domain Name</th>
-						<th width="150px">Parent Created By</th>
-						<th width="150px">Creation Date</th>
-						<th width="150px">Last Login</th>
+						<th width="200px">Username</th>
+						<th width="150px">Last Name</th>
+						<th width="150px">First Name</th>
+						<th width="80px">isSupervisor</th>
+						<th width="150px">Customer</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${listUser}" var="user">
+					<c:forEach items="${listAgent}" var="agent">
 						<tr>
-							<c:forEach items="${user}" var="elem">
+							<c:forEach items="${agent}" var="elem">
 								<c:choose>
 									<c:when test="${not empty elem}">
 										<td>${elem}</td>
@@ -39,6 +40,4 @@
 			</table>
 		</div>
 	</div>
-
-
 </t:wrapper>

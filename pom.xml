@@ -15,7 +15,14 @@
 	</properties>
 
 	<dependencies>
-
+		<!-- custom library -->
+		<dependency>
+			<groupId>myGroupId</groupId>
+			<artifactId>ccdm-resource-manager</artifactId>
+			<version>0.1</version>
+			<!-- manually generated from "CCDM-Sample-WebServices-App: Resource Manager" -->
+		</dependency>
+	
 		<!-- Spring Framework -->
 		<dependency>
 			<groupId>org.springframework</groupId>
