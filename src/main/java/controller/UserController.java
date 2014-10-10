@@ -82,7 +82,14 @@ public class UserController {
 	public ModelAndView createNewUser(HttpServletRequest request) {
 
 		System.out.println("********[UserController] create new user********");
-		String[] userTypes = {"SuperAdministrator", "Expert", "Customer Administrator", "Supervisor", "Agent"};
+		ArrayList<String[]> userTypes = new ArrayList<String[]>();
+		userTypes.add(new String[]{"SuperAdministrator", "1"});
+		userTypes.add(new String[]{"Expert L3", "2"});
+		userTypes.add(new String[]{"Expert L2", "3"});
+		userTypes.add(new String[]{"Expert L1", "4"});
+		userTypes.add(new String[]{"Tenant Administrator", "5"});
+		userTypes.add(new String[]{"Supervisor", "6"});
+		userTypes.add(new String[]{"Agent", "7"});
 		request.setAttribute("userTypes", userTypes);
 		return new ModelAndView("UserAdmin/newUser", "newUserCmd", new User());
 	}
@@ -91,24 +98,6 @@ public class UserController {
 	@RequestMapping(value = "submitNewUser", method = RequestMethod.POST)
 	public ModelAndView submitNewUser(@ModelAttribute User user) {
 		return new ModelAndView("UserAdmin/success", "registerInfo", user);
-	}
-//	
-//	@RequestMapping(value = "register", method = RequestMethod.GET)
-//      public ModelAndView register(HttpServletRequest request) {
-//		
-//		System.out.println("********RegisterController being called********");
-//		
-//            String[] hobbies = {"Cricket", "Reading Books", "travel"};
-//            request.setAttribute("hobbies", hobbies);
-//           
-//            String[] states = {"Gujarat", "Maharastra", "Karnataka", "Kerala", "Tamil Nadu", "Hyderabad", "Madhya Pradesh", "Uttar Pradesh", "Rajasthan"};
-//            request.setAttribute("states", states);
-//            return new ModelAndView("registerView", "registerView", new RegisterViewBean());
-//     }
-//	 
-//	@RequestMapping(value = "submitRegistration", method = RequestMethod.POST)
-//     public ModelAndView submitRegistration(@ModelAttribute RegisterViewBean registerViewBean) {
-//           return new ModelAndView("success", "registerInfo", registerViewBean);
-//     }
+	} 
 
 }

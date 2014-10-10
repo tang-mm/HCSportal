@@ -3,7 +3,7 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+import model.Customer;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -82,8 +82,8 @@ public class CostumerController {
 
 		System.out.println("********[CostumerController] create new customer********");
 		
-		ModelAndView model = new ModelAndView("UserAdmin/newCustomer");
-		model.addObject("IPaddress", "controller: new customer");
+		ModelAndView model = new ModelAndView("UserAdmin/newCustomer", "newCustomerCmd", new Customer());
+//		model.addObject("IPaddress", "controller: new customer");
 		return model;
 	}
 }

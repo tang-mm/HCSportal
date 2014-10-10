@@ -23,8 +23,9 @@
 							<tr class="grc-form-input-select">
 								<td><form:label path="userTypeId">User Type: </form:label></td>
 								<td colspan="2">
-								<form:select path="userType">
-										<form:options items="${userTypes}" />
+								<form:select path="userTypeId">
+										<form:option value="-1" lalel="--Please select--"/>
+<%-- 										<form:options items="${userTypes}" itemValue="[0]" itemLable="type[1]"/> --%>
 									</form:select></td>
 							</tr>
 							<tr class="grc-form-input-text">

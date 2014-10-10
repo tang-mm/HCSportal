@@ -24,14 +24,7 @@
 					<c:forEach items="${listUser}" var="user">
 						<tr>
 							<c:forEach items="${user}" var="elem">
-								<c:choose>
-									<c:when test="${not empty elem}">
-										<td>${elem}</td>
-									</c:when>
-									<c:otherwise>
-										<td>-</td>
-									</c:otherwise>
-								</c:choose>
+								<td><c:out value="${not empty elem ? elem : '-' }" /></td>
 							</c:forEach>
 						</tr>
 					</c:forEach>
