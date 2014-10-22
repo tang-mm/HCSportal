@@ -1,4 +1,4 @@
-package model.users.inEnum;
+package model.users;
 
 /**
  * (UserType -- UserTypeId) association;

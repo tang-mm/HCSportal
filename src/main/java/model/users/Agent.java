@@ -8,9 +8,14 @@ public class Agent extends CustomerSideUser {
 	protected boolean isSupervisor = false;
 	
 	public Agent() {}
-  
-	
-	public Agent(String username, String password, int userTypeId) {
+ 
+	// called by supervisor's constructor
+	protected Agent(String username, String password, int userTypeId) {
 		super(username, password, userTypeId);
 	}
+	
+	public Agent(String username, String password) { 
+		super(username, password, UserTypeEnum.AGENT.getId()); 
+	}
+
 }

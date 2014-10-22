@@ -1,10 +1,9 @@
-package model.users.inEnum;
+package model.users.noEnum;
 
 import model.Customer;
 
-public abstract class CustomerSideUser extends User {
-
-	protected Customer customer;
+public class CustomerSideUser extends User {
+	private Customer customer;
 
 	public CustomerSideUser() {
 		super();
@@ -23,5 +22,4 @@ public abstract class CustomerSideUser extends User {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-	
 }

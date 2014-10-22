@@ -1,7 +1,7 @@
 package controller;
  
 
-import model.users.inEnum.User;
+import model.users.User;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;

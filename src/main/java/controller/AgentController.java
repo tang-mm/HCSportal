@@ -3,7 +3,7 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.users.inEnum.Agent;
+import model.users.Agent;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,8 +26,8 @@ public class AgentController {
 
 		String server = "172.31.14.195";
 		String webServiceURL = "https://" + server + ":8085/ResourceManagement";
-		String username="administrator";
-		String password = "C1sco123";
+		String username="admin1";
+		String password = "Gcc6koko$$";
 		ArrayList<String[]> listAgent = new ArrayList<String[]>();
 		try {
 			ResourceManagementAccess accessObject = new ResourceManagementAccess(
