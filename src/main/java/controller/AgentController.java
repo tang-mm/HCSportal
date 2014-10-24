@@ -24,19 +24,13 @@ public class AgentController {
 		System.out.println("********[AgentController] manage agents********");
 
 
-		String server = "172.31.14.195";
-		String webServiceURL = "https://" + server + ":8085/ResourceManagement";
-		String username="admin1";
-		String password = "Gcc6koko$$";
 		ArrayList<String[]> listAgent = new ArrayList<String[]>();
 		try {
-			ResourceManagementAccess accessObject = new ResourceManagementAccess(
-					webServiceURL, username, password);
-			
-			String searchQuery = "type:Agent";
 
-			List<Resource> searchResult = accessObject.search(null, searchQuery);
+			CcdmManager ccdm = new CcdmManager();
+			List<Resource> searchResult = ccdm.retrieveAgents("Customer1");	// from folder "/Customer1"
 
+			// find index of fields to display
 			int idxLastName = -1;
 			int idxFirstName = -1;
 			int idxLoginName = -1;
@@ -58,6 +52,7 @@ public class AgentController {
 					idxIsSupervisor = listPair.indexOf(pair);
 			}
 
+			// construct list to pass as attribute
 			for (Resource res : searchResult) {
 				listPair = (ArrayList<NameValuePair>) res.getFields()
 						.getNameValuePair();

@@ -21,21 +21,12 @@ public class CostumerController {
 	public ModelAndView listCustomers() {
 
 		System.out.println("********[CostumerController] manage customers********");
-
-		String server = "172.31.14.195";
-		String webServiceURL = "https://" + server + ":8085/ResourceManagement";
-		String username="administrator"; 
-		String password = "C1sco123";
+ 
 		ArrayList<String[]> listCustomer = new ArrayList<String[]>();
 		
 		try {
-			ResourceManagementAccess accessObject = new ResourceManagementAccess(
-					webServiceURL, username, password); 
-
-			String searchQuery = "type:Tenant";
-
-			List<Resource> searchResult = accessObject
-					.search(null, searchQuery);
+			CcdmManager ccdm = new CcdmManager();
+			List<Resource> searchResult = ccdm.retrieveTenants();
 
 			int idxTenantName = -1;
 			int idxParentOwnerName = -1; 

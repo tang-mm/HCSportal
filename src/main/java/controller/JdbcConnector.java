@@ -12,36 +12,36 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
-public class JDBCConnector {
+public class JdbcConnector {
 
 	private String className = "com.mysql.jdbc.Driver";
 	private String server = "localhost";	// default values
 	private String port = "3306";	
 	private String dbName = "testdb"; 
 
-	public JDBCConnector() {}
+	public JdbcConnector() {}
 	
-	public JDBCConnector(String server, String port, String dbName) {
+	public JdbcConnector(String server, String port, String dbName) {
 		this.server = server;
 		this.port = port;
 		this.dbName = dbName;
 	}
 	
-	public static void main(String[] args) {
-		JDBCConnector connector = new JDBCConnector();
-		Connection conn = connector.getDBConnection("admin", "admin");
-		try {
-			connector.writeMetaData(connector.executeSelect(conn, "select * from users"));
-
-//			connector.insertIntoUsersTable(conn, "test1", "test1", 2);
-			
-			// close the connection
-			conn.close();
-	
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
+//	public static void main(String[] args) {
+//		JdbcConnector connector = new JdbcConnector();
+//		Connection conn = connector.getDBConnection("admin", "admin");
+//		try {
+//			connector.writeMetaData(connector.executeSelect(conn, "select * from users"));
+//
+////			connector.insertIntoUsersTable(conn, "test1", "test1", 2);
+//			
+//			// close the connection
+//			conn.close();
+//	
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 	/**
 	 * return a database connection with the login information

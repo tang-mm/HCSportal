@@ -34,22 +34,21 @@ public class UserController {
 		boolean isSuperAdmin = Boolean.parseBoolean((String) request.getSession().getAttribute("isSuperAdmin"));
 		System.out.println("-----user controler: isSuperAdmin = " + isSuperAdmin);
 
-		System.out.println("********[UserController] show all users********");
-		String server = "172.31.14.195";
-		String webServiceURL = "https://" + server + ":8085/ResourceManagement";
-		String username = "administrator";
-		String password = "C1sco123";
+		System.out.println("********[UserController] show all users********"); 
 		ArrayList<String[]> listUser = new ArrayList<String[]>();
 		
 		try {
-			ResourceManagementAccess accessObject = new ResourceManagementAccess(webServiceURL, username, password);
-			String searchQuery = "type:User";
-			List<Resource> searchResult = accessObject.search(null, searchQuery);
+
+			CcdmManager ccdm = new CcdmManager();
+			List<Resource> searchResult = ccdm.retrieveUsers("");	// from folder "/Root"
+
+			// find index of fields to display
 			int idxUserName = -1;
 			int idxDomainName = -1;
 			int idxLastLogin = -1;
 			int idxCreatedBy = -1;
 			int idxCreationDate = -1;
+			
 			ArrayList<NameValuePair> listPair = (ArrayList<NameValuePair>) searchResult.get(0).getFields()
 					.getNameValuePair();
 			for (NameValuePair pair : listPair) {
@@ -64,6 +63,8 @@ public class UserController {
 				if (pair.getName().equalsIgnoreCase("LastLogin"))
 					idxLastLogin = listPair.indexOf(pair);
 			}
+			
+			// construct list to pass as attribute
 			for (Resource res : searchResult) {
 				listPair = (ArrayList<NameValuePair>) res.getFields().getNameValuePair();
 				listUser.add(new String[] { listPair.get(idxUserName).getValue(),
@@ -73,6 +74,7 @@ public class UserController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		request.setAttribute("listUser", listUser);
 		return new ModelAndView("UserAdmin/manageUsers");
 	}
