@@ -18,6 +18,15 @@
 				return false;
 			});
 		});
+		
+		$(document).ready(function() {
+			$('#toBeToggle_Localisation').css('display', 'none');
+			$('#button_Localisation').click(function() {
+				$('#toBeToggle_Localisation').slideToggle('slow');
+				// 			$(this).toggleClass('slideSign');
+				return false;
+			});
+		});
 	</script>
 
 	<div class="grc-page-application">

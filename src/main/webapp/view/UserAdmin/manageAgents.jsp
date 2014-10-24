@@ -6,7 +6,13 @@
 <t:wrapper>
 	<div class="grc-page-application" style="margin: 0 auto;">
 		<a href="createNewAgent" class="btn-submit" style="margin: 0 auto;">Create
+<<<<<<< HEAD
 			New Agent</a> <br /> <br /> <br />
+=======
+			New Agent</a> <br />
+		<br />
+		<br />
+>>>>>>> cc1a1ece732c69d16e80a63a1f6bcffdc8897bc1
 		<div class="grc-application-list" style="margin: 0 auto;">
 			<!-- 		<h2>Customer Name</h2> -->
 			<table>
@@ -23,7 +29,18 @@
 					<c:forEach items="${listAgent}" var="agent">
 						<tr>
 							<c:forEach items="${agent}" var="elem">
+<<<<<<< HEAD
 								<td><c:out value="${not empty elem ? elem : '-' }" /></td>
+=======
+								<c:choose>
+									<c:when test="${not empty elem}">
+										<td>${elem}</td>
+									</c:when>
+									<c:otherwise>
+										<td>-</td>
+									</c:otherwise>
+								</c:choose>
+>>>>>>> cc1a1ece732c69d16e80a63a1f6bcffdc8897bc1
 							</c:forEach>
 						</tr>
 					</c:forEach>

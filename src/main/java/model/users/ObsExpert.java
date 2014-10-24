@@ -1,14 +1,9 @@
 package model.users;
-
+ 
 
 public class ObsExpert extends User { 
 	
-	private int level;  // must be 1/2/3
-	
-	public ObsExpert() {
-		super();
-	}
-
+	private int level;  // must be 1/2/3 
 	public ObsExpert(String username, String password, int level) {	
 		super();
 		this.setUsername(username);
@@ -26,13 +21,17 @@ public class ObsExpert extends User {
 		default:
 			throw new IllegalArgumentException("Invalid Expert Level value!");
 		}
-	}
+	} 
 
+	public ObsExpert(int level) {
+		this.setLevel(level);
+	}
+ 
 	public int getLevel() {
 		return level;
 	}
 
 	public void setLevel(int level) {
 		this.level = level;
-	}
- }
+	} 
+}

@@ -17,7 +17,7 @@
 		<p>
 			<!-- Print User Role -->
 			<span>
-				<c:out value="${pageContext.request.userPrincipal.name}" /> (
+				Current User: <c:out value="${pageContext.request.userPrincipal.name}" /> (
 				<c:if test="${isSuperAdmin}">SuperAdministrator</c:if> 
 				<c:if test="${isExpert}">Expert</c:if> 
 				<c:if test="${isAdmin}">Administrator</c:if>
@@ -52,7 +52,7 @@
 					<ul class="navigation-2">
 						<li><a class="" href="#"> <span>General</span>
 						</a></li>
-						<li><a class="" href="#"> <span>Equipment Map</span>
+						<li><a class="" href="manageEquipment"> <span>Equipment Map</span>
 						</a></li>
 					</ul></li>
 			</c:if>

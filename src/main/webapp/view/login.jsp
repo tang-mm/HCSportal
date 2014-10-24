@@ -13,7 +13,7 @@
 	</jsp:attribute>
 
 	<jsp:body>   
-		<div class="grc-form"> 
+		<div class="grc-form-auth"> 
 		
 			
 			<c:url value="/j_spring_security_check" var="loginUrl" />
@@ -21,11 +21,11 @@
 				class="grc-form-auth-800px">
 				<div class="boxTop-800px"></div>
 				<div class="boxMid-800px">
- <!-- 		<div class="boxMidImg-800px"
+<!--  	 		<div class="boxMidImg-800px" 
 						style="background: transparent url('${pageContext.request.contextPath}/images/.png') no-repeat center bottom;" /> 
- -->
+-->
 				<div class="boxMidInner-800px">
-					<h2>Identification</h2><p></p>
+					<h2>Authentication</h2><p></p>
 						 
 				<!-- login error message -->
 				<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
@@ -54,8 +54,7 @@
 						<input type="password" name="j_password" />
 <%-- 						<form:errors path="j_password" cssClass="error" /> --%>
 					</div> 
-					<input type="submit" value="Login"
-							class="btn submit-800px btn-submit" />
+					<input type="submit" value="Login" class="btn submit-800px btn-submit-800px"/> <!--  class=" btn-submit" /> --> 
 				</div> <!-- boxMidInner -->
 				</div>
 				

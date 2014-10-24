@@ -25,33 +25,11 @@
 	</bean> 
 	
     <bean id="messageSource"
-        class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-        <property name="basename" value="classpath:message" />
+        class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="message" />
         <property name="defaultEncoding" value="UTF-8" />
     </bean>
-    
-<!-- 	<bean id="urlMapping" -->
-<!-- 		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"> -->
-<!-- 		<property name="interceptors"> -->
-<!-- 			<list> -->
-<!-- 				<ref local="localeChangeInterceptor" /> -->
-<!-- 			</list> -->
-<!-- 		</property>	 -->
-<!-- 		<property name="urlMap"> -->
-<!-- 			<map> -->
-<!-- 				<entry key="/login.jsp"> -->
-<!-- 					<ref bean="loginController"/> -->
-<!-- 				</entry> -->
-<!-- 			</map> -->
-<!-- 		</property> -->
-<!-- 	</bean> -->
 
-<!-- 	<bean id="localeChangeInterceptor" -->
-<!-- 		class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"> -->
-<!-- 		<property name="paramName" value="h1"/>	 -->
-<!-- 	</bean> -->
-	
-<!-- 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/> -->
 
 	<!-- home page redirect -->
 	<mvc:view-controller path="/" view-name="index"/>

@@ -23,7 +23,18 @@
 					<c:forEach items="${listCustomer}" var="customer">
 						<tr>
 							<c:forEach items="${customer}" var="elem">
+<<<<<<< HEAD
 								<td><c:out value="${not empty elem ? elem : '-' }" /></td>
+=======
+								<c:choose>
+									<c:when test="${not empty elem}">
+										<td>${elem}</td>
+									</c:when>
+									<c:otherwise>
+										<td>-</td>
+									</c:otherwise>
+								</c:choose>
+>>>>>>> cc1a1ece732c69d16e80a63a1f6bcffdc8897bc1
 							</c:forEach>
 						</tr>
 					</c:forEach>

@@ -2,8 +2,8 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import model.users.Agent;
+ 
+import model.users.Agent; 
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +22,6 @@ public class AgentController {
 	public ModelAndView listAgents() {
 
 		System.out.println("********[AgentController] manage agents********");
-
 
 		ArrayList<String[]> listAgent = new ArrayList<String[]>();
 		try {

@@ -1,11 +1,10 @@
 package model.users;
 
 import model.Customer;
-
+ 
 public abstract class CustomerSideUser extends User {
 
-	protected Customer customer;
-
+	protected Customer customer; 
 	public CustomerSideUser() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -23,5 +22,4 @@ public abstract class CustomerSideUser extends User {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-	
 }

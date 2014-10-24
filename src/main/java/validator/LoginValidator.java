@@ -1,4 +1,4 @@
-package controller;
+package validator;
  
 
 import model.users.User;

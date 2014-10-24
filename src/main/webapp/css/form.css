@@ -438,7 +438,7 @@ input.submit {
 
 .row-800px {margin-left:40px;margin:22px 0 0 5px;}
 input.submit-800px {border:none;margin-top:20px;margin-right: 44px; padding-bottom:4px; float:right;}
-
+input.submit-800px:hover {color: #FF5500;}
 
 .boxMidInner-800px a {
     color: #FF5500;
@@ -474,13 +474,13 @@ input.submit-800px {border:none;margin-top:20px;margin-right: 44px; padding-bott
 
 .grc-form-auth-800px label.error { color: #FF0000; width: 300px; margin-top:20px; }
 
-/* .btn-submit-800px {
+.btn-submit-800px {
 	width:80px;
 	background-image:url(../images/btn-submit.gif);
   font-weight: bold;
   font-size:11px;
-  text-transform: lowercase;
-	} */
+/*   text-transform: lowercase; */
+} 
 
 .boxMidImg-800px {
 	float: left;

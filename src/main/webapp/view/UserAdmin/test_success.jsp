@@ -10,13 +10,13 @@
 </head>
 <body>
 
-	UserName: ${registerInfo.userName}
+	UserName: ${newUserCmd.username}
 	<br /> Hobbies:
-	<c:forEach items="${registerInfo.hobbies}" var="hobby">
-      ${hobby}
-</c:forEach>
-	<br /> Gender: ${registerInfo.gender}
-	<br /> State: ${registerInfo.state}
+<%-- 	<c:forEach items="${newUserCmd.hobbies}" var="hobby"> --%>
+<%--       ${hobby} --%>
+<%-- </c:forEach> --%>
+	<br /> Gender: ${newUserCmd.userTypeId}
+	<br /> State: ${newUserCmd.password}
 
 </body>
 </body>

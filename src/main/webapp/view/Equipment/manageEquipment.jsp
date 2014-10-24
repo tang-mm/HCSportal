@@ -19,7 +19,9 @@
 				<tbody>
 					<c:forEach items="${listCustomer}" var="cust">
 						<tr>
-							<td><c:out value="${cust.name}" /></td> 
+							<td>${cust}</td> 
+							<td>-</td>
+						</tr>
 					</c:forEach>
 				</tbody>
 			</table>

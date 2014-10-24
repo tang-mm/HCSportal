@@ -7,7 +7,7 @@
 			<ul class="navigation-2">
 				<li><a class="" href="manageCustomers"> <span>Manage Customers</span></a></li>
 				<li><a class="" href="manageUsers"> <span>Manage Users</span></a></li>
-				<li><a class="" href="manageAgents"> <span>Manage Agents</span></a></li>
+<!-- 				<li><a class="" href="manageAgents"> <span>Manage Agents</span></a></li> -->
 			</ul></li>
 
 		<li><a class="" href="#"> <span>Equipment</span>

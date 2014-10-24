@@ -1,5 +1,5 @@
 package model.users;
-
+ 
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +34,7 @@ public class User {
 
 	protected String lastLogin;
 	protected String domainName;
+
 
 	public User() {
 	}
@@ -104,7 +105,7 @@ public class User {
 
 	public UserTypeEnum getUserTypeAsEnum() {
 		return userType;
-	}
+	} 
 
 	public String getUserTypeAsString() {
 		return userType.getType();
@@ -119,4 +120,4 @@ public class User {
 		this.userType = UserTypeEnum.getEnumById(userTypeId);
 	}
 
-}
+} 

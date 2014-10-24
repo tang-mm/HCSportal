@@ -24,59 +24,59 @@
 								<td style="width: 35%"><label path="name">Customer
 										Name: </label></td>
 								<td colspan="2"><form:input path="name" value="" /></td>
-							</tr>
-							<tr class="grc-form-input-text">
-								<td style="width: 35%"><label path="geoLocation">Geographical
-										Location: </label></td>
-								<td><form:input path="geoLocation" value="" /></td>
-							</tr>
+							</tr> 
 							<tr class="grc-form-no-border">
 								<td>&nbsp;</td>
 							</tr>
-							<tr class="grc-form-input-text">
+							
+
+							<tr class="grc-form-no-border">
+								<td colspan="1"><label>IP: </label></td>
+								<td colspan="2"><form:input path="ipMain" /></td>
+							</tr>
+<%-- 							<tr class="grc-form-no-border"> --%>
+<%-- 								<td colspan="1"><label>Prefix length: </label></td> --%>
+<%-- 								<td colspan="2"><form:input path="prefixLength" value="24"/></td> --%>
+<%-- 							</tr> --%>
+							<tr class="grc-form-buttons grc-form-no-border">
+								<td colspan="3"><input type="submit"
+									class="grc-form-buttons-validate" value="Submit" name="Submit"></input></td>
+							</tr>
+						</tbody>
+					</table>
+					
+					<table>
+					<tbody>
+						<tr class="grc-form-input-text">
 								<td style="width: 35%"><label>IP Finesse Desktop: </label>
 								</td>
-								<td colspan="2"><form:input path="IPfinesseA"
-										placeholder="Primary" /></td>
-								<td colspan="3"><form:input path="IPfinesseB"
-										placeholder="Secondary" /></td>
+								<td colspan="2" id="IPfinesseA"></td>
+								<td colspan="3" id="IPfinesseB"></td>
 							</tr>
 							<tr class="grc-form-input-text">
 								<td style="width: 35%"><label>IP CUIC: </label></td>
-								<td colspan="2"><form:input path="IPcuicA"
-										placeholder="Publisher" /></td>
-								<td colspan="3"><form:input path="IPcuicB"
-										placeholder="Subscriber" /></td>
+								<td colspan="2" id="IPcuicA"></td>
+								<td colspan="3" id="IPcuicB"></td>
 							</tr>
-							<tr class="grc-form-input-text">
+					 		<tr class="grc-form-input-text">
 								<td style="width: 35%"><label>IP EIM / WIM: </label></td>
-								<td colspan="2"><form:input path="IPeimwimA"
+								<td colspan="2" id="IPeimwimA"
 										placeholder="Side A" /></td>
-								<td colspan="3"><form:input path="IPeimwimA"
+								<td colspan="3" id="IPeimwimA"
 										placeholder="Side B" /></td>
 							</tr>
 							<tr class="grc-form-input-text">
 								<td style="width: 35%"><label>IP MediaSense: </label></td>
-								<td colspan="2"><form:input path="IPmediasenseA"
-										placeholder="Side A" /></td>
-								<td colspan="3"><form:input path="IPmediasenseB"
-										placeholder="Side B" /></td>
+								<td colspan="2" id="IPmediasenseA"/></td>
+								<td colspan="3" id="IPmediasenseB"/></td>
 							</tr>
 							<tr class="grc-form-input-text">
 								<td style="width: 35%"><label>IP Internet Script
 										Editor: </label></td>
-								<td colspan="2"><form:input path="IPscriptEditorA"
-										placeholder="Side A" /></td>
-								<td colspan="3"><form:input path="IPscriptEditorB"
-										placeholder="Side B" /></td>
+								<td colspan="2" id="IPscriptEditorA"/></td>
+								<td colspan="3" id="IPscriptEditorB"/></td>
 							</tr>
-
-							<tr class="grc-form-buttons grc-form-no-border">
-								<td colspan="3"><input type="submit"
-									class="grc-form-buttons-validate" value="Submit" name="Submit" />
-								</td>
-							</tr>
-						</tbody>
+					</tbody>
 					</table>
 				</div>
 			</form:form>
