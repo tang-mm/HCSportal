@@ -2,12 +2,14 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 
 <t:wrapper>
-<!-- list of all customers -->
-<div class="grc-page-application">
+	<!-- list of all customers -->
+	<div class="grc-page-application">
 		<a href="searchEquipment" class="btn-submit" style="margin: 0 auto;">Search Equipment</a>
-		<br/><br/><br/>
+		<br />
+		<br />
 		<div class="grc-application-list" style="margin-left: 30%;">
 			<table>
 				<thead>
@@ -19,12 +21,13 @@
 				<tbody>
 					<c:forEach items="${listCustomer}" var="cust">
 						<tr>
-							<td>${cust}</td> 
-							<td>-</td>
+							<td><a href="listEquipment?custId=${cust[0]}&custName=${cust[1]}">
+									${cust[1]} </a></td>
+							<td>${cust[2]}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
-		</div> 
+		</div>
 	</div>
 </t:wrapper>

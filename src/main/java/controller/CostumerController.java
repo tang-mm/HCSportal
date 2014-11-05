@@ -1,14 +1,20 @@
 package controller;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import model.Customer;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
 import com.exony.schemas._2009._10.resourcemanagement.NameValuePair;
-import com.exony.schemas._2009._10.resourcemanagement.Resource;
+import com.exony.schemas._2009._10.resourcemanagement.Resource; 
 
 @Controller
 public class CostumerController {
@@ -52,10 +58,34 @@ public class CostumerController {
 	}
 
 	@RequestMapping(value = "createNewCustomer", method = RequestMethod.GET)
-	public ModelAndView createCustomer() {
+	public ModelAndView createNewCustomer() {
 		System.out.println("********[CostumerController] create new customer********");
 		ModelAndView model = new ModelAndView("UserAdmin/newCustomer", "newCustomerCmd", new Customer());
 		// model.addObject("IPaddress", "controller: new customer");
 		return model;
 	}
+	
+	@RequestMapping(value = "submitNewCustomer", method = RequestMethod.POST)
+    public ModelAndView submitNewCustomer(@ModelAttribute Customer customer) {
+		System.out.println("********[CostumerController] submit new customer********");
+		ModelAndView model = new ModelAndView("UserAdmin/newCustomer", "newCustomerCmd", customer);
+		
+		//TODO Validate fields: not null, IP format
+		
+		
+		
+		JdbcConnector db = new JdbcConnector();
+		Connection conn = db.getDBConnection("admin", "admin");
+		try {
+			db.insertIntoCustomersTable(conn, customer.getName(), customer.getIpMain(), customer.getDescription());
+		} catch (SQLException e) {
+			model.addObject("message", "Error writing into Database!");
+			e.printStackTrace();
+			 return model;
+		}
+		
+		 model.addObject("message", "Successfully added new customer!");
+		 model.addObject("success", true);
+          return model;
+    }
 }

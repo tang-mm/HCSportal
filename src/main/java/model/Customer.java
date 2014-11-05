@@ -25,6 +25,8 @@ public class Customer {
 	private String ipScriptEditorA;
 	private String ipScriptEditorB;
 
+	private String description;
+	
 	public Customer() {
 	}
 
@@ -192,4 +194,11 @@ public class Customer {
 		ipScriptEditorB = iPscriptEditorB;
 	}
 
+	public void setDescription(String desc) {
+		description = desc;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
 }

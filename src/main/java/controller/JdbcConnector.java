@@ -96,7 +96,7 @@ public class JdbcConnector {
 	 */
 	public void insertIntoUsersTable(Connection conn, String username, String password, int userTypeId, int customerId, long currentUserId, Timestamp timestamp, String timezone, boolean enabled) throws SQLException {
 		
-		String insertStmt = this.geneInsertStmt("users", "username", "password", "user_type_id", "customer_id", "created_by", "creation_time", "enabled"); 
+		String insertStmt = this.generateInsertStmt("users", "username", "password", "user_type_id", "customer_id", "created_by", "creation_time", "enabled"); 
 		PreparedStatement preparedStatement = conn.prepareStatement(insertStmt);
 		
 		preparedStatement.setString(1, username);
@@ -123,7 +123,7 @@ public class JdbcConnector {
 	 * @throws SQLException 
 	 */
 	public void insertIntoCustomersTable(Connection conn, String custName, String ipAddress, String description) throws SQLException {
-		String insertStmt = this.geneInsertStmt("customers", "customer_name", "ip_address", "description");
+		String insertStmt = this.generateInsertStmt("customers", "customer_name", "ip_address", "description");
 		PreparedStatement preparedStatement = conn.prepareStatement(insertStmt);
 		
 		preparedStatement.setString(1, custName);
@@ -135,19 +135,22 @@ public class JdbcConnector {
 	}
 	
 	/**
-	 * add a new site into Sites table for the given customer, with site_id auto-incremented
+	 * add a new site into Sites table for the given customer, with site_id auto-incremented.
+	 * By default, emergnecy_state = false.
 	 * @param conn
 	 * @param siteName
 	 * @param customerId
 	 * @throws SQLException
 	 */
-	public void insertIntoSitesTable(Connection conn, String siteName, int customerId) throws SQLException {
+	public void insertIntoServicesTable(Connection conn, String serviceCode, int customerId, int locationId) throws SQLException {
 		//TODO open_time, close_time, emergency_state
-		String insertStmt = this.geneInsertStmt("sites", "site_name", "customer_id");
+		String insertStmt = this.generateInsertStmt("services", "service_code", "customer_id", "location_id", "emergency_state");
 		PreparedStatement preparedStatement = conn.prepareStatement(insertStmt);
 		
-		preparedStatement.setString(1, siteName);
+		preparedStatement.setString(1, serviceCode);
 		preparedStatement.setInt(2, customerId);
+		preparedStatement.setInt(3, locationId);
+		preparedStatement.setBoolean(4, false);
 		System.out.println(preparedStatement);
 		
 		preparedStatement.executeUpdate();
@@ -164,14 +167,14 @@ public class JdbcConnector {
 	}
 
 	/**
-	 * Generate an Insert SQL statement in the form of PrepraredStatement final
+	 * Generate an Insert SQL statement in the form of PrepraredStatement. final
 	 * form: INSERT INTO table (attr0, attr1, .., attrN) VALUES (?, ?, .., ?)"
 	 * 
 	 * @param table
 	 * @param attributes
 	 * @return
 	 */
-	public String geneInsertStmt(String table, String... attributes) {
+	public String generateInsertStmt(String table, String... attributes) {
 		String sql = "INSERT INTO " + table + " (" + attributes[0]; // OR
 																	// REPLACE
 		int length = attributes.length; // number of columns

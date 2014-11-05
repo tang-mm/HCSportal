@@ -11,13 +11,13 @@
 		<br />
 	</div>
 	
-	<span>Test: Login to MediaSense</span>
-	<form action="https://172.31.16.172:8440/ora/authenticationService/authentication/signIn" method="POST" onsubmit="return postJson(this)">
-    <input name="userName" value="user" />
-    <input name="PassWord" value="12345" />
-    <input type="submit" />
-	</form>
-	<div class="response">Response:</div>
+<!-- 	<span>Test: Login to MediaSense</span> -->
+<!-- 	<form action="https://172.31.16.172:8440/ora/authenticationService/authentication/signIn" method="POST" onsubmit="return postJson(this)"> -->
+<!--     <input name="userName" value="user" /> -->
+<!--     <input name="PassWord" value="12345" /> -->
+<!--     <input type="submit" /> -->
+<!-- 	</form> -->
+<!-- 	<div class="response">Response:</div> -->
 <!-- 	<span>Test: Login to CCDM</span>
 		<form action="https://172.31.14.195/Portal/logon.aspx" method="POST" onsubmit="return postJson(this)"> -->
 <!--     <input name="uxtbUsername" value="user" /> -->

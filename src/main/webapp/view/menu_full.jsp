@@ -29,8 +29,8 @@
 		<li><a class="" href="#"> <span>Routing</span>
 		</a>
 			<ul class="navigation-2">
-				<li><a class="" href="#"> <span>Manage Sites</span></a></li>
-				<li><a class="" href="#"> <span>PIN Codes</span></a></li>
+				<li><a class="" href="manageServices"> <span>Manage Services</span></a></li>
+				<li><a class="" href="managePinCodes"> <span>PIN Codes</span></a></li>
 				<li><a class="" href="#"> <span>Internet Script
 							Editor</span></a></li>
 			</ul></li>
@@ -60,19 +60,6 @@
 			target="iframe-main"> <span>Statistics</span>
 		</a></li>
 
-		<li><a class="" href="#"> <span>Finesse</span> <!--onclick='document.getElementByName("iframe-main").src="https://172.31.14.72/cfadmin"'   -->
-		</a>
-			<ul class="navigation-2">
-				<li><a class="" href="https://172.31.14.72/desktop/"
-					target="iframe-main"> <span>Finesse Desktop</span></a></li>
-			</ul></li>
-
-		<li><a class="" href="#"> <span>EIM / WIM</span>
-		</a>
-			<ul class="navigation-2">
-				<li><a class="" href="#"> <span>EIM / WIM User</span></a></li>
-			</ul></li>
-
 		<li><a class="" href="#"> <span>MediaSense</span>
 		</a>
 			<ul class="navigation-2">
@@ -80,7 +67,7 @@
 					target="iframe-main"> <span>Search and Play</span></a></li>
 			</ul></li>
 
-		<li><a class="" href="#"> <span>System Settings</span>
+		<li><a class="" href="settings"> <span>System Settings</span>
 		</a></li>
 	</ul>
 </div> 
