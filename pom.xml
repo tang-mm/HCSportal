@@ -20,9 +20,9 @@
 			<groupId>myGroupId</groupId>
 			<artifactId>ccdm-resource-manager</artifactId>
 			<version>0.1</version>
-			<!-- manually generated from "CCDM-Sample-WebServices-App: Resource Manager" -->
+<!-- 			manually generated from "CCDM-Sample-WebServices-App: ResourceManager" -->
 		</dependency>
-	
+
 		<!-- Spring Framework -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -60,6 +60,7 @@
 			<version>${security.version}</version>
 		</dependency>
 
+
 		<!-- Java EE -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -87,6 +88,13 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>5.1.2.Final</version>
+		</dependency>
+
+		<!-- JDBC MySQL -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.6</version>
 		</dependency>
 
 		<!-- test -->

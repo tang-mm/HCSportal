@@ -59,9 +59,10 @@ Tables dans div grc-application
   
 }
 
-.grc-application-list tbody a {
-    color: #000000;
-}
+.grc-application-list tbody a { 
+     color: #000000; 
+	text-decoration: underline;
+ }  
 
 /*************************************
 		FIELDSET

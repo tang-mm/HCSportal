@@ -9,6 +9,7 @@ public class Customer {
 
 	@NotNull
 	private String name;
+	private int customerId;
 	@NotNull
 	private String ipMain;
 	@NotNull
@@ -25,6 +26,8 @@ public class Customer {
 	private String ipScriptEditorA;
 	private String ipScriptEditorB;
 
+	private String description;
+	
 	public Customer() {
 	}
 
@@ -192,4 +195,19 @@ public class Customer {
 		ipScriptEditorB = iPscriptEditorB;
 	}
 
+	public void setDescription(String desc) {
+		description = desc;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+
+	public int getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
+	}
 }

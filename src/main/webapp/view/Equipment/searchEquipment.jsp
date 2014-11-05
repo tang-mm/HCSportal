@@ -31,7 +31,7 @@
 
 	<div class="grc-page-application">
 		<div class="grc-form block" style="margin: 0 auto;">
-			<form:form action="submitNewUser" id="searchEquipmentForm"
+			<form:form action="searchEquipment" id="searchEquipmentForm"
 				name="searchEquipmentForm" commandName="searchEquipmentCmd">
 				<div class="grc-form">
 					<div>

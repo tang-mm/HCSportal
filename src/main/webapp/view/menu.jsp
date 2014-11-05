@@ -41,8 +41,7 @@
 						<c:if test="${isSuperAdmin}">
 							<li><a class="" href="manageCustomers"> <span>Manage Customers</span></a></li>
 						</c:if>
-						<li><a class="" href="manageUsers"> <span>Manage Users</span></a></li>
-						<li><a class="" href="manageAgents"> <span>Manage Agents</span></a></li>
+						<li><a class="" href="manageUsers"> <span>Manage Users</span></a></li> 
 					</ul></li>
 			</c:if>
 
@@ -74,7 +73,7 @@
 				</a>
 					<ul class="navigation-2">
 						<c:if test="${isExpert || isAdmin}">
-							<li><a class="" href="#"> <span>Manage Sites</span></a></li>
+							<li><a class="" href="#"> <span>Manage Services</span></a></li>
 							<li><a class="" href="#"> <span>PIN Codes</span></a></li>
 						</c:if>
 						<c:if test="${isAdmin}">

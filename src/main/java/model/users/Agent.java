@@ -6,7 +6,8 @@ public class Agent extends CustomerSideUser {
 
 	protected AgentTeam team;
 	protected boolean isSupervisor = false;
-	
+	protected String department;
+
 	public Agent() {} 
  
 	// called by supervisor's constructor
@@ -17,5 +18,13 @@ public class Agent extends CustomerSideUser {
 	public Agent(String username, String password) { 
 		super(username, password, UserTypeEnum.AGENT.getId()); 
 	}
-   
+
+	
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}
 }

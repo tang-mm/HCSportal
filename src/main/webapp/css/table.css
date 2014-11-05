@@ -1,0 +1,87 @@
+/* equipment */
+
+.grc-table table {
+	border-collapse: collapse;
+	border: solid 2px #C3C3C3;
+}
+
+.grc-table td, .grc-table th {
+	height: 20px;
+  line-height: 20px;
+  font-size: 11px;
+  padding: 2px 5px;
+  text-align:left;
+}
+
+.grc-table th {
+	background-color: #dddddd;
+	font-weight: bold;
+	font-size: 12px;
+	text-align: center;
+}
+
+.grc-table thead select {
+	float: right;
+}
+
+.grc-table thead select {
+	width: 50px;
+}
+.grc-table thead select,
+.grc-table thead span {
+	float: right;
+}
+.grc-table thead span {
+	margin-right: 10px;
+	position: relative;
+	top: 15%;
+}
+
+.grc-table th.grc-table-header-column-0 {
+	/*padding-left:30px;*/
+	text-align: left;
+}
+
+.grc-table th.grc-table-header-column-1 {
+	text-align: left;
+}
+
+.grc-table th.grc-table-header-column-2 {
+	/*width: 200px;*/
+}
+
+.grc-table td {
+
+   color: #333333;
+   overflow: hidden;
+}
+
+.grc-table td a {
+	color: #ff6600;
+}
+
+.grc-table tr.odd {
+	background-color: #EEEEEE;
+}
+
+.grc-table tr.even {
+	background-color: #FFFFFF;
+}
+
+.grc-table tr.center {
+	text-align: center;
+}
+
+.grc-table tfoot {
+	background-color: #dddddd;
+}
+
+.grc-table tfoot span {
+	float: left;
+}
+
+.grc-table tfoot input {
+	float: right;
+}
+
+.sorted{background-color:#e6e6ff;color:#000}
