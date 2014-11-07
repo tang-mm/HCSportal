@@ -58,6 +58,7 @@
 
 .grc-table td a {
 	color: #ff6600;
+	text-decoration: underline;
 }
 
 .grc-table tr.odd {
@@ -84,4 +85,28 @@
 	float: right;
 }
 
-.sorted{background-color:#e6e6ff;color:#000}
+/************* sort table *************/
+/* .sorted{background-color:#e6e6ff;color:#000} */
+
+.tablesorter th:hover{
+	color: #FF6600;
+}
+
+.tablesorter thead th{
+	background-image: url('../images/sort-bg.gif');
+	background-repeat: no-repeat;
+	background-position: right center;
+}
+
+.tablesorter thead th.headerSortUp {
+	background-image: url('../images/sort-asc.gif');
+	background-repeat: no-repeat;
+	background-position: right center;
+	color: #FF6600;
+}
+.tablesorter thead th.headerSortDown {
+	background-image: url('../images/sort-desc.gif');
+	background-repeat: no-repeat;
+	background-position: right center;
+	color: #FF6600;
+}

@@ -9,8 +9,7 @@
 }
 </style>
 
-<t:wrapper>
-	<div class="grc-page-application">
+<t:wrapper> 
 		<div class="grc-form block" style="margin: 0 auto;">
 			<form:form action="submitNewCustomer" id="newCustomerForm"
 				name="newCustomerForm" commandName="newCustomerCmd">
@@ -88,7 +87,6 @@
 						</tbody>
 					</table>
 				</div>
-			</form:form>
-		</div>
+			</form:form> 
 	</div>
 </t:wrapper>

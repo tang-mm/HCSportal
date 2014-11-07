@@ -4,8 +4,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <t:wrapper>
- 
-	<div class="grc-page-application">
-	</div>
-
+   new service page
 </t:wrapper>

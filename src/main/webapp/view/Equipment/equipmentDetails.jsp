@@ -5,25 +5,14 @@
 
 <t:wrapper>
 
+	<!-- tabs: General Information; Access -->
+
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$('#toBeToggle_Machine').css('display', 'none');
-			$('#button_Machine').click(function() {
-				$('#toBeToggle_Machine').slideToggle('slow');
-				// 			$(this).toggleClass('slideSign');
-				return false;
-			});
-		});
 
-		$(document).ready(function() {
-			$('#toBeToggle_Localisation').css('display', 'none');
-			$('#button_Localisation').click(function() {
-				$('#toBeToggle_Localisation').slideToggle('slow');
-				// 			$(this).toggleClass('slideSign');
-				return false;
-			});
 		});
 	</script>
+
 
 	<div class="grc-form block" style="margin: 0 auto;">
 		<form:form action="submitNewEquipment" id="addNewEquipmentForm"

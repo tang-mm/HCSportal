@@ -1,6 +1,5 @@
 package controller;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -19,25 +20,43 @@ public class ServiceController {
 
 	
 	@RequestMapping(value="manageServices", method=RequestMethod.GET)
-	public ModelAndView showListServices(HttpServletRequest request) {
-		System.out.println("********[ServiceController] show service list********");
+	public ModelAndView manageServices(HttpServletRequest request) {
+		System.out.println("********[ServiceController] Manage Services ********");
 		
 		boolean isExpert = Boolean.parseBoolean((String) request.getSession().getAttribute("isExpert")); 
-		if (!isExpert) {
-			//TODO get customer ID
-			String customerName = null;
-			int customerId = 0;
-			request.setAttribute("customerId", customerId);
-			request.setAttribute("customerName", customerName);
+		isExpert = true;  //TODO delete this line!!!
+		if (isExpert) {
 			
-			ArrayList<Service> listService = new ArrayList<Service>();
+			ArrayList<Customer> listCustomer = new ArrayList<Customer>();
+			//TODO get customer list
+			listCustomer.add(new Customer(9, "testName", "testIP", "test", 24));
 			
-			request.setAttribute("listService", listService);
+			request.setAttribute("listCustomer", listCustomer);
+			
+			return new ModelAndView("Service/listServiceExpert");
 		}
+		//TODO get customer ID
+		String customerName = null;
+		int customerId = 0;
+		request.setAttribute("customerId", customerId);
+		request.setAttribute("customerName", customerName);
 		
-		request.setAttribute("isExpert", isExpert);
+		//TODO retrieve list from DB
+		ArrayList<Service> listService = new ArrayList<Service>();
 		
-		return new ModelAndView("Service/listService");
+		request.setAttribute("listService", listService);
+		return new ModelAndView("Service/listServiceCust");
+	}
+	
+	
+	@RequestMapping(value="listServices", method=RequestMethod.GET)
+	public @ResponseBody ArrayList<Service> getServiceList(@RequestParam String custId) {
+		System.out.println("********[ServiceController] get service list********");
+		ArrayList<Service> listService = new ArrayList<Service>();
+		//TODO retrieve list from DB
+		listService.add(new Service(1, "testCode", 9, "testCustName", "location1", "UTC", false, true));
+		
+		return listService;
 	}
 	
 	@RequestMapping(value="serviceDetails", method=RequestMethod.GET) 

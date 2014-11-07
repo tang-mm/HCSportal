@@ -3,9 +3,8 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<t:wrapper>  
-	<div class="grc-page-application">
-		<div class="grc-form block" style="margin: 0 auto;">
+<t:wrapper>   
+		<div class="grc-form block" >
 			<form:form action="submitNewAgent" id="newAgentForm"
 				name="newAgentForm" commandName="newAgentCmd">
 				<div class="grc-form">
@@ -38,6 +37,5 @@
 					</table>
 				</div>
 			</form:form>
-		</div>
-	</div>
+		</div> 
 </t:wrapper>

@@ -4,6 +4,5 @@
 
 
 <t:wrapper>
-	<div class="grc-page-application">
-	</div>
+user details
 </t:wrapper>

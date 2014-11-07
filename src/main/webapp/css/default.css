@@ -5,7 +5,7 @@ body {
 }
 
 .view th, .view td {
-	background-color: #DFDFDF;/*DFDFDF*/
+	background-color: #DFDFDF;
 }
 
 /*******************************
@@ -21,9 +21,7 @@ Tables dans div grc-application
     padding-left: 20px;
     width: 83%;
 }
-.grc-application-list a:hover {
-    color: #FFFFFF;
-}
+
 .grc-application-list table {
     border-left: 1px solid #C3C3C3;
     border-top: 1px solid #C3C3C3;
@@ -45,8 +43,9 @@ Tables dans div grc-application
     color: #666666;
 }
 .grc-application-list tbody tr:hover {
-    background-color: #FF6600;
+    background-color: #FF9900;
 }
+
 .grc-application-list table tbody td {
     border-bottom: 1px solid #C3C3C3;
     border-right: 1px solid #C3C3C3;
@@ -60,9 +59,17 @@ Tables dans div grc-application
 }
 
 .grc-application-list tbody a { 
-     color: #000000; 
+     color: #FF6600; /* #000000; */ 
 	text-decoration: underline;
  }  
+ 
+.grc-application-list a:hover {
+    color: #FFFFFF;
+}
+
+.grc-application-list tbody tr:hover a{
+    color: #000000;
+}
 
 /*************************************
 		FIELDSET
@@ -288,6 +295,12 @@ div.info:hover span {
 }
 */
 
+/* Info du status (Open, Closed HNO, ...) des services */
+ div.status_open { margin:5px; padding:2px; color:white; }
+ div.status_open.green { background-color : green; }
+ div.status_open.red  { background-color : red; }
+ 
+
 /************************************
 		CORPS DE LA PAGE
 ************************************/
@@ -325,7 +338,7 @@ label#application-title {
 }
 
 .grc-page {
-/*  	display: inline-block; */
+ 	display: inline-block;
 	vertical-align: top;  
 	margin: 5px 0;
 	padding: 5px 0;
@@ -333,8 +346,10 @@ label#application-title {
 }
 
 .grc-application-list {
-	display: inline-block;
+	display: inline-block; 
 	vertical-align: top;
+	margin-left: auto;
+	margin-right:auto;
 }
 
 .grc-page-login {
@@ -389,7 +404,7 @@ label#application-title {
 }
 
 .grc-page-appli {
-        width: 100%;
+    width: 100%;
 	height:25px;
 }
 

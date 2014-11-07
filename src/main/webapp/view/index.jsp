@@ -4,7 +4,7 @@
 
 
 <t:wrapper>
-	<div class="grc-page-application">
+	<div class="grc-page">
 		<h1>Welcome</h1>
 		<br />
 		<br />

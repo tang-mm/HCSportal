@@ -6,22 +6,20 @@
 <t:wrapper>
 
 	<!-- tabs: General Information; Opening hours; Holidays; Exceptional Days;  -->
-	<div class="grc-page-application">
-		<div class="grc-form block" style="margin: 0 auto;">
-			<form:form action="submitNewService" id="newServiceForm"
-				name="newServiceForm" commandName="newServiceCmd">
-				<div>
-					<h1>Create New Service</h1>
-				</div>
+	<div class="grc-form block">
+		<form:form action="submitNewService" id="newServiceForm"
+			name="newServiceForm" commandName="newServiceCmd">
+			<div>
+				<h1>Details ></h1>
+			</div>
 
-				<div class="grc-form">
-					<table>
-						<tbody>
-						
-						</tbody>
-					</table>
-				</div>
-			</form:form>
-		</div>
+			<div class="grc-form">
+				<table>
+					<tbody>
+
+					</tbody>
+				</table>
+			</div>
+		</form:form>
 	</div>
 </t:wrapper>

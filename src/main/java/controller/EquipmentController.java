@@ -57,6 +57,7 @@ public class EquipmentController {
 		JdbcConnector connector = new JdbcConnector();
 		Connection conn = connector.getDBConnection("admin", "admin");
 		
+		//TODO return only the 10 first results, update with pagination
 		String selectQuery = "SELECT * FROM equipment WHERE customer_id ="+custId;		
 		ArrayList<Equipment> listEquip = new ArrayList<Equipment>();
 		

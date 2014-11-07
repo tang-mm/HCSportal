@@ -4,6 +4,7 @@
 
 .grc-form.block {
 	display: block;
+	margin: 0 auto;
 	margin-bottom: 20px;
 	padding: 15px;
 	border: solid 1px #C3C3C3;

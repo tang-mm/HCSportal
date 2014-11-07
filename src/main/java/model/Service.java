@@ -8,21 +8,21 @@ public class Service {
 	private String customerName;
 	private int locationId;
 	private String location;
-	private boolean isInEmergency;
-	private boolean isOpen;
+	private String timeZone;
+	private boolean emergency;
+	private boolean open;
 	
 	public Service() { }
 	
-	public Service(int serviceId, String serviceCode, int customerId, String customerName, int locationId,
-			String location, boolean isInEmergency, boolean isOpen) { 
+	public Service(int serviceId, String serviceCode, int customerId, String customerName, String location, String timeZone, boolean emergency, boolean open) { 
 		this.serviceId = serviceId;
 		this.serviceCode = serviceCode;
 		this.customerId = customerId;
 		this.customerName = customerName;
-		this.locationId = locationId;
 		this.location = location;
-		this.isInEmergency = isInEmergency;
-		this.isOpen = isOpen;
+		this.timeZone = timeZone;
+		this.emergency = emergency;
+		this.open = open;
 	}
 
 	public int getServiceId() {
@@ -73,20 +73,28 @@ public class Service {
 		this.location = location;
 	}
 
-	public boolean isInEmergency() {
-		return isInEmergency;
+	public boolean getEmergency() {
+		return emergency;
 	}
 
-	public void setInEmergency(boolean isInEmergency) {
-		this.isInEmergency = isInEmergency;
+	public void setEmergency(boolean emergency) {
+		this.emergency = emergency;
 	}
 
-	public boolean isOpen() {
-		return isOpen;
+	public boolean getOpen() {
+		return open;
 	}
 
-	public void setOpen(boolean isOpen) {
-		this.isOpen = isOpen;
+	public void setOpen(boolean open) {
+		this.open = open;
+	}
+
+	public String getTimeZone() {
+		return timeZone;
+	}
+
+	public void setTimeZone(String timeZone) {
+		this.timeZone = timeZone;
 	}
 
 

@@ -14,8 +14,6 @@
 	href="${pageContext.servletContext.contextPath}/css/main.css"
 	rel="stylesheet">
 <!-- path = "webapp/css" -->
-<!-- <link type="text/css"
-		href="css/main.css" rel="stylesheet"> -->
 <!-- path = "webapp/WEB-INF/css" -->
 <style>
 html, body {

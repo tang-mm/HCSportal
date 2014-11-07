@@ -31,9 +31,18 @@ public class Customer {
 	public Customer() {
 	}
 
-	public Customer(String name, String ipMain, int prefixLength) {
+	public Customer(String name, String ipMain, String desc, int prefixLength) {
 		this.setName(name);
 		this.setIpMain(ipMain);
+		this.setDescription(desc);
+		this.setPrefixLength(prefixLength);
+	} 
+	
+	public Customer(int id, String name, String ipMain, String desc, int prefixLength) {
+		this.setCustomerId(id);
+		this.setName(name);
+		this.setIpMain(ipMain);
+		this.setDescription(desc);
 		this.setPrefixLength(prefixLength);
 	} 
 	

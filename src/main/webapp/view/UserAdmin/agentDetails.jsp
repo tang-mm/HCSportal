@@ -4,8 +4,5 @@
 
 
 <t:wrapper>
-	<div class="grc-page-application">
-	
-	Modify
-	</div>
+	agent details + modify
 </t:wrapper>

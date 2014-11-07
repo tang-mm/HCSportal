@@ -4,9 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <t:wrapper>
- 
-	<div class="grc-page-application">
-	Pin Code page
-	</div>
+  
+	Pin Code page 
 
 </t:wrapper>
