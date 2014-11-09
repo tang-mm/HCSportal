@@ -1,7 +1,6 @@
 package model;
 
 public class Service {
-	 
 	private int serviceId;
 	private String serviceCode;
 	private int customerId;
@@ -11,10 +10,12 @@ public class Service {
 	private String timeZone;
 	private boolean emergency;
 	private boolean open;
-	
-	public Service() { }
-	
-	public Service(int serviceId, String serviceCode, int customerId, String customerName, String location, String timeZone, boolean emergency, boolean open) { 
+
+	public Service() {
+	}
+
+	public Service(int serviceId, String serviceCode, int customerId, String customerName,
+			String location, String timeZone, boolean emergency, boolean open) {
 		this.serviceId = serviceId;
 		this.serviceCode = serviceCode;
 		this.customerId = customerId;
@@ -96,7 +97,4 @@ public class Service {
 	public void setTimeZone(String timeZone) {
 		this.timeZone = timeZone;
 	}
-
-
-
 }

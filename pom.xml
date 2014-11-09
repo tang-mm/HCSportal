@@ -20,7 +20,7 @@
 			<groupId>myGroupId</groupId>
 			<artifactId>ccdm-resource-manager</artifactId>
 			<version>0.1</version>
-<!-- 			manually generated from "CCDM-Sample-WebServices-App: ResourceManager" -->
+			<!-- manually generated from "CCDM-Sample-WebServices-App: ResourceManager" -->
 		</dependency>
 
 		<!-- Spring Framework -->
@@ -70,6 +70,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+
+		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
@@ -116,7 +122,7 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.4.3</version>
 		</dependency>
-		
+
 	</dependencies>
 
 

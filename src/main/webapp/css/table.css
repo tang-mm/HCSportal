@@ -58,7 +58,10 @@
 
 .grc-table td a {
 	color: #ff6600;
+<<<<<<< HEAD
 	text-decoration: underline;
+=======
+>>>>>>> 42657ca5ad8edd558a36736f6a579f74caf79ffa
 }
 
 .grc-table tr.odd {
@@ -84,7 +87,7 @@
 .grc-table tfoot input {
 	float: right;
 }
-
+ 
 /************* sort table *************/
 /* .sorted{background-color:#e6e6ff;color:#000} */
 
@@ -109,4 +112,4 @@
 	background-repeat: no-repeat;
 	background-position: right center;
 	color: #FF6600;
-}
+}  

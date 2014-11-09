@@ -210,7 +210,7 @@ public class Customer {
 	
 	public String getDescription() {
 		return description;
-	}
+	} 
 
 	public int getCustomerId() {
 		return customerId;
@@ -218,5 +218,5 @@ public class Customer {
 
 	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
-	}
+	} 
 }

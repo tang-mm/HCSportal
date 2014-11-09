@@ -3,10 +3,10 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <t:wrapper>
 	<!-- list of all customers -->
-	<a href="searchEquipment" class="btn-submit" style="margin: 0 auto;">Search Equipment</a>
+	<a href="searchEquipment" class="btn-submit" style="margin: 0 auto;">Search
+		Equipment</a>
 	<br />
 	<br />
 	<div class="grc-application-list" style="margin-left: 30%;">

@@ -2,34 +2,29 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <%-- <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> --%>
-
 <t:wrapper>
-
 	<script type="text/javascript">
-		// 	$('#button_Machine').click(function() {
-		// 		$('#toBeToggle_Machine').toggle();
-		// 		$('this').toggleClass('.collpse'); 
-		// 	}); 
+		// $('#button_Machine').click(function() {
+		// $('#toBeToggle_Machine').toggle();
+		// $('this').toggleClass('.collpse');
+		// });
 		$(document).ready(function() {
 			$('#toBeToggle_Machine').css('display', 'none');
 			$('#button_Machine').click(function() {
 				$('#toBeToggle_Machine').slideToggle('slow');
-				// 			$(this).toggleClass('slideSign');
+				// $(this).toggleClass('slideSign');
 				return false;
 			});
 		});
-
 		$(document).ready(function() {
 			$('#toBeToggle_Localisation').css('display', 'none');
 			$('#button_Localisation').click(function() {
 				$('#toBeToggle_Localisation').slideToggle('slow');
-				// 			$(this).toggleClass('slideSign');
+				// $(this).toggleClass('slideSign');
 				return false;
 			});
 		});
 	</script>
-
-
 	<div class="grc-form block" style="margin: 0 auto;">
 		<form:form action="searchEquipment" id="searchEquipmentForm"
 			name="searchEquipmentForm" commandName="searchEquipmentCmd">
@@ -64,7 +59,6 @@
 										filters</span>
 								</p></td>
 						</tr>
-
 						<!-- expand / collapse -->
 						<tr class="grc-form-input-select grc-form-no-border"
 							id="toBeToggle_Machine">
@@ -95,7 +89,6 @@
 								</table>
 							</td>
 						</tr>
-
 						<tr class="grc-form-input-select grc-form-no-border">
 							<td><label>Virtualized on host :</label></td>
 							<td colspan="2"><select name="id_parent" id="id_parent">
@@ -103,14 +96,12 @@
 									<!-- LIST of options here -->
 							</select> <span id="erreurParent"></span></td>
 						</tr>
-
 						<tr class="grc-form-input-select">
 							<td><label>Connected to the switch :</label></td>
 							<td colspan="2"><select name="id_switch" id="id_switch">
 									<option value="" label=""></option>
 							</select> <span id="erreurId_switch0"></span></td>
 						</tr>
-
 						<tr class="grc-form-input-select grc-form-no-border">
 							<td><label>Customer :</label></td>
 							<td><select name="id_localisation" id="id_localisation">
@@ -143,7 +134,6 @@
 								</table>
 							</td>
 						</tr>
-
 						<tr class="grc-form-input-select grc-form-no-border">
 							<td><label>Project :</label></td>
 							<td colspan="2"><select name="projet" id="projet">
@@ -158,7 +148,6 @@
 									<!-- LIST of options here -->
 							</select></td>
 						</tr>
-
 						<tr class="grc-form-input-text">
 							<td colspan="3">&nbsp;</td>
 						</tr>
@@ -171,5 +160,4 @@
 			</div>
 		</form:form>
 	</div>
-
 </t:wrapper>
