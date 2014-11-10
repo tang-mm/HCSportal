@@ -1,303 +1,128 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
-<%-- <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> --%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <t:wrapper>
-
-	<!-- tabs: General Information; Access -->
-
 	<script type="text/javascript">
-		$(document).ready(function() {
+		// enable tabs
+		$('document').ready(function() {
+			$('#tabs li a').each(function() {
+				$(this).click(function() {
+					$('#tabs li').each(function() {
+						$(this).removeClass('tab-selected');
+					});
+					$(this).parent().addClass('tab-selected');
+					//show new tab and hide others
+					var index = $(this).parent().index();
+					$("#tab-" + index).show().siblings().hide();
 
+					return false;
+				});
+			});
 		});
 	</script>
 
-a<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-		pageEncoding="ISO-8859-1"%>
-	<%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
-	<%-- <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> --%>
-	<t:wrapper>
-		<!-- tabs: General Information; Access -->
-		<script type="text/javascript">
-			$(document).ready(function() {
-			});
-		</script>
-		<div class="grc-form block" style="margin: 0 auto;">
-			<form:form action="submitNewEquipment" id="addNewEquipmentForm"
-				name="addNewEquipmentForm" commandName="addNewEquipmentCmd">
+	<div class="grc-tab-div" style="margin: 0 auto;">
+		<ul id="tabs">
+			<li class="tab-selected"><a href="#"> <span>General
+						Information</span>
+			</a></li>
+			<li><a href="#"><span>Access</span></a>
+		</ul>
+	</div>
+
+	<div class="grc-form block">
+		<div>
+			<h1>Equipment Details >> ${equip.equipmentName}</h1>
+		</div>
+
+		<div id="tabs-content">
+			<div id="tab-0">
+				<div id="equipDetails" class="grc-form">
+					<form:form id="equipmentDetailsForm" name="equipmentDetailsForm"
+						action="" commandName="">
+						<table>
+							<tbody>
+								<tr class="grc-form-input-text">
+									<td style="width: 40%;"><label>Equipment Name:</label></td>
+									<td>${equip.equipmentName}</td>
+								</tr>
+								<tr class="grc-form-input-text">
+									<td><label>Machine Type:</label></td>
+									<td>${equip.machineType }</td>
+								</tr>
+								<tr class="grc-form-input-text">
+									<td><label>Virtualized:</label></td>
+									<td>${equip.isVirtualized ? 'YES' : 'NO'}</td>
+								</tr>
+								<tr class="grc-form-input-text">
+									<td><label>Operation System :</label></td>
+									<td>${equip.operatingSystem }</td>
+								</tr>
+								<tr class="grc-form-input-text">
+									<td><label>Application Version:</label></td>
+									<td>${equip.appVersion}</td>
+								</tr>
+								<tr class="grc-form-input-text">
+									<td><label>Hardware:</label></td>
+									<td>${equip.hardware}</td>
+								</tr>
+								<tr class="grc-form-input-text">
+									<td><label>Serial number :</label></td>
+									<td>${equip.serialNumber}</td>
+								<tr class="grc-form-input-text">
+									<td><label>Location :</label></td>
+									<td>${equip.geoLocation}</td>
+								</tr>
+								<tr class="grc-form-input-text grc-form-no-border">
+									<td></td>
+								</tr>
+								<tr class="grc-form-no-border" bgcolor="white">
+									<td colspan="2"><h2>Description:</h2></td>
+								</tr>
+								<tr class="grc-form-no-border" bgcolor="white">
+									<td colspan="2">${equip.description }</td>
+								</tr>
+							</tbody>
+						</table>
+					</form:form>
+				</div>
+				
+			</div>
+
+			<div id="tab-1" style="display: none;">
 				<div class="grc-form">
-					<div>
-						<h1>Add new equipment</h1>
-					</div>
 					<table>
 						<tbody>
 							<tr class="grc-form-input-text">
-								<td style="width: 35%;"><label>By IP :</label></td>
-								<td colspan="2"><input name="globalIP" id="globalIP"
-									value="" type="text"></td>
+								<td width="40%"><label>IP Address :</label></td>
+								<td>${equip.ipAddress}</td>
 							</tr>
-							<tr class="grc-form-input-text">
-								<td><label>By name :</label></td>
-								<td colspan="2"><input name="name" id="name" value=""
-									type="text"></td>
+							<tr class="grc-form-input-text grc-form-no-border">
+								<td></td>
 							</tr>
-							<tr class="grc-form-input-text">
-								<td><label>Serial number :</label></td>
-								<td colspan="2"><input name="numSerie" id="numSerie"
-									value="" type="text"></td>
-							</tr>
-							<tr class="grc-form-input-select grc-form-no-border">
-								<td><label>Type of machine :</label></td>
-								<td><select name="strEquipement" id="strEquipement">
-										<!-- LIST of options here -->
-								</select></td>
-								<td><p>
-										<span id="button_Machine" class="grc-icone-display">additional
-											filters</span>
-									</p></td>
-							</tr>
-							<!-- expand / collapse -->
-							<tr class="grc-form-input-select grc-form-no-border"
-								id="toBeToggle_Machine">
-								<td colspan="3">
-									<table>
-										<tbody>
-											<tr class="grc-form-input-select grc-form-no-border">
-												<td style="width: 40%;"><label>OS :</label></td>
-												<td><select name="os" id="os">
-														<option value="" label=""></option>
-														<!-- LIST of options here -->
-												</select></td>
-											</tr>
-											<tr class="grc-form-input-select grc-form-no-border">
-												<td><label>Hardware :</label></td>
-												<td><select name="hardware" id="hardware">
-														<!-- LIST of options here -->
-												</select></td>
-											</tr>
-											<tr class="grc-form-input-select grc-form-no-border">
-												<td><label>Application version :</label></td>
-												<td><select name="appVersion" id="appVersion">
-														<option value="" label=""></option>
-														<!-- LIST of options here -->
-												</select></td>
-											</tr>
-										</tbody>
-									</table>
-								</td>
-							</tr>
-							<tr class="grc-form-input-select grc-form-no-border">
-								<td><label>Virtualized on host :</label></td>
-								<td colspan="2"><select name="id_parent" id="id_parent">
-										<option value="" label=""></option>
-										<!-- LIST of options here -->
-								</select> <span id="erreurParent"></span></td>
-							</tr>
-							<tr class="grc-form-input-select">
-								<td><label>Connected to the switch :</label></td>
-								<td colspan="2"><select name="id_switch" id="id_switch">
-										<option value="" label=""></option>
-								</select> <span id="erreurId_switch0"></span></td>
-							</tr>
-							<tr class="grc-form-input-select grc-form-no-border">
-								<td><label>Customer :</label></td>
-								<td><select name="id_localisation" id="id_localisation">
-										<option value="" label=""></option>
-										<!-- LIST of options here -->
-								</select></td>
-								<td><p>
-										<span id="button_Localisation" class="grc-icone-display">additional
-											filters</span>
-									</p></td>
-							</tr>
-							<!-- expand / collapse -->
-							<tr>
-								<td colspan="3">
-									<table id="toBeToggle_Localisation" style="">
-										<tbody>
-											<tr class="grc-form-input-select grc-form-no-border">
-												<td style="width: 40%;"><label>Room :</label></td>
-												<td><select name="salle" id="salle"
-													style="background-color: #DBFFD7">
-												</select></td>
-											</tr>
-											<tr class="grc-form-input-select grc-form-no-border">
-												<td><label>Rack :</label></td>
-												<td><select name="bay" id="bay"
-													style="background-color: #DBFFD7">
-												</select></td>
-											</tr>
-										</tbody>
-									</table>
-								</td>
-							</tr>
-							<tr class="grc-form-input-select grc-form-no-border">
-								<td><label>Project :</label></td>
-								<td colspan="2"><select name="projet" id="projet">
-										<option value="" label=""></option>
-										<!-- LIST of options here -->
-								</select></td>
-							</tr>
-							<tr class="grc-form-input-select grc-form-no-border">
-								<td><label>Platform :</label></td>
-								<td colspan="2"><select name="plateforme" id="plateforme">
-										<option value="" label=""></option>
-										<!-- LIST of options here -->
-								</select></td>
-							</tr>
-							<tr class="grc-form-input-text">
-								<td colspan="3">&nbsp;</td>
-							</tr>
-							<tr class="grc-form-buttons grc-form-no-border">
-								<td colspan="3"><input value="Validate"
-									class="grc-form-buttons-validate" type="submit"></td>
+							<tr class="grc-form-buttons grc-form-no-border" bgcolor="white">
+								<td colspan="2" align="right"><input value="Open Terminal"  type="button" class="grc-form-buttons-validate" onclick="#"/></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
-			</form:form>
-		</div>
-	</t:wrapper>
-	<div class="grc-form block" style="margin: 0 auto;">
-		<form:form action="submitNewEquipment" id="addNewEquipmentForm"
-			name="addNewEquipmentForm" commandName="addNewEquipmentCmd">
-			<div class="grc-form">
-				<div>
-					<h1>Add new equipment</h1>
-				</div>
-				<table>
-					<tbody>
-						<tr class="grc-form-input-text">
-							<td style="width: 35%;"><label>By IP :</label></td>
-							<td colspan="2"><input name="globalIP" id="globalIP"
-								value="" type="text"></td>
-						</tr>
-						<tr class="grc-form-input-text">
-							<td><label>By name :</label></td>
-							<td colspan="2"><input name="name" id="name" value=""
-								type="text"></td>
-						</tr>
-						<tr class="grc-form-input-text">
-							<td><label>Serial number :</label></td>
-							<td colspan="2"><input name="numSerie" id="numSerie"
-								value="" type="text"></td>
-						</tr>
-						<tr class="grc-form-input-select grc-form-no-border">
-							<td><label>Type of machine :</label></td>
-							<td><select name="strEquipement" id="strEquipement">
-									<!-- LIST of options here -->
-							</select></td>
-							<td><p>
-									<span id="button_Machine" class="grc-icone-display">additional
-										filters</span>
-								</p></td>
-						</tr>
-
-						<!-- expand / collapse -->
-						<tr class="grc-form-input-select grc-form-no-border"
-							id="toBeToggle_Machine">
-							<td colspan="3">
-								<table>
-									<tbody>
-										<tr class="grc-form-input-select grc-form-no-border">
-											<td style="width: 40%;"><label>OS :</label></td>
-											<td><select name="os" id="os">
-													<option value="" label=""></option>
-													<!-- LIST of options here -->
-											</select></td>
-										</tr>
-										<tr class="grc-form-input-select grc-form-no-border">
-											<td><label>Hardware :</label></td>
-											<td><select name="hardware" id="hardware">
-													<!-- LIST of options here -->
-											</select></td>
-										</tr>
-										<tr class="grc-form-input-select grc-form-no-border">
-											<td><label>Application version :</label></td>
-											<td><select name="appVersion" id="appVersion">
-													<option value="" label=""></option>
-													<!-- LIST of options here -->
-											</select></td>
-										</tr>
-									</tbody>
-								</table>
-							</td>
-						</tr>
-
-						<tr class="grc-form-input-select grc-form-no-border">
-							<td><label>Virtualized on host :</label></td>
-							<td colspan="2"><select name="id_parent" id="id_parent">
-									<option value="" label=""></option>
-									<!-- LIST of options here -->
-							</select> <span id="erreurParent"></span></td>
-						</tr>
-
-						<tr class="grc-form-input-select">
-							<td><label>Connected to the switch :</label></td>
-							<td colspan="2"><select name="id_switch" id="id_switch">
-									<option value="" label=""></option>
-							</select> <span id="erreurId_switch0"></span></td>
-						</tr>
-
-						<tr class="grc-form-input-select grc-form-no-border">
-							<td><label>Customer :</label></td>
-							<td><select name="id_localisation" id="id_localisation">
-									<option value="" label=""></option>
-									<!-- LIST of options here -->
-							</select></td>
-							<td><p>
-									<span id="button_Localisation" class="grc-icone-display">additional
-										filters</span>
-								</p></td>
-						</tr>
-						<!-- expand / collapse -->
-						<tr>
-							<td colspan="3">
-								<table id="toBeToggle_Localisation" style="">
-									<tbody>
-										<tr class="grc-form-input-select grc-form-no-border">
-											<td style="width: 40%;"><label>Room :</label></td>
-											<td><select name="salle" id="salle"
-												style="background-color: #DBFFD7">
-											</select></td>
-										</tr>
-										<tr class="grc-form-input-select grc-form-no-border">
-											<td><label>Rack :</label></td>
-											<td><select name="bay" id="bay"
-												style="background-color: #DBFFD7">
-											</select></td>
-										</tr>
-									</tbody>
-								</table>
-							</td>
-						</tr>
-
-						<tr class="grc-form-input-select grc-form-no-border">
-							<td><label>Project :</label></td>
-							<td colspan="2"><select name="projet" id="projet">
-									<option value="" label=""></option>
-									<!-- LIST of options here -->
-							</select></td>
-						</tr>
-						<tr class="grc-form-input-select grc-form-no-border">
-							<td><label>Platform :</label></td>
-							<td colspan="2"><select name="plateforme" id="plateforme">
-									<option value="" label=""></option>
-									<!-- LIST of options here -->
-							</select></td>
-						</tr>
-
-						<tr class="grc-form-input-text">
-							<td colspan="3">&nbsp;</td>
-						</tr>
-						<tr class="grc-form-buttons grc-form-no-border">
-							<td colspan="3"><input value="Validate"
-								class="grc-form-buttons-validate" type="submit"></td>
-						</tr>
-					</tbody>
-				</table>
 			</div>
-		</form:form>
+		</div>  <!--end tabs -->
+		
+		<div id="action-buttons" class="grc-form">
+			<table>
+				<tbody>
+					<tr class="grc-form-buttons grc-form-no-border">
+						<td align="right"> <input value="Back" type="button" class="grc-form-buttons-cancel" onclick="history.back()"/></td>
+						<td align="right">
+							<input value="Modify"  type="button" class="grc-form-buttons-validate" onclick="modifyEquiment?id="+${equip.equipmentId}/>
+							<input value="Delete"  type="button" class="grc-form-buttons-validate" style="margin-right: 10px;" onclick="deleteEquipment?id="+${equip.equipmentId}/>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </t:wrapper>

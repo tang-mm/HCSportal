@@ -13,6 +13,7 @@ public class Equipment {
 	private String appVersion;
 	private String hardware;
 	private String geoLocation;
+	private String description;
 	
 	public Equipment() {}
 
@@ -79,11 +80,11 @@ public class Equipment {
 		this.machineType = machineType;
 	}
 
-	public boolean isVirtualized() {
+	public boolean getIsVirtualized() {
 		return isVirtualized;
 	}
 
-	public void setVirtualized(boolean isVirtualized) {
+	public void setIsVirtualized(boolean isVirtualized) {
 		this.isVirtualized = isVirtualized;
 	}
 
@@ -118,6 +119,15 @@ public class Equipment {
 	public void setGeoLocation(String geoLocation) {
 		this.geoLocation = geoLocation;
 	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	
 	
 }

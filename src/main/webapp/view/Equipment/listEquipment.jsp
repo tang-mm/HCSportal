@@ -1,8 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <t:wrapper>
 	<script type="text/javascript"
 		src="${pageContext.servletContext.contextPath}/js/jquery.tablesorter.js"></script>
@@ -47,13 +48,13 @@
 			});
 		});
 	</script>
+	
 	<a href="createNewEquipment" class="btn-submit" style="margin: 0 auto;">Add
 		New Equipment</a>
 	<div class="grc-form block">
 		<div>
 			<h1>List >> ${custName}</h1>
 		</div>
-		<p>TODO: add table sort, pagination</p>
 		<br />
 		<div class="grc-table">
 			<!-- </div> style="margin-left: 30%;"> -->
@@ -69,7 +70,7 @@
 				<tbody>
 					<c:forEach items="${listEquip}" var="equip" varStatus="loopStatus">
 						<tr class="${loopStatus.index % 2 == 0 ? 'even' : 'odd'}">
-							<td><a href="equipmentDetails?id=equip.equipmentId">${equip.equipmentName}</a></td>
+							<td><a href="equipmentDetails?equipId=${equip.equipmentId}">${equip.equipmentName}</a></td>
 							<td>${equip.machineType}</td>
 							<td>${equip.operatingSystem}</td>
 							<td>${equip.geoLocation}</td>
@@ -85,12 +86,13 @@
 								<option value="100">100</option>
 						</select><span>Items per page </span></td>
 						<td colspan="2"><span class="pagedisplay"></span></td>
-						<td colspan="4"><input type="button" value="&gt;&gt;|"
-							class="first"> <input type="button" value="&gt;"
-							class="next"> <input type="button" value="&lt;"
-							class="prev"> <input type="button" value="|&lt;&lt;"
-							class="last"> <select class="gotoPage"
-							title="Select page number"></select></td>
+						<td colspan="4">
+							<input type="button" value="&gt;&gt;|" class="first"/> 
+							<input type="button" value="&gt;" class="next"/> 
+							<input type="button" value="&lt;" class="prev"/> 
+							<input type="button" value="|&lt;&lt;" class="last"/> 
+							<select class="gotoPage" title="Select page number"></select>
+						</td>
 					</tr>
 				</tfoot>
 			</table>

@@ -76,6 +76,9 @@ public class EquipmentController {
 	@RequestMapping(value = "equipmentDetails", method = RequestMethod.GET)
 	public ModelAndView showEquipmentDetails(HttpServletRequest request) {
 		System.out.println("********[EquipmentController] equipment details ********");
+		
+		int equipId = Integer.parseInt(request.getParameter("equipId"));
+		
 		// TODO send SQL query
 		Equipment equip = new Equipment();
 		ModelAndView model = new ModelAndView("Equipment/equipmentDetails");
@@ -95,5 +98,19 @@ public class EquipmentController {
 		System.out.println("********[EquipmentController] add equipment********");
 		// TODO send SQL query
 		return new ModelAndView("Equipment/newEquipment");
+	}
+	
+	@RequestMapping(value = "modifyEquipment", method = RequestMethod.GET)
+	public ModelAndView modifyEquipment(HttpServletRequest request) {
+		System.out.println("********[EquipmentController] modify equipment********");
+		// TODO send SQL query
+		return new ModelAndView("Equipment/modifyEquipment");
+	}
+	
+	@RequestMapping(value = "deleteEquipment", method = RequestMethod.GET)
+	public ModelAndView deleteEquipment(HttpServletRequest request) {
+		System.out.println("********[EquipmentController] delete equipment********");
+		// TODO send SQL query
+		return new ModelAndView();	
 	}
 }
