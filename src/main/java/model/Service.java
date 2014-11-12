@@ -10,6 +10,7 @@ public class Service {
 	private String timeZone;
 	private boolean emergency;
 	private boolean open;
+	private String description;
 
 	public Service() {
 	}
@@ -97,4 +98,13 @@ public class Service {
 	public void setTimeZone(String timeZone) {
 		this.timeZone = timeZone;
 	}
+	
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 }

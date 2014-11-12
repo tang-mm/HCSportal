@@ -54,7 +54,7 @@
 								</tr>
 								<tr class="grc-form-input-text">
 									<td><label>Virtualized:</label></td>
-									<td>${equip.isVirtualized ? 'YES' : 'NO'}</td>
+									<td><if test="${not empty equip.isVirtualized}">${equip.isVirtualized ? 'YES' : 'NO'}</if></td>
 								</tr>
 								<tr class="grc-form-input-text">
 									<td><label>Operation System :</label></td>

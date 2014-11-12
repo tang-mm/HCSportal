@@ -1,9 +1,18 @@
 package controller;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import javax.servlet.http.HttpServletRequest;
+
 import model.Customer;
+import model.DailySchedule;
 import model.Service;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,11 +60,92 @@ public class ServiceController {
 	@RequestMapping(value = "serviceDetails", method = RequestMethod.GET)
 	public ModelAndView showServiceDetails(HttpServletRequest request) {
 		System.out.println("********[ServiceController] show service details********");
-		String serviceId = request.getParameter("serviceId");
-		// TODO retrieve row from DB
-		Service service = new Service();
-		request.setAttribute("service", service);
-		return new ModelAndView("Service/serviceDetails");
+		String serviceId = request.getParameter("id");
+		
+		Service service = null;
+		HashMap<Integer, DailySchedule> mapWeekday = new HashMap<Integer, DailySchedule>();  //key: weekday Number 
+		ArrayList<DailySchedule> listHoliday = new ArrayList<DailySchedule>();
+		ArrayList<DailySchedule> listException = new ArrayList<DailySchedule>();
+		
+		mapWeekday.put(1, new DailySchedule());
+		
+		String queryServ = " SELECT * FROM services s, locations l WHERE s.service_id = " + serviceId + " AND s.location_id = l.location_id";		
+		String queryWeek = "SELECT * FROM weekdays WHERE service_id = " + serviceId;
+		String queryHoliday = "SELECT * FROM holidays WHERE service_id = " + serviceId;
+		String queryExcept = "SELECT * FROM exceptional_days WHERE service_id = " + serviceId;
+	
+		//TODO Connection pooling
+		JdbcConnector connector = new JdbcConnector();
+		Connection conn = connector.getDBConnection("admin", "admin");
+		try {
+			// get Service object fields
+			ResultSet resultSet = connector.executeSelect(conn, queryServ);
+			if (resultSet.first()) {
+				String serviceCode = resultSet.getString("s.service_code");
+				int custId = resultSet.getInt("s.customer_id");
+				String state = resultSet.getString("l.state");
+				String location = resultSet.getString("l.city") + ", " + (state == null? "" : state + ", ") + resultSet.getString("l.country");
+				String timeZone = resultSet.getString("l.time_zone");
+				boolean emergency = resultSet.getBoolean("emergency_state");
+				
+				service = new Service();
+				service.setServiceCode(serviceCode);
+				service.setCustomerId(custId); 
+				service.setLocation(location);
+				service.setTimeZone(timeZone);
+				service.setEmergency(emergency);
+				//TODO boolean: open
+				
+				System.out.println(serviceId + "\t" + serviceCode + "\t" + location);
+			}
+			
+			// get Weekday working hours
+			resultSet = connector.executeSelect(conn, queryWeek);
+			while (resultSet.next()) {
+				int weekday = resultSet.getInt("weekday");
+				Time open1 = resultSet.getTime("open_time_1");
+				Time close1 = resultSet.getTime("close_time_1");
+				Time open2 = resultSet.getTime("open_time_2");
+				Time close2 = resultSet.getTime("close_time_2");
+				mapWeekday.put(weekday,  new DailySchedule(open1, close1, open2, close2));
+			}
+			
+			// get holidays
+			resultSet = connector.executeSelect(conn, queryHoliday);
+			while (resultSet.next()) { 
+				DailySchedule day = new DailySchedule();
+				day.setDate(resultSet.getDate("holiday"));
+				day.setDescription(resultSet.getString("description"));
+				listHoliday.add(day);
+			}
+			
+			// get exceptional days
+			resultSet = connector.executeSelect(conn, queryExcept);
+			while (resultSet.next()) {
+				Time open1 = resultSet.getTime("open_time_1");
+				Time close1 = resultSet.getTime("close_time_1");
+				Time open2 = resultSet.getTime("open_time_2");
+				Time close2 = resultSet.getTime("close_time_2");
+				DailySchedule day = new DailySchedule(open1, close1, open2, close2);
+				
+				day.setDate(resultSet.getDate("exception_date"));
+				day.setDescription(resultSet.getString("description"));
+				
+				listException.add(day);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		ModelAndView model = new ModelAndView("Service/serviceDetails");
+		model.addObject("service", service);
+		model.addObject("mapWeekday", mapWeekday);
+		model.addObject("listHoliday", listHoliday);
+		model.addObject("listException", listException);
+		
+		return model;
 	}
 
 	@RequestMapping(value = "createNewService", method = RequestMethod.GET)
