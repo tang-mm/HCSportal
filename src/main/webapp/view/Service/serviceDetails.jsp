@@ -5,14 +5,36 @@
 
 <t:wrapper>
 
+	<style>
+.hidden {
+	display: none
+}
+</style>
+
+
+	<link href='${pageContext.servletContext.contextPath}/css/fullcalendar.css' rel='stylesheet' />
+	<link href='${pageContext.servletContext.contextPath}/css/fullcalendar.print.css' rel='stylesheet'
+		media='print' />
+	<script src='${pageContext.servletContext.contextPath}/js/moment.min.js'></script>
+	<script src='${pageContext.servletContext.contextPath}/js/jquery-1.11.1.min.js'></script>
+<%-- 	<script src='${pageContext.servletContext.contextPath}/js/fullcalendar.min.js'></script> --%>
+	<script src='${pageContext.servletContext.contextPath}/js/fullcalendar.js'></script>	
+
+	<!-- datepicker -->
 	<script type="text/javascript"
-		src="${pageContext.servletContext.contextPath}/js/jquery-ui-1.11.2.js"></script>
+		src='${pageContext.servletContext.contextPath}/js/jquery-ui-1.11.2.js'></script>
 	<link rel="stylesheet"
-		href="${pageContext.servletContext.contextPath}/css/jquery-ui-1.8.4.custom.css">
+		href='${pageContext.servletContext.contextPath}/css/jquery-ui-1.8.4.custom.css'>
 
 	<script type="text/javascript">
+	$(document).ready(function() { 
+		loadTabs();
+		loadCalendar(); 
+		loadDatepicker();
+	});
+	 
 		// enable tabs
-		$('document').ready(function() {
+		function loadTabs() {
 			$('#tabs li a').each(function() {
 				$(this).click(function() {
 					$('#tabs li').each(function() {
@@ -25,11 +47,10 @@
 					return false;
 				});
 			});
-		});
+		}
 
-		$(function() {
-			$("#datepicker")
-					.datepicker(
+		function loadDatepicker() {
+			$("#datepicker").datepicker(
 							{
 								changeMonth : true, /* select month and year */
 								changeYear : true,
@@ -39,7 +60,7 @@
 								buttonImageOnly : true,
 								buttonText : "Select date"
 							});
-		});
+		}
 
 		setInterval(function() {
 			localTimer(), 1000
@@ -51,10 +72,65 @@
 					+ d.getSeconds();
 			document.getElementById("localTimer").innerHTML = time;
 		}
+		
+
+		function loadCalendar() {
+			$('#fullCalendar').fullCalendar({
+				header : {
+					left : 'prev,next today',
+					center : 'title',
+					right : 'year, month, agendaWeek'
+				},
+				defaultDate : '2014-09-12',
+				editable : true,
+				eventLimit : true, // allow "more" link when too many events
+				events : [ {
+					title : 'All Day Event',
+					start : '2014-09-01',
+					color: '#FF6600'
+				}, {
+					title : 'Long Event',
+					start : '2014-09-07',
+					end : '2014-09-10'
+				}, {
+					id : 999,
+					title : 'Repeating Event',
+					start : '2014-09-09T16:00:00'
+				}, {
+					id : 999,
+					title : 'Repeating Event',
+					start : '2014-09-16T16:00:00'
+				}, {
+					title : 'Conference',
+					start : '2014-09-11',
+					end : '2014-09-13'
+				}, {
+					title : 'Meeting',
+					start : '2014-09-12T10:30:00',
+					end : '2014-09-12T12:30:00'
+				}, {
+					title : 'Lunch',
+					start : '2014-09-12T12:00:00'
+				}, {
+					title : 'Meeting',
+					start : '2014-09-12T14:30:00'
+				}, {
+					title : 'Happy Hour',
+					start : '2014-09-12T17:30:00'
+				}, {
+					title : 'Dinner',
+					start : '2014-09-12T20:00:00'
+				}, {
+					title : 'Birthday Party',
+					start : '2014-09-13T07:00:00'
+				}, {
+					title : 'Click for Google',
+					url : 'http://google.com/',
+					start : '2014-09-28'
+				} ]
+			});
+		}
 	</script>
-	<style>
-	.hidden {display: none}
-	</style>
 
 	<div class="grc-tab-div" style="margin: 0 auto;">
 		<ul id="tabs">
@@ -70,11 +146,12 @@
 	<div class="grc-form block">
 		<div>
 			<h1>Service Details >> ${service.serviceCode}</h1>
+			<br />
 		</div>
 
 		<div id="tabs-content">
 			<div id="tab-0">
-				<div id="serviceDetails" class="grc-form">
+				<div id="serviceDetails">
 					<form:form id="serviceDetailsForm" name="serviceDetailsForm"
 						action="" commandName="">
 						<table>
@@ -102,6 +179,7 @@
 											<c:choose>
 												<c:when test="${service.open}">
 													<div class="status_open green">Open</div>
+
 												</c:when>
 												<c:otherwise>
 													<div class="status_open red">Closed</div>
@@ -141,13 +219,14 @@
 							</tbody>
 						</table>
 					</form:form>
+
 				</div>
 
 			</div>
 
 			<!------------- Tab: Opening Hours -------------------->
 			<div id="tab-1" class="hidden">
-				<div id="openingHours" class="grc-form">
+				<div id="openingHours" class="grc-table">
 					<table>
 						<thead>
 							<tr>
@@ -159,13 +238,17 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${mapWeekday}" var="entry" varStatus="status">
-								<tr class="grc-form-input-text">
-									<td style="width: 40%;"><label>Monday</label></td>
-									<td>${mapWeekday[status.getCount()].openingTime1}</td>
-									<td>${mapWeekday[status.getCount()].closingTime1}</td>
-									<td>${mapWeekday[status.getCount()].openingTime2}</td>
-									<td>${mapWeekday[status.getCount()].closingTime2}</td>
+							<c:forEach items="${weekdayHours}" var="entry" varStatus="status">
+								<trclass="grc-form-input-text">
+								<td><label>${weekdayNames[status.index]}</label></td>
+								<td style="text-align: center"><c:out
+										value="${not empty entry.openingTime1 ?  entry.openingTime1 : '-'}" /></td>
+								<td style="text-align: center"><c:out
+										value="${not empty entry.closingTime1 ?  entry.closingTime1 : '-'}" /></td>
+								<td style="text-align: center"><c:out
+										value="${not empty entry.openingTime2 ?  entry.openingTime2 : '-'}" /></td>
+								<td style="text-align: center"><c:out
+										value="${not empty entry.closingTime2 ?  entry.closingTime2 : '-'}" /></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -175,21 +258,31 @@
 
 			<!------------- Tab: Holidays -------------------->
 			<div id="tab-2" class="hidden">
-				<div id="" class="grc-form">
-					<table>
-						<tbody>
-							<tr>
-								<td>Date:</td>
-								<td><input type="text" id="datepicker"
-									placeholder="mm/dd/yyyy" /></td>
-							</tr>
-						</tbody>
-					</table>
+				<div id="">
+					<form:form id="serviceDetailsForm" name="serviceDetailsForm"
+						action="" commandName="">
+						<table>
+							<tbody>
+								<tr class="grc-form-input-text grc-form-no-border">
+									<td>Add New Date:</td>
+									<td><input type="text" id="datepicker"
+										placeholder="mm/dd/yyyy" /></td>
+								</tr>
+								<tr class="grc-form-buttons grc-form-no-border">
+									<td colspan="2"><input type="submit"
+										class="grc-form-buttons-validate" value="Submit" name="Submit" /></td>
+
+								</tr>
+							</tbody>
+						</table>
+					</form:form>
 				</div>
+				
+				<div id='fullCalendar'>here</div>
 			</div>
 
 			<!------------- Tab: Exceptional days -------------------->
-			<div id="tab-3" class="hidden"></div>
+			<div id="tab-3" class="hidden">testtest</div>
 		</div>
 	</div>
 </t:wrapper>
