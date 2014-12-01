@@ -1,30 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
-<%-- <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> --%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <t:wrapper>
 	<script type="text/javascript">
-		// $('#button_Machine').click(function() {
-		// $('#toBeToggle_Machine').toggle();
-		// $('this').toggleClass('.collpse');
-		// });
 		$(document).ready(function() {
-			$('#toBeToggle_Machine').css('display', 'none');
+			$('#toBeToggled_Machine').css('display', 'none');
 			$('#button_Machine').click(function() {
-				$('#toBeToggle_Machine').slideToggle('slow');
-				// $(this).toggleClass('slideSign');
+				$('#toBeToggled_Machine').slideToggle('slow');
 				return false;
 			});
 		});
 		$(document).ready(function() {
-			$('#toBeToggle_Localisation').css('display', 'none');
+			$('#toBeToggled_Localisation').css('display', 'none');
 			$('#button_Localisation').click(function() {
-				$('#toBeToggle_Localisation').slideToggle('slow');
-				// $(this).toggleClass('slideSign');
+				$('#toBeToggled_Localisation').slideToggle('slow');
 				return false;
 			});
 		});
 	</script>
+	
 	<div class="grc-form block" style="margin: 0 auto;">
 		<form:form action="searchEquipment" id="searchEquipmentForm"
 			name="searchEquipmentForm" commandName="searchEquipmentCmd">
@@ -61,7 +57,7 @@
 						</tr>
 						<!-- expand / collapse -->
 						<tr class="grc-form-input-select grc-form-no-border"
-							id="toBeToggle_Machine">
+							id="toBeToggled_Machine">
 							<td colspan="3">
 								<table>
 									<tbody>
@@ -116,7 +112,7 @@
 						<!-- expand / collapse -->
 						<tr>
 							<td colspan="3">
-								<table id="toBeToggle_Localisation" style="">
+								<table id="toBeToggled_Localisation" style="">
 									<tbody>
 										<tr class="grc-form-input-select grc-form-no-border">
 											<td style="width: 40%;"><label>Room :</label></td>

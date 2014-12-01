@@ -11,14 +11,13 @@
 }
 </style>
 
-
 	<link href='${pageContext.servletContext.contextPath}/css/fullcalendar.css' rel='stylesheet' />
 	<link href='${pageContext.servletContext.contextPath}/css/fullcalendar.print.css' rel='stylesheet'
+<%-- 	<link href='${pageContext.servletContext.contextPath}/css/fullcalendar-year.css' rel='stylesheet' /> --%>
 		media='print' />
-	<script src='${pageContext.servletContext.contextPath}/js/moment.min.js'></script>
-	<script src='${pageContext.servletContext.contextPath}/js/jquery-1.11.1.min.js'></script>
-<%-- 	<script src='${pageContext.servletContext.contextPath}/js/fullcalendar.min.js'></script> --%>
-	<script src='${pageContext.servletContext.contextPath}/js/fullcalendar.js'></script>	
+	<script src='${pageContext.servletContext.contextPath}/js/moment.js'></script>
+	<script src='${pageContext.servletContext.contextPath}/js/fullcalendar.min.js'></script>
+<%-- 	<script src='${pageContext.servletContext.contextPath}/js/fullcalendar-year.js'></script> --%>
 
 	<!-- datepicker -->
 	<script type="text/javascript"
@@ -81,17 +80,17 @@
 					center : 'title',
 					right : 'year, month, agendaWeek'
 				},
-				defaultDate : '2014-09-12',
+				defaultDate : '2014-11-12',
 				editable : true,
 				eventLimit : true, // allow "more" link when too many events
 				events : [ {
-					title : 'All Day Event',
-					start : '2014-09-01',
+					title : 'Holiday', /* 'All Day Event', */
+					start : '2014-11-11',
 					color: '#FF6600'
 				}, {
-					title : 'Long Event',
-					start : '2014-09-07',
-					end : '2014-09-10'
+					title : 'Exception',
+					start : '2014-11-07',
+					end : '2014-11-10'
 				}, {
 					id : 999,
 					title : 'Repeating Event',
@@ -100,7 +99,7 @@
 					id : 999,
 					title : 'Repeating Event',
 					start : '2014-09-16T16:00:00'
-				}, {
+				}/* , {
 					title : 'Conference',
 					start : '2014-09-11',
 					end : '2014-09-13'
@@ -127,7 +126,7 @@
 					title : 'Click for Google',
 					url : 'http://google.com/',
 					start : '2014-09-28'
-				} ]
+				} */ ]
 			});
 		}
 	</script>
@@ -138,14 +137,16 @@
 						Information</span>
 			</a></li>
 			<li><a href="#"><span>Opening Hours</span></a>
-			<li><a href="#"><span>Holidays</span></a>
-			<li><a href="#"><span>Exceptional Days</span></a>
+			<li><a href="#"><span>Calendar</span></a> 
 		</ul>
 	</div>
 
 	<div class="grc-form block">
 		<div>
-			<h1>Service Details >> ${service.serviceCode}</h1>
+			<h1>Site Details >> ${service.serviceCode}</h1>
+			<br />
+			<br />
+			<h1>Time Schedule</h1>
 			<br />
 		</div>
 
@@ -157,7 +158,7 @@
 						<table>
 							<tbody>
 								<tr class="grc-form-input-text">
-									<td style="width: 40%;"><label>Service Code:</label></td>
+									<td style="width: 40%;"><label>Site Code:</label></td>
 									<td>${service.serviceCode}</td>
 								</tr>
 								<tr class="grc-form-input-text">
@@ -231,24 +232,34 @@
 						<thead>
 							<tr>
 								<th>Day</th>
-								<th>Opening Time 1</th>
-								<th>Closing Time 1</th>
-								<th>Opening Time 2</th>
-								<th>Closing Time 2</th>
+								<th>From</th>
+								<th>To</th>
+								<th>From (optional)</th>
+								<th>To (optional)</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${weekdayHours}" var="entry" varStatus="status">
+<%-- 							<c:forEach items="${weekdayHours}" var="entry" varStatus="status"> --%>
+<%-- 								<trclass="grc-form-input-text"> --%>
+<%-- 								<td><label>${weekdayNames[status.index]}</label></td> --%>
+<%-- 								<td style="text-align: center"><c:out --%>
+<%-- 										value="${not empty entry.openingTime1 ?  entry.openingTime1 : '-'}" /></td> --%>
+<%-- 								<td style="text-align: center"><c:out --%>
+<%-- 										value="${not empty entry.closingTime1 ?  entry.closingTime1 : '-'}" /></td> --%>
+<%-- 								<td style="text-align: center"><c:out --%>
+<%-- 										value="${not empty entry.openingTime2 ?  entry.openingTime2 : '-'}" /></td> --%>
+<%-- 								<td style="text-align: center"><c:out --%>
+<%-- 										value="${not empty entry.closingTime2 ?  entry.closingTime2 : '-'}" /></td> --%>
+<%-- 								</tr> --%>
+<%-- 							</c:forEach> --%>
+							
+								<c:forEach items="${weekdayHours}" var="entry" varStatus="status">
 								<trclass="grc-form-input-text">
 								<td><label>${weekdayNames[status.index]}</label></td>
-								<td style="text-align: center"><c:out
-										value="${not empty entry.openingTime1 ?  entry.openingTime1 : '-'}" /></td>
-								<td style="text-align: center"><c:out
-										value="${not empty entry.closingTime1 ?  entry.closingTime1 : '-'}" /></td>
-								<td style="text-align: center"><c:out
-										value="${not empty entry.openingTime2 ?  entry.openingTime2 : '-'}" /></td>
-								<td style="text-align: center"><c:out
-										value="${not empty entry.closingTime2 ?  entry.closingTime2 : '-'}" /></td>
+								<td><input type="text" placeholder="08:00" size="8"></input></td>
+								<td align="right"><input type="text" placeholder="12:00" size="8"></input></td>
+								<td style="text-align: center"><input type="text" placeholder="13:00" size="8"></input></td>
+								<td style="text-align: center"><input type="text" placeholder="19:00" size="8"></input></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -256,8 +267,15 @@
 				</div>
 			</div>
 
-			<!------------- Tab: Holidays -------------------->
+			<!------------- Tab: Calendar -------------------->
 			<div id="tab-2" class="hidden">
+				
+				
+				<div id='fullCalendar'>
+				<p style="color:blue">Holidays</p>
+				<p style="color:#FF6600">Exceptional Days</p>
+				</div>
+				
 				<div id="">
 					<form:form id="serviceDetailsForm" name="serviceDetailsForm"
 						action="" commandName="">
@@ -270,7 +288,7 @@
 								</tr>
 								<tr class="grc-form-buttons grc-form-no-border">
 									<td colspan="2"><input type="submit"
-										class="grc-form-buttons-validate" value="Submit" name="Submit" /></td>
+										class="grc-form-buttons-validate" value="Add New Date" name="Submit" /></td>
 
 								</tr>
 							</tbody>
@@ -278,11 +296,8 @@
 					</form:form>
 				</div>
 				
-				<div id='fullCalendar'>here</div>
 			</div>
 
-			<!------------- Tab: Exceptional days -------------------->
-			<div id="tab-3" class="hidden">testtest</div>
 		</div>
 	</div>
 </t:wrapper>

@@ -3,13 +3,11 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
 <script src="${pageContext.servletContext.contextPath}/js/jquery-1.11.1.min.js"></script>
-
 <script type="text/javascript">	
-	// send request for retrieving data and display table
+	// 	 send request for retrieving data and display table
 	$(document).ready(function() {
-		$("#selectCustomerBtn").click(function() { 
+		$('#selectCustomerBtn').click(function() {  
 			var custId = document.getElementById('selectCust').value; 
 			retrieveList(custId);
 			$("#serviceList").find('tbody').remove();	// clear current list
@@ -71,11 +69,11 @@
 <t:wrapper>
 	<div class="grc-page">  
 		<form action="" id="selectCustomerForm" style="margin-left: 30%">
-			<h1>Please select a customer:</h1><br/>
+			<h1>Please select a tenant:</h1><br/>
 			<select id="selectCust" >
 				<option value="">--</option>
-				<c:forEach items="${listCustomer}" var="cust">
-					<option value="${cust.customerId}">${cust.name}</option>
+				<c:forEach items="${listCustomer}" var="tenant">
+					<option value="${tenant.tenantId}">${tenant.tenantName}</option>
 				</c:forEach>
 			</select> <input type="submit" value="Confirm" id="selectCustomerBtn"></input>
 		</form> 
@@ -85,7 +83,7 @@
 			<table id="serviceList" class="hidden">
 				<thead>
 					<tr>
-						<th class="table-col1" >Service Code</th>
+						<th class="table-col1" >Site Code</th>
 						<th class="table-col2" >Location</th>
 						<th class="table-col2" >Time Zone</th>
 						<th class="table-col2" >Local Time</th>
