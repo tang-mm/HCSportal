@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.example.hcsweb.model.AbstractBean;
-import com.example.hcsweb.model.usersEnum.User;
+import com.example.hcsweb.model.users.User;
 
 @Entity
 @Table(name = "user_types")
@@ -57,7 +57,7 @@ public class UserType implements AbstractBean {
 		this.userType = userType;
 	}
 
-	@OneToMany(mappedBy = "user_types")
+	@OneToMany(mappedBy = "userType")
 	public List<User> getListUser() {
 		return listUser;
 	}

@@ -131,7 +131,7 @@ public class WeeklySchedule implements AbstractBean{
 		this.createdBy = createdBy;
 	}
 
-	@OneToMany(mappedBy = "weekly_schedules")
+	@OneToMany(mappedBy = "schedule")
 	public List<Site> getListSite() {
 		return listSite;
 	}

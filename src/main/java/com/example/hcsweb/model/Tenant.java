@@ -184,7 +184,7 @@ public class Tenant implements AbstractBean {
 		this.ipMain = ipMain;
 	}
 
-    @OneToMany(mappedBy = "tenants")
+    @OneToMany(mappedBy = "tenant")
 	public List<Service> getListService() {
 		return listService;
 	}
@@ -193,7 +193,7 @@ public class Tenant implements AbstractBean {
 		this.listService = listService;
 	} 
 
-    @OneToMany(mappedBy = "tenants")
+    @OneToMany(mappedBy = "tenant")
 	public List<WeeklySchedule> getListSchedule() {
 		return listSchedule;
 	}
@@ -202,7 +202,7 @@ public class Tenant implements AbstractBean {
 		this.listSchedule = listSchedule;
 	}
 
-    @OneToMany(mappedBy = "tenants")
+    @OneToMany(mappedBy = "tenant")
 	public List<Equipment> getListEquipment() {
 		return listEquipment;
 	}
@@ -211,7 +211,7 @@ public class Tenant implements AbstractBean {
 		this.listEquipment = listEquipment;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "tenants")
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "listTenant")
 	public List<User> getListUserAccess() {
 		return listUserAccess;
 	}

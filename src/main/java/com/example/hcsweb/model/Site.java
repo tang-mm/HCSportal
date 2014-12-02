@@ -139,7 +139,7 @@ public class Site implements AbstractBean {
 		this.location = location;
 	}
 
-	@OneToMany(mappedBy = "sites")
+	@OneToMany(mappedBy = "site")
 	public List<ExceptionalDay> getListException() {
 		return listException;
 	}
@@ -148,7 +148,7 @@ public class Site implements AbstractBean {
 		this.listException = listException;
 	}
 
-	@OneToMany(mappedBy = "sites")
+	@OneToMany(mappedBy = "site")
 	public List<Holiday> getListHoliday() {
 		return listHoliday;
 	}
@@ -157,7 +157,7 @@ public class Site implements AbstractBean {
 		this.listHoliday = listHoliday;
 	}
 	
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "sites")
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "listSite")
 	public List<User> getListUserAccess() {
 		return listUserAccess;
 	}

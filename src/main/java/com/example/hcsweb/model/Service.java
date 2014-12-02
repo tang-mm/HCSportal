@@ -104,7 +104,7 @@ public class Service implements AbstractBean {
 		this.description = description;
 	}
 
-	@OneToMany(mappedBy = "services")
+	@OneToMany(mappedBy = "service")
 	public List<Site> getListSite() {
 		return listSite;
 	}
@@ -113,7 +113,7 @@ public class Service implements AbstractBean {
 		this.listSite = listSite;
 	}
 	
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "services")
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "listService")
 	public List<User> getListUserAccess() {
 		return listUserAccess;
 	}

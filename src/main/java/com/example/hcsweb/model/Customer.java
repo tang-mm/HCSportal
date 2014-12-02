@@ -21,7 +21,7 @@ public class Customer implements AbstractBean{
 	private int customerId;
 	private String customerName;
 	private String description;
-	private List<Tenant> listTenants = new ArrayList<Tenant>();
+	private List<Tenant> listTenant = new ArrayList<Tenant>();
 	private List<User> listUser = new ArrayList<User>();
 	
 	/* **************** Constructors *****************/
@@ -91,16 +91,16 @@ public class Customer implements AbstractBean{
 		this.description = description;
 	}
 
-    @OneToMany(mappedBy = "customers")
-	public List<Tenant> getListTenants() {
-		return listTenants;
+    @OneToMany(mappedBy = "customer")
+	public List<Tenant> getListTenant() {
+		return listTenant;
 	}
 
-	public void setListTenants(List<Tenant> listTenants) {
-		this.listTenants = listTenants;
+	public void setListTenant(List<Tenant> listTenant) {
+		this.listTenant = listTenant;
 	}
 
-    @OneToMany(mappedBy = "customers")
+    @OneToMany(mappedBy = "customer")
 	public List<User> getListUser() {
 		return listUser;
 	}

@@ -88,7 +88,7 @@ public class Location implements AbstractBean{
 		this.timeZone = timeZone;
 	}
 
-	@OneToMany(mappedBy = "locations")
+	@OneToMany(mappedBy = "location")
 	public List<Site> getListSite() {
 		return listSite;
 	}
