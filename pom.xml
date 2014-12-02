@@ -14,6 +14,7 @@
 		<jdk.version>1.7</jdk.version>
 		<hibernate.version>4.3.7.Final</hibernate.version>
 		<hibernate-validator.version>5.1.2.Final</hibernate-validator.version>
+		<javassist.version>3.12.1.GA</javassist.version>
 		<mysql-jdbc.version>5.1.6</mysql-jdbc.version>
 		<junit.version>3.8.1</junit.version>
 		<jackson.version>2.4.3</jackson.version>
@@ -119,6 +120,13 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>${hibernate-validator.version}</version>
+		</dependency>
+
+		<!-- enable Hibernate to use its proxy model, -->
+		<dependency>
+			<groupId>javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>${javassist.version}</version>
 		</dependency>
 
 		<!-- JDBC MySQL -->
