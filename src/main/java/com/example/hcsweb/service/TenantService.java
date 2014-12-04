@@ -5,7 +5,6 @@ import java.util.List;
 import org.hibernate.HibernateException;
 
 import com.example.hcsweb.model.Tenant;
-import com.example.hcsweb.model.users.User;
 
 public interface TenantService {
 
@@ -18,5 +17,7 @@ public interface TenantService {
 	void deleteTenant(int id) throws HibernateException;
 
 	List<Tenant> getAllTenants();
+	
+	List<Tenant> findTenantsByCustomerId(int custId);
 
 }

@@ -2,6 +2,8 @@ package com.example.hcsweb.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.example.hcsweb.dao.ServiceDao;
@@ -13,9 +15,14 @@ public class ServiceDaoImpl extends AbstractGenericDaoImpl<Service, Integer> imp
 	@Override
 	public Service getServiceByName(String code) {
 		@SuppressWarnings("unchecked")
-		List<Service> lst = getSessionFactory().getCurrentSession().createQuery("FROM Service WHERE service_code = ? ").setParameter(0, code).list();
+		List<Service> lst = getSessionFactory().getCurrentSession().createQuery("FROM Service WHERE service_code = ? ")
+				.setParameter(0, code).list();
 		return (lst.isEmpty() ? null : lst.get(0));
 	}
 
-		
+	@Override
+	public List<Service> findServicesByTenantId(int tenantId) {
+		Criterion c = Restrictions.eq("tenant.tenantId", tenantId);
+		return findByCriteria(null, c);
+	}
 }

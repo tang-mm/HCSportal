@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<User> findUsersByFirstName(String firstName) throws HibernateException {
-		List<User> listUser = userDao.findByCriteria(null, Restrictions.like("first_name", firstName, MatchMode.START));
+		List<User> listUser = userDao.findUsersByFirstName(firstName);
 		if (listUser == null)
 			throw new HibernateException("User not found: firstName = "+ firstName);
 		return listUser;
@@ -68,7 +68,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<User> findUsersByLastName(String lastName) throws HibernateException {
-		List<User> listUser = userDao.findByCriteria(null, Restrictions.like("last_name", lastName, MatchMode.START));
+		List<User> listUser = userDao.findUsersByLastName(lastName);
 		if (listUser == null)
 			throw new HibernateException("User not found: lastName = "+ lastName);
 		return listUser;
@@ -92,6 +92,16 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<User> findUsersWithTenantAccess(int tenantId) {
 		return userDao.findUsersWithTenantAccess(tenantId);
+	}
+
+	@Override
+	public List<User> findUsersByUserType(int userTypeId) {
+		return userDao.findUsersByUserType(userTypeId);
+	}
+
+	@Override
+	public List<User> findUsersByUserTypeAndCostumerId(int userTypeId, int custId) {
+		return userDao.findUsersByUserTypeAndCostumerId(userTypeId, custId);
 	}
 
 }

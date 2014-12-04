@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -23,30 +24,58 @@ public class UserDaoImpl extends AbstractGenericDaoImpl<User, Integer> implement
 
 	@Override
 	public List<User> findUsersByCostumerId(int custId) {
-		Criterion c = Restrictions.eq("customerId", custId);
+		Criterion c = Restrictions.eq("customer.customerId", custId);
 		return findByCriteria(null, c);
 	}
 
 	@Override
+	public List<User> findUsersByUserType(int userTypeId) {
+		Criterion c = Restrictions.eq("userType.userTypeId", userTypeId);
+		return findByCriteria(null, c);
+	}
+
+	@Override
+	public List<User> findUsersByUserTypeAndCostumerId(int userTypeId, int custId) {
+		Criterion c1 = Restrictions.eq("customer.customerId", custId);
+		Criterion c2 = Restrictions.eq("userType.userTypeId", userTypeId);
+		return findByCriteria(null, c1, c2);
+	}
+
+	@Override
 	public List<User> findUsersWithTenantAccess(int tenantId) {
-		// TODO
-		// http://www.journaldev.com/2963/hibernate-criteria-example-tutorial
 		HashMap<String, String> aliases = new HashMap<String, String>();
 		aliases.put("listTenant", "tenant");
 
 		Criterion c = Restrictions.eq("tenant.tenantId", tenantId);
 		return findByCriteria(aliases, c);
+	}
 
-		/*
-		 * Criteria criteria = currentSession.createCriteria(Professor.class,
-		 * "professor"); criteria.createAlias("professor.students", "student");
-		 * criteria.createAlias("student.assigments", "assigment");
-		 * criteria.add(Restrictions.eqProperty("professor.id",
-		 * "student.profid"));
-		 * criteria.add(Restrictions.eqProperty("assigment.studentid",
-		 * "student.profid")); criteria.add(Restrictions.eq("id", 2411)); return
-		 * criteria.list();
-		 */
+	@Override
+	public List<User> findUsersWithServiceAccess(int serviceId) {
+		HashMap<String, String> aliases = new HashMap<String, String>();
+		aliases.put("listService", "service");
+
+		Criterion c = Restrictions.eq("service.serviceId", serviceId);
+		return findByCriteria(aliases, c);
+	}
+
+	@Override
+	public List<User> findUsersWithSiteAccess(int siteId) {
+		HashMap<String, String> aliases = new HashMap<String, String>();
+		aliases.put("listSite", "site");
+
+		Criterion c = Restrictions.eq("site.siteId", siteId);
+		return findByCriteria(aliases, c);
+	}
+
+	@Override
+	public List<User> findUsersByFirstName(String firstName) {
+		return findByCriteria(null, Restrictions.like("first_name", firstName, MatchMode.START));
+	}
+
+	@Override
+	public List<User> findUsersByLastName(String lastName) {
+		return findByCriteria(null, Restrictions.like("last_name", lastName, MatchMode.START));
 	}
 
 }

@@ -3,6 +3,8 @@ package com.example.hcsweb.service.impl;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -48,6 +50,11 @@ public class TenantServiceImpl implements TenantService{
 	@Override
 	public List<Tenant> getAllTenants() {
 		return tenantDao.getAll();
+	}
+
+	@Override
+	public List<Tenant> findTenantsByCustomerId(int custId) {
+		return tenantDao.findTenantsByCustomerId(custId);
 	}
  
 	

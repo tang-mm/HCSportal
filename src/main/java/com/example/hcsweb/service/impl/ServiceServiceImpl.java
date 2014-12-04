@@ -3,6 +3,8 @@ package com.example.hcsweb.service.impl;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.hcsweb.dao.ServiceDao;
@@ -29,6 +31,11 @@ public class ServiceServiceImpl implements ServiceService {
 		if (service == null)
 			throw new HibernateException("Service not found: code = "+ code);
 		return service;
+	}
+
+	@Override
+	public List<Service> findServicesByTenantId(int tenantId) { 
+		return serviceDao.findServicesByTenantId(tenantId);
 	}
 
 	@Override

@@ -1,12 +1,14 @@
 package com.example.hcsweb.dao;
 
+import java.util.List;
+
 import com.example.hcsweb.model.Location;
  
 
 public interface LocationDao extends GenericDao<Location, Integer> {
  
-	// get by city+state+country
+	public List<Location> findLocationsByCityStateCountry(String city, String state, String country);
 	
-	// get all in same tenant by timezone
-    
+	public List<Location> findLocationsByTimeZone(String timeZone);
+	
 }

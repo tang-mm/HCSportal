@@ -50,4 +50,24 @@ public class SiteServiceImpl implements SiteService {
 		return siteDao.getAll();
 	}
 
+	@Override
+	public List<Site> findSitesByServiceId(int serviceId) {
+		return siteDao.findSitesByServiceId(serviceId);
+	}
+
+	@Override
+	public List<Site> findSitesByLocationId(int locationId) {
+		return siteDao.findSitesByLocationId(locationId);
+	}
+
+	@Override
+	public List<Site> findSitesByLocationAndServiceId(int locationId, int serviceId) {
+		return siteDao.findSitesByLocationAndServiceId(locationId, serviceId);
+	}
+
+	@Override
+	public List<Site> findSitesByScheduleId(int scheduleId) {
+		return siteDao.findSitesByScheduleId(scheduleId);
+	} 
+
 }

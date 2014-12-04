@@ -22,4 +22,6 @@ public interface UserService {
 	List<User> getAllUsers();
 	
 	List<User> findUsersWithTenantAccess(int tenantId);
+	public List<User> findUsersByUserType(int userTypeId);
+	public List<User> findUsersByUserTypeAndCostumerId(int userTypeId, int custId);
 }
