@@ -12,8 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany; 
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -122,6 +123,7 @@ public class Service implements AbstractBean {
 		this.listUserAccess = listUserAccess;
 	}
 	/* ******* not mapped *********** */
+	@Transient
 	public boolean getOpen() {
 		return open;
 	}
@@ -129,14 +131,16 @@ public class Service implements AbstractBean {
 	public void setOpen(boolean open) {
 		this.open = open;
 	}
-	// public String getLocation() {
+	
+	//@Transient
+	//public String getLocation() {
 	// return location;
 	// }
 	//
 	// public void setLocation(String location) {
 	// this.location = location;
 	// }
-	//
+	// @Transient
 	// public String getTimeZone() {
 	// return timeZone;
 	// }

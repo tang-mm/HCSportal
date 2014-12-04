@@ -12,14 +12,12 @@ import com.example.hcsweb.model.Customer;
 @Transactional
 public class CustomerDaoImpl extends AbstractGenericDaoImpl<Customer, Integer> implements CustomerDao {
 
-	public CustomerDaoImpl() {
-		super("customers");
-	}
-
-	public Customer findByName(String custName) {
+	@Override
+	public Customer getCustomerByName(String custName) {
 		@SuppressWarnings("unchecked")
-		List<Customer> list =   getSessionFactory().getCurrentSession().createQuery("FROM customers WHERE customer_name = ? ").setParameter(0, custName).list();
-		return (list.isEmpty() ? null : list.get(0));
-	}	
-	
+		List<Customer> lst = getSessionFactory().getCurrentSession().createQuery("FROM Customer WHERE customer_name = ? ").setParameter(0, custName).list();
+		return (lst.isEmpty() ? null : lst.get(0));
+		 
+	}
+ 
 }

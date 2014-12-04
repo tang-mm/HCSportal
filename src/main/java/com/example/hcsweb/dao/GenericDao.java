@@ -1,7 +1,10 @@
 package com.example.hcsweb.dao;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+
+import org.hibernate.criterion.Criterion;
 
 /**
  * generic template for DAO classes
@@ -17,4 +20,5 @@ public interface GenericDao <T, PK extends Serializable> {
     public void delete(PK Id);
     public List<T> getAll();
 
+    public List<T> findByCriteria(HashMap<String, String> aliases, Criterion... criterionList);
 }

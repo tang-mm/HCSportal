@@ -15,6 +15,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -45,7 +46,6 @@ public class User implements AbstractBean {
 	@NotBlank
 	@Size(min = 6, max = 18)
 	protected String password;
-	@NotNull
 	protected String confirmedPassword;
 	@NotNull
 	protected UserType userType;
@@ -108,6 +108,7 @@ public class User implements AbstractBean {
 		this.password = password;
 	}
 
+	@Transient
 	public String getConfirmedPassword() {
 		return confirmedPassword;
 	}

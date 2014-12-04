@@ -57,7 +57,7 @@ CREATE TABLE users (
 	password varchar(32) NOT NULL,  
 	user_type_id int unsigned NOT NULL, 
 	customer_id int unsigned NOT NULL, 	 	/* value = 0 if OBS experts or superadmin */
-	created_by int unsigned NOT NULL,
+	created_by int unsigned NULL,
 	creation_time TIMESTAMP NOT NULL,
 	enabled boolean NOT NULL,
 	last_logged_in TIMESTAMP,

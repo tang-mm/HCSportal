@@ -19,7 +19,7 @@
         </property>
     </bean>
 
-<!-- Data Source with Connection Pooling -->
+	<!-- Data Source with Connection Pooling -->
 	<bean id="dataSource" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="${db.driver}" />
 		<property name="url" value="${db.url}" />
@@ -28,7 +28,7 @@
 		<property name="initialSize" value="3" />
 	</bean>
 
-<!-- (unused) Hibernate XML-based SessionFactory Bean Definition -->
+	<!-- (unused) Hibernate XML-based SessionFactory Bean Definition -->
 	<!-- 	<bean id="sessionFactory"
 			class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 			<property name="dataSource" ref="dataSource" />
@@ -53,7 +53,6 @@
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.current_session_context_class">thread</prop>
 			</props>
 		</property>
 		<property name="packagesToScan">
@@ -69,17 +68,5 @@
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-
-	<!--****************** DAO Beans *******************-->
-<!--     <bean id="abstractDaoHibernate" class="com.yaps.petstore.dao.hibernate.AbstractGenericDaoHibernate" abstract="true">
-        <property name="sessionFactory" ref="sessionFactory"/>
-    </bean>
-
-    
-    <bean id="addressDao" class="com.yaps.petstore.dao.hibernate.AddressDaoHibernate" parent="abstractDaoHibernate"/>
-    
-    <bean id="customerDao" class="com.yaps.petstore.dao.hibernate.CustomerDaoHibernate" parent="abstractDaoHibernate"/>
-    
- -->
 
 </beans>

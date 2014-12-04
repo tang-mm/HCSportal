@@ -16,6 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.LazyCollection;
@@ -47,7 +48,6 @@ public class Tenant implements AbstractBean {
 	
 	@NotNull
 	private int prefixLength;
-
 	private String ipFinesseA;
 	private String ipFinesseB;
 	private String ipCuicA;
@@ -65,21 +65,16 @@ public class Tenant implements AbstractBean {
 	public Tenant() {
 	}
 
-	public Tenant(String name, String ipMain, String desc, int prefixLength) {
+	public Tenant(String name, String ipMain, String desc ) {
 		this.setTenantName(name);
 		this.setIpMain(ipMain);
 		this.setDescription(desc);
-		this.setPrefixLength(prefixLength);
-	} 
+//		this.setPrefixLength(prefixLength);
+	}  
+
 	
-	public Tenant(int id, String name, String ipMain, String desc, int prefixLength) {
-		this.setTenantId(id);
-		this.setTenantName(name);
-		this.setIpMain(ipMain);
-		this.setDescription(desc);
-		this.setPrefixLength(prefixLength);
-	} 
 	
+	/* ******** OTHERS ********************/
 	/**
 	 * obtain the IP address for a specific server
 	 * @param suffix
@@ -221,6 +216,7 @@ public class Tenant implements AbstractBean {
 	}
 
 	/* ************ NOT mapped ******************/ 
+	@Transient
 	public int getPrefixLength() {
 		return prefixLength;
 	}
@@ -229,6 +225,7 @@ public class Tenant implements AbstractBean {
 		this.prefixLength = prefixLength;
 	}
 
+	@Transient
 	public String getIPfinesseA() {
 		return ipFinesseA;
 	}
@@ -237,6 +234,7 @@ public class Tenant implements AbstractBean {
 		ipFinesseA = iPfinesseA;
 	}
 
+	@Transient
 	public String getIPfinesseB() {
 		return ipFinesseB;
 	}
@@ -245,6 +243,7 @@ public class Tenant implements AbstractBean {
 		ipFinesseB = iPfinesseB;
 	}
 
+	@Transient
 	public String getIPcuicA() {
 		return ipCuicA;
 	}
@@ -253,6 +252,7 @@ public class Tenant implements AbstractBean {
 		ipCuicA = iPcuicA;
 	}
 
+	@Transient
 	public String getIPcuicB() {
 		return ipCuicB;
 	}
@@ -261,6 +261,7 @@ public class Tenant implements AbstractBean {
 		ipCuicB = iPcuicB;
 	}
 
+	@Transient
 	public String getIPeimwimA() {
 		return ipEimwimA;
 	}
@@ -269,6 +270,7 @@ public class Tenant implements AbstractBean {
 		ipEimwimA = iPeimwimA;
 	}
 
+	@Transient
 	public String getIPeimwimB() {
 		return ipEimwimB;
 	}
@@ -277,6 +279,7 @@ public class Tenant implements AbstractBean {
 		ipEimwimB = iPeimwimB;
 	}
 
+	@Transient
 	public String getIPmediasenseA() {
 		return ipMediasenseA;
 	}
@@ -285,6 +288,7 @@ public class Tenant implements AbstractBean {
 		ipMediasenseA = iPmediasenseA;
 	}
 
+	@Transient
 	public String getIPmediasenseB() {
 		return ipMediasenseB;
 	}
@@ -293,6 +297,7 @@ public class Tenant implements AbstractBean {
 		ipMediasenseB = iPmediasenseB;
 	}
 
+	@Transient
 	public String getIPscriptEditorA() {
 		return ipScriptEditorA;
 	}
@@ -301,6 +306,7 @@ public class Tenant implements AbstractBean {
 		ipScriptEditorA = iPscriptEditorA;
 	}
 
+	@Transient
 	public String getIPscriptEditorB() {
 		return ipScriptEditorB;
 	}

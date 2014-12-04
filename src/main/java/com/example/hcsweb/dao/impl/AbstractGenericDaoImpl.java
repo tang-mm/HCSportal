@@ -2,27 +2,31 @@ package com.example.hcsweb.dao.impl;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map.Entry;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.criterion.Criterion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ObjectRetrievalFailureException;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.hcsweb.dao.GenericDao;
- 
+
+@Transactional
 public abstract class AbstractGenericDaoImpl<T, PK extends Serializable> implements GenericDao<T, PK>  {
 
 	/* ************** Attributes *****************/
 	protected Class<T> entityClass;
 
-	@Autowired
 	private SessionFactory sessionFactory;
 
 	/* ************** Constructors *****************/
     @SuppressWarnings("unchecked")
-	public AbstractGenericDaoImpl(String tableName) {
+	public AbstractGenericDaoImpl() {
         ParameterizedType genericSuperclass = (ParameterizedType) getClass().getGenericSuperclass();
         this.entityClass = (Class<T>) genericSuperclass.getActualTypeArguments()[0];
     }
@@ -36,56 +40,75 @@ public abstract class AbstractGenericDaoImpl<T, PK extends Serializable> impleme
 		return sessionFactory;
 	}
 
+	@Autowired
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	} 
-
+	
+	public Session getSession(){
+		return getSessionFactory().getCurrentSession();
+//		return getSessionFactory().openSession();
+	}
+	
+	/**
+	 * create a Criteria entity in current session
+	 * @return
+	 */
+	public Criteria getCriteria() {
+		return  getSession().createCriteria(entityClass);
+	}
+	
 	/* ************** Methods *****************/
 	@SuppressWarnings("unchecked")
 	@Override
 	public T getById(PK id) {
-//		Object obj = getSessionFactory().getCurrentSession().get(getType(),id);
-		Session session =getSessionFactory().getCurrentSession(); 
-		Transaction trans= session.beginTransaction();
-		Object obj = session.get(getType(),id);
+		Object obj = getSession().get(getType(),id);
 		if (obj == null) {
-            throw new ObjectRetrievalFailureException(getType(), id);	//TODO Category.class
+            throw new ObjectRetrievalFailureException(getType(), id);
         }
-		trans.commit();
         return (T) obj; 
-	}
-
+	} 
+    
 	@Override
-//	@Transactional
 	public void saveOrUpdate(T obj) {
-//		 getSessionFactory().getCurrentSession().saveOrUpdate(obj);
-		 
-			Session session =getSessionFactory().getCurrentSession(); 
-			Transaction trans= session.beginTransaction();
-		   session.saveOrUpdate(obj);
-		   trans.commit();
+		// use merge() to avoid NonUniqueObjectException
+		 getSession().saveOrUpdate(obj);   
+//		getSession().merge(obj);
 	}
 
 	@Override
 	public void delete(PK id) {
-//		getSessionFactory().getCurrentSession().delete(getById(id));
+		getSession().delete(getById(id));
 
-		Session session =getSessionFactory().getCurrentSession(); 
-		Transaction trans= session.beginTransaction();
-		session.delete(getById(id));
-		trans.commit();
+//		Session session =getSessionFactory().getCurrentSession(); 
+//		Transaction trans= session.beginTransaction();
+//		session.delete(getById(id));
+//		trans.commit();
 	}	
 	
 	@Override
 	public List<T> getAll() {
-//		List<T> lst = getSessionFactory().getCurrentSession().createQuery("from " + getType().getName()).list(); 
-
-		Session session =getSessionFactory().getCurrentSession(); 
-		Transaction trans= session.beginTransaction();
 		@SuppressWarnings("unchecked")
-		List<T> lst = session.createQuery("from " + getType().getName()).list();
-		trans.commit();
+		List<T> lst = getSession().createQuery("from " + getType().getName()).list(); 
+
+//		Session session =getSessionFactory().getCurrentSession(); 
+//		Transaction trans= session.beginTransaction();
+//		List<T> lst = session.createQuery("from " + getType().getName()).list();
+//		trans.commit();
 		return lst;
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Override
+    public List<T> findByCriteria(HashMap<String, String> aliases, Criterion... criterionList) {
+		Criteria criteria = getCriteria();
+		for (Criterion cri : criterionList) {
+			criteria.add(cri);
+		}
+		for (Entry<String, String> entry : aliases.entrySet()){
+		    criteria.createAlias(entry.getKey(), entry.getValue());
+		}
+		
+		return criteria.list();
+	}
 }
