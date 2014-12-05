@@ -1,4 +1,4 @@
-package com.example.hcsweb.controller;
+package com.example.hcsweb.controller.old;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -18,7 +18,7 @@ import com.example.hcsweb.model.Tenant;
 import com.exony.schemas._2009._10.resourcemanagement.NameValuePair;
 import com.exony.schemas._2009._10.resourcemanagement.Resource;
 
-@Controller
+//@Controller
 public class CostumerController {
 	
 	@RequestMapping(value = "manageCustomers", method = RequestMethod.GET)

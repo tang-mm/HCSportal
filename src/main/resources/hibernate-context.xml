@@ -58,7 +58,7 @@
 		<property name="packagesToScan">
 			<list>
 				<value>com.example.hcsweb.model</value>
-				<value>com.example.hcsweb.model.users</value>
+				<value>com.example.hcsweb.model.*</value>
 			</list>
 		</property>
 	</bean> 

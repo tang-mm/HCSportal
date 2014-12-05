@@ -54,7 +54,7 @@ CREATE INDEX idx_user_types_user_type ON user_types(user_type);
 CREATE TABLE users (
 	user_id int unsigned AUTO_INCREMENT,
 	username varchar(32) NOT NULL,
-	password varchar(32) NOT NULL,  
+	password varchar(64) NOT NULL,  /* encoded */
 	user_type_id int unsigned NOT NULL, 
 	customer_id int unsigned NOT NULL, 	 	/* value = 0 if OBS experts or superadmin */
 	created_by int unsigned NULL,

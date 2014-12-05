@@ -3,10 +3,9 @@ package com.example.hcsweb.service.impl;
 import java.util.List;
 
 import org.hibernate.HibernateException;
-import org.hibernate.criterion.Criterion;
-import org.hibernate.criterion.MatchMode;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,6 +41,18 @@ public class UserServiceImpl implements UserService {
 			return false;
 	}
 
+	/**
+	 * encrypt plain-text password
+	 * @param plainPassword
+	 * @return
+	 */
+	@Override
+	public String encryptInputPassword(String plainPassword) {
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		return passwordEncoder.encode(plainPassword);
+	}
+	
+	
 	@Override
 	public User findUserById(int id) throws HibernateException {
 		User user = userDao.getById(new Integer(id));

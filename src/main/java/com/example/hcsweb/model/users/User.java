@@ -43,8 +43,7 @@ public class User implements AbstractBean {
 	@NotBlank
 	protected String username;
 	@NotNull
-	@NotBlank
-	@Size(min = 6, max = 18)
+	@NotBlank 
 	protected String password;
 	protected String confirmedPassword;
 	@NotNull

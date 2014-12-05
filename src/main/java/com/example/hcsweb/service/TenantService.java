@@ -1,5 +1,6 @@
 package com.example.hcsweb.service;
 
+import java.net.UnknownHostException;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -20,4 +21,12 @@ public interface TenantService {
 	
 	List<Tenant> findTenantsByCustomerId(int custId);
 
+	/**
+	 * IP NAT, add ip suffix 
+	 * @param tenant
+	 * @param suffix
+	 * @return
+	 * @throws UnknownHostException
+	 */
+	String constructServiceIp(Tenant tenant, int suffix) throws UnknownHostException; 
 }

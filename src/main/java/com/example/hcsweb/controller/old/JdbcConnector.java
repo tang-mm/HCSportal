@@ -1,4 +1,4 @@
-package com.example.hcsweb.controller;
+package com.example.hcsweb.controller.old;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

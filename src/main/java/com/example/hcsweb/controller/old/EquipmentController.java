@@ -1,4 +1,4 @@
-package com.example.hcsweb.controller;
+package com.example.hcsweb.controller.old;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -64,7 +64,7 @@ public class EquipmentController {
 				String hardware = resultSet.getString("hardware");
 				String location = resultSet.getString("geo_location");
 				System.out.println(equipId + "\t" + equipName);
-				listEquip.add(new Equipment(equipId, custId, equipName, ip, serial, machine,
+				listEquip.add(new Equipment(equipId, equipName, ip, serial, machine,
 						isVirt, os, app, hardware, location));
 			}
 		} catch (SQLException e) {

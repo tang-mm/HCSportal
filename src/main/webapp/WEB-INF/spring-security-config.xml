@@ -21,7 +21,10 @@
 		<intercept-url pattern="/**" access="isAuthenticated()" /> 
 	</http>
 --> 
-	<authentication-manager>
+
+
+	<!-- ********** ONLY FOR TEST without Database ****** -->
+<!-- 	<authentication-manager>
 		<authentication-provider>
 			<user-service>
 				<user name="superadmin" password="123456" authorities="ROLE_SUPERADMIN" />
@@ -31,6 +34,12 @@
 				<user name="agent" password="123456" authorities="ROLE_AGENT" />
 			</user-service>
 		</authentication-provider>
-	</authentication-manager>
+	</authentication-manager> -->
 
+	<authentication-manager>
+		<authentication-provider user-service-ref="userDetailsService">
+			<password-encoder hash="bcrypt">
+			</password-encoder>
+		</authentication-provider>
+	</authentication-manager>  
 </beans:beans>

@@ -1,4 +1,4 @@
-package com.example.hcsweb.controller;
+package com.example.hcsweb.controller.old;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -32,7 +32,7 @@ public class ServiceController {
 		if (isExpert) {
 			ArrayList<Tenant> listCustomer = new ArrayList<Tenant>();
 			// TODO get customer list
-			listCustomer.add(new Tenant(9, "testName", "testIP", "test", 24));
+			listCustomer.add(new Tenant("testName", "testIP", "test"));
 			request.setAttribute("listCustomer", listCustomer);
 			return new ModelAndView("Service/listServiceExpert");
 		}
@@ -52,8 +52,7 @@ public class ServiceController {
 		System.out.println("********[ServiceController] get service list********");
 		ArrayList<Service> listService = new ArrayList<Service>();
 		// TODO retrieve list from DB
-		listService.add(new Service(1, "Sale_001", 9, "testCustName", "location1", "UTC", false,
-				true));
+//		listService.add(new Service(1, "Sale_001", 9, "testCustName", "location1", "UTC", false, true));
 		return listService;
 	}
 
@@ -88,10 +87,10 @@ public class ServiceController {
 				boolean emergency = resultSet.getBoolean("emergency_state");
 				
 				service = new Service();
-				service.setLocation(location);
-				service.setTimeZone(timeZone);
+//				service.setLocation(location);
+//				service.setTimeZone(timeZone);
 				service.setServiceCode(serviceCode);
-				service.setTenantId(tenantId); 
+//				service.setTenantId(tenantId); 
 				service.setEmergency(emergency);
 				//TODO boolean: open
 				

@@ -9,8 +9,8 @@
 	http://www.springframework.org/schema/util
 	http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
-
-	<util:properties id="propertyConfigurer" location="classpath:values.properties" />
-	<context:property-placeholder
-		properties-ref="propertyConfigurer" />
+<!-- same configuration appears also in hibernate-context.xml -->
+<!-- 	<util:properties id="propertyConfigurer" location="classpath:values.properties" /> -->
+<!-- 	<context:property-placeholder -->
+<!-- 		properties-ref="propertyConfigurer" /> -->
 </beans>

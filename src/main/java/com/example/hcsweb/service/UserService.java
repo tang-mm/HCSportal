@@ -11,6 +11,7 @@ public interface UserService {
 	
 	User authenticate(String username, String password) throws Exception;
 	boolean matchPassword(User user, String pwToCompare) ;
+	String encryptInputPassword(String plainPassword);
 	
 	User findUserById(int id) throws HibernateException;
 	User findUserByUsername(String username) throws HibernateException;
