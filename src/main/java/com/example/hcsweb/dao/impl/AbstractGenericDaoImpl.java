@@ -17,25 +17,25 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.hcsweb.dao.GenericDao;
 
 @Transactional
-public abstract class AbstractGenericDaoImpl<T, PK extends Serializable> implements GenericDao<T, PK>  {
+public abstract class AbstractGenericDaoImpl<T, PK extends Serializable> implements GenericDao<T, PK> {
 
-	/* ************** Attributes *****************/
+	/* ************** Attributes **************** */
 	protected Class<T> entityClass;
 
 	private SessionFactory sessionFactory;
 
-	/* ************** Constructors *****************/
-    @SuppressWarnings("unchecked")
+	/* ************** Constructors **************** */
+	@SuppressWarnings("unchecked")
 	public AbstractGenericDaoImpl() {
-        ParameterizedType genericSuperclass = (ParameterizedType) getClass().getGenericSuperclass();
-        this.entityClass = (Class<T>) genericSuperclass.getActualTypeArguments()[0];
-    }
+		ParameterizedType genericSuperclass = (ParameterizedType) getClass().getGenericSuperclass();
+		this.entityClass = (Class<T>) genericSuperclass.getActualTypeArguments()[0];
+	}
 
-	/* ************** Getters and Setters *****************/
-    public Class<T> getType() {
-        return entityClass;
-    }	
-  
+	/* ************** Getters and Setters **************** */
+	public Class<T> getType() {
+		return entityClass;
+	}
+
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
@@ -43,72 +43,78 @@ public abstract class AbstractGenericDaoImpl<T, PK extends Serializable> impleme
 	@Autowired
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
-	} 
-	
-	public Session getSession(){
-		return getSessionFactory().getCurrentSession();
-//		return getSessionFactory().openSession();
 	}
-	
+
+	public Session getSession() {
+		return getSessionFactory().getCurrentSession();
+		// return getSessionFactory().openSession();
+	}
+
 	/**
 	 * create a Criteria entity in current session
+	 * 
 	 * @return
 	 */
 	public Criteria getCriteria() {
-		return  getSession().createCriteria(entityClass);
+		return getSession().createCriteria(entityClass);
 	}
-	
-	/* ************** Methods *****************/
+
+	/* ************** Methods **************** */
 	@SuppressWarnings("unchecked")
 	@Override
 	public T getById(PK id) {
-		Object obj = getSession().get(getType(),id);
+		Object obj = getSession().get(getType(), id);
 		if (obj == null) {
-            throw new ObjectRetrievalFailureException(getType(), id);
-        }
-        return (T) obj; 
-	} 
-    
+			throw new ObjectRetrievalFailureException(getType(), id);
+		}
+		return (T) obj;
+	}
+
 	@Override
 	public void saveOrUpdate(T obj) {
 		// use merge() to avoid NonUniqueObjectException
-		 getSession().saveOrUpdate(obj);   
-//		getSession().merge(obj);
+		getSession().saveOrUpdate(obj);
+		// getSession().merge(obj);
 	}
 
 	@Override
 	public void delete(PK id) {
 		getSession().delete(getById(id));
 
-//		Session session =getSessionFactory().getCurrentSession(); 
-//		Transaction trans= session.beginTransaction();
-//		session.delete(getById(id));
-//		trans.commit();
-	}	
-	
+		// Session session = getSession();
+		// Transaction trans= session.beginTransaction();
+		// session.delete(getById(id));
+		// trans.commit();
+	}
+
 	@Override
 	public List<T> getAll() {
 		@SuppressWarnings("unchecked")
-		List<T> lst = getSession().createQuery("from " + getType().getName()).list(); 
+		List<T> lst = getSession().createQuery("from " + getType().getName()).list();
 
-//		Session session =getSessionFactory().getCurrentSession(); 
-//		Transaction trans= session.beginTransaction();
-//		List<T> lst = session.createQuery("from " + getType().getName()).list();
-//		trans.commit();
+		// Session session = getSession();
+		// Transaction trans= session.beginTransaction();
+		// List<T> lst = session.createQuery("from " +
+		// getType().getName()).list();
+		// trans.commit();
 		return lst;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
-    public List<T> findByCriteria(HashMap<String, String> aliases, Criterion... criterionList) {
+	public List<T> findByCriteria(HashMap<String, String> aliases, Criterion... criterionArray) {
+		if (criterionArray == null || criterionArray.length == 0) {
+			return null;
+		}
 		Criteria criteria = getCriteria();
-		for (Criterion cri : criterionList) {
+		for (Criterion cri : criterionArray) {
 			criteria.add(cri);
 		}
-		for (Entry<String, String> entry : aliases.entrySet()){
-		    criteria.createAlias(entry.getKey(), entry.getValue());
+		if (aliases != null) {
+			for (Entry<String, String> entry : aliases.entrySet()) {
+				criteria.createAlias(entry.getKey(), entry.getValue());
+			}
 		}
-		
 		return criteria.list();
 	}
 }

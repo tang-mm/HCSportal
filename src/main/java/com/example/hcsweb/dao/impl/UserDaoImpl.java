@@ -17,7 +17,7 @@ public class UserDaoImpl extends AbstractGenericDaoImpl<User, Integer> implement
 	@Override
 	public User getUserByUsername(String username) {
 		@SuppressWarnings("unchecked")
-		List<User> list = getSessionFactory().getCurrentSession().createQuery("FROM User WHERE username = ? ")
+		List<User> list = getSession().createQuery("FROM User WHERE username = ? ")
 				.setParameter(0, username).list();
 		return (list.isEmpty() ? null : list.get(0));
 	}

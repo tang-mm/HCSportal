@@ -15,8 +15,8 @@ public class ServiceDaoImpl extends AbstractGenericDaoImpl<Service, Integer> imp
 	@Override
 	public Service getServiceByName(String code) {
 		@SuppressWarnings("unchecked")
-		List<Service> lst = getSessionFactory().getCurrentSession().createQuery("FROM Service WHERE service_code = ? ")
-				.setParameter(0, code).list();
+		List<Service> lst = getSession().createQuery("FROM Service WHERE service_code = ? ").setParameter(0, code)
+				.list();
 		return (lst.isEmpty() ? null : lst.get(0));
 	}
 

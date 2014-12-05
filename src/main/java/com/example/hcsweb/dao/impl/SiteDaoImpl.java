@@ -15,7 +15,7 @@ public class SiteDaoImpl extends AbstractGenericDaoImpl<Site, Integer> implement
 	@Override
 	public Site getSiteByName(String siteCode) {
 		@SuppressWarnings("unchecked")
-		List<Site> lst = getSessionFactory().getCurrentSession().createQuery("FROM Site WHERE site_name = ? ").setParameter(0, siteCode).list();
+		List<Site> lst = getSession().createQuery("FROM Site WHERE site_name = ? ").setParameter(0, siteCode).list();
 		return (lst.isEmpty() ? null : lst.get(0));
 	}
 

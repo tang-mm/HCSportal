@@ -13,8 +13,8 @@ public class UserTypeDaoImpl extends AbstractGenericDaoImpl<UserType, Integer> i
 	@Override
 	public UserType getUserTypeByName(String typeName) {
 		@SuppressWarnings("unchecked")
-		List<UserType> list = getSessionFactory().getCurrentSession()
-				.createQuery("FROM UserType WHERE user_type = ? ").setParameter(0, typeName).list();
+		List<UserType> list = getSession().createQuery("FROM UserType WHERE user_type = ? ").setParameter(0, typeName)
+				.list();
 		return (list.isEmpty() ? null : list.get(0));
 	}
 

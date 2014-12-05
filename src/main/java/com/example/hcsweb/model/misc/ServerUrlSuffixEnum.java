@@ -1,4 +1,4 @@
-package com.example.hcsweb.model;
+package com.example.hcsweb.model.misc;
 
 public enum ServerUrlSuffixEnum {
 	//-----------Shared------------

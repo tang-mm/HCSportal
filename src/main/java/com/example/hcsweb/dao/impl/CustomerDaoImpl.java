@@ -15,7 +15,7 @@ public class CustomerDaoImpl extends AbstractGenericDaoImpl<Customer, Integer> i
 	@Override
 	public Customer getCustomerByName(String custName) {
 		@SuppressWarnings("unchecked")
-		List<Customer> lst = getSessionFactory().getCurrentSession().createQuery("FROM Customer WHERE customer_name = ? ").setParameter(0, custName).list();
+		List<Customer> lst = getSession().createQuery("FROM Customer WHERE customer_name = ? ").setParameter(0, custName).list();
 		return (lst.isEmpty() ? null : lst.get(0));
 		 
 	}

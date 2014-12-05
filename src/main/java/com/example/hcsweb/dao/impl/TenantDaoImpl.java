@@ -16,7 +16,7 @@ public class TenantDaoImpl extends AbstractGenericDaoImpl<Tenant, Integer> imple
 	@Override
 	public Tenant getTenantByName(String tenantName) {
 		@SuppressWarnings("unchecked")
-		List<Tenant> lst = getSessionFactory().getCurrentSession().createQuery("FROM Tenant WHERE tenant_name = ? ").setParameter(0, tenantName).list();
+		List<Tenant> lst = getSession().createQuery("FROM Tenant WHERE tenant_name = ? ").setParameter(0, tenantName).list();
 		return (lst.isEmpty() ? null : lst.get(0));
 	}
 

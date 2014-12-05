@@ -15,18 +15,18 @@ public class LocationDaoImpl extends AbstractGenericDaoImpl<Location, Integer> i
  
 	@Override
 	public List<Location> findLocationsByCityStateCountry(String city, String state, String country) {
-		List<Criterion> listCri = new ArrayList<Criterion>();
+		List<Criterion> listCrt = new ArrayList<Criterion>();
 		if (city != null) {
-			listCri.add(Restrictions.eq("city", city));
+			listCrt.add(Restrictions.eq("city", city));
 		}
 		if (state != null) {
-			listCri.add(Restrictions.eq("state", state));
+			listCrt.add(Restrictions.eq("state", state));
 		}
 		if (country != null) {
-			listCri.add(Restrictions.eq("country", country));
+			listCrt.add(Restrictions.eq("country", country));
 		}
-		Criterion[] arrayCri = new Criterion[listCri.size()];
-		return findByCriteria(null, arrayCri);
+		Criterion[] arrayCrt = new Criterion[listCrt.size()];
+		return findByCriteria(null, arrayCrt);
 	}
 
 	@Override
