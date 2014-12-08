@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <t:wrapper>
 <style>
@@ -43,20 +44,21 @@
 				<tr>
 					<th width="150px">Customer</th>
 					<th width="150px">Description</th>
-					<th width="150px">Creation Date</th>
-					<th width="150px">Last Modified</th>
+<%-- 					<th width="150px">Creation Date</th> --%>
+<%-- 					<th width="150px">Last Modified</th> --%>
 					<th width="150px">Number of Tenants</th>
+					<th width="50px"></th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach items="${listCustomer}" var="cust" varStatus="status">
-					<tr>
-						<c:forEach items="${cust}" var="elem">
-							<td><c:out value="${not empty elem ? elem : '-' }" /></td>
-						</c:forEach>
+					<tr> 
+							<td>${cust.customerName}</td>  
+							<td>${cust.description}</td>  
+							<td>${fn: length(cust.listTenant)}</td>  
 						<td><p>
 								<span id="<c:out value="toggle_Tenant_${status.index}"/>"
-									class="grc-icone-display toggle_Tenant">Tenants</span>
+									class="grc-icone-display toggle_Tenant"></span>
 							</p></td>
 					</tr>
 					<tr id="<c:out value="toBeToggled_Tenant_${status.index}"/>"
@@ -67,17 +69,18 @@
 									<tr>
 										<th width="150px">Tenant Name</th>
 										<th width="150px">Description</th>
-										<th width="150px">Creation Date</th>
-										<th width="150px">Last Modified</th>
+<%-- 										<th width="150px">Creation Date</th> --%>
+<%-- 										<th width="150px">Last Modified</th> --%>
+										<th width="150px">IP</th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${listTenant}" var="tenant"
+									<c:forEach items="${cust.listTenant}" var="tenant"
 										varStatus="status">
 										<tr>
-											<c:forEach items="${tenant}" var="elem">
-												<td><c:out value="${not empty elem ? elem : '-' }" /></td>
-											</c:forEach>
+											<td>${tenant.tenantName}</td>
+											<td>${tenant.description}</td>
+											<td>${tenant.ipMain}</td>
 										</tr>
 									</c:forEach>
 								</tbody>

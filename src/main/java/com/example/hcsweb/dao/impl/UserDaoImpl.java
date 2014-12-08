@@ -3,6 +3,8 @@ package com.example.hcsweb.dao.impl;
 import java.util.HashMap;
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
@@ -16,9 +18,14 @@ public class UserDaoImpl extends AbstractGenericDaoImpl<User, Integer> implement
 
 	@Override
 	public User getUserByUsername(String username) {
+		Session session = getSession();
+		Transaction trans = session.beginTransaction();
+		
 		@SuppressWarnings("unchecked")
-		List<User> list = getSession().createQuery("FROM User WHERE username = ? ")
+		List<User> list = session.createQuery("FROM User WHERE username = ? ")
 				.setParameter(0, username).list();
+		trans.commit();
+		
 		return (list.isEmpty() ? null : list.get(0));
 	}
 

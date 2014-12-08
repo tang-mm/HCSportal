@@ -2,6 +2,8 @@ package com.example.hcsweb.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -14,9 +16,13 @@ public class ServiceDaoImpl extends AbstractGenericDaoImpl<Service, Integer> imp
 
 	@Override
 	public Service getServiceByName(String code) {
+		Session session = getSession();
+		Transaction trans = session.beginTransaction();
+
 		@SuppressWarnings("unchecked")
-		List<Service> lst = getSession().createQuery("FROM Service WHERE service_code = ? ").setParameter(0, code)
-				.list();
+		List<Service> lst = session.createQuery("FROM Service WHERE service_code = ? ").setParameter(0, code).list();
+		trans.commit();
+
 		return (lst.isEmpty() ? null : lst.get(0));
 	}
 

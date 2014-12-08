@@ -9,14 +9,16 @@ import java.util.Map.Entry;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Criterion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ObjectRetrievalFailureException;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.hcsweb.dao.GenericDao;
 
-@Transactional
+@Repository
 public abstract class AbstractGenericDaoImpl<T, PK extends Serializable> implements GenericDao<T, PK> {
 
 	/* ************** Attributes **************** */
@@ -47,23 +49,21 @@ public abstract class AbstractGenericDaoImpl<T, PK extends Serializable> impleme
 
 	public Session getSession() {
 		return getSessionFactory().getCurrentSession();
-		// return getSessionFactory().openSession();
-	}
-
-	/**
-	 * create a Criteria entity in current session
-	 * 
-	 * @return
-	 */
-	public Criteria getCriteria() {
-		return getSession().createCriteria(entityClass);
-	}
+//		 return getSessionFactory().openSession();
+	} 
+	
 
 	/* ************** Methods **************** */
 	@SuppressWarnings("unchecked")
 	@Override
+	@Transactional
 	public T getById(PK id) {
-		Object obj = getSession().get(getType(), id);
+		Session session = getSession();
+		Transaction trans = session.beginTransaction();
+		
+		Object obj = session.get(getType(), id);
+		trans.commit();
+		
 		if (obj == null) {
 			throw new ObjectRetrievalFailureException(getType(), id);
 		}
@@ -71,42 +71,55 @@ public abstract class AbstractGenericDaoImpl<T, PK extends Serializable> impleme
 	}
 
 	@Override
+	@Transactional
 	public void saveOrUpdate(T obj) {
 		// use merge() to avoid NonUniqueObjectException
+		Session session = getSession();
+		Transaction trans = session.beginTransaction();
+		
 		getSession().saveOrUpdate(obj);
 		// getSession().merge(obj);
+		trans.commit();
 	}
 
 	@Override
+	@Transactional
 	public void delete(PK id) {
-		getSession().delete(getById(id));
+		Session session = getSession();
+		Transaction trans = session.beginTransaction();
+		getSession().delete(getById(id)); 
 
-		// Session session = getSession();
-		// Transaction trans= session.beginTransaction();
-		// session.delete(getById(id));
-		// trans.commit();
+		trans.commit();
 	}
 
 	@Override
+	@Transactional
 	public List<T> getAll() {
+//		@SuppressWarnings("unchecked") 
+//		List<T> lst = getSession().createQuery("from " + getType().getName()).list();
+//
+		Session session = getSession();
+		Transaction trans = session.beginTransaction();
+		
 		@SuppressWarnings("unchecked")
-		List<T> lst = getSession().createQuery("from " + getType().getName()).list();
-
-		// Session session = getSession();
-		// Transaction trans= session.beginTransaction();
-		// List<T> lst = session.createQuery("from " +
-		// getType().getName()).list();
-		// trans.commit();
+		List<T> lst = session.createQuery("from " + getType().getName()).list();
+		
+		trans.commit();
 		return lst;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
+	@Transactional
 	public List<T> findByCriteria(HashMap<String, String> aliases, Criterion... criterionArray) {
 		if (criterionArray == null || criterionArray.length == 0) {
 			return null;
 		}
-		Criteria criteria = getCriteria();
+
+		Session session = getSession();
+		Transaction trans = session.beginTransaction();
+		Criteria criteria = session.createCriteria(entityClass);
+		
 		for (Criterion cri : criterionArray) {
 			criteria.add(cri);
 		}
@@ -115,6 +128,8 @@ public abstract class AbstractGenericDaoImpl<T, PK extends Serializable> impleme
 				criteria.createAlias(entry.getKey(), entry.getValue());
 			}
 		}
-		return criteria.list();
+		List<T> list = criteria.list();
+		trans.commit();
+		return list;
 	}
 }

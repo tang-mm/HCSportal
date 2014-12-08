@@ -3,6 +3,8 @@ package com.example.hcsweb.dao.impl;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -14,9 +16,15 @@ public class ExceptionalDayDaoImpl extends AbstractGenericDaoImpl<ExceptionalDay
 
 	@Override
 	public ExceptionalDay getExceptionalDayBySiteIdAndDate(int siteId, Date date) {
+		Session session = getSession();
+		Transaction trans = session.beginTransaction();
+
 		@SuppressWarnings("unchecked")
-		List<ExceptionalDay> lst = getSession().createQuery("FROM ExceptionalDay WHERE site_id = :siteId AND holiday = :date ")
+		List<ExceptionalDay> lst = session
+				.createQuery("FROM ExceptionalDay WHERE site_id = :siteId AND holiday = :date ")
 				.setParameter("siteId", siteId).setParameter("date", date).list();
+		trans.commit();
+
 		return (lst.isEmpty() ? null : lst.get(0));
 	}
 
@@ -29,5 +37,5 @@ public class ExceptionalDayDaoImpl extends AbstractGenericDaoImpl<ExceptionalDay
 	public List<ExceptionalDay> findExceptionalDaysBySiteId(int siteId) {
 		return findByCriteria(null, Restrictions.eq("site.siteId", siteId));
 	}
-	
+
 }

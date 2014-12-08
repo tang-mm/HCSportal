@@ -2,6 +2,8 @@ package com.example.hcsweb.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -14,8 +16,13 @@ public class SiteDaoImpl extends AbstractGenericDaoImpl<Site, Integer> implement
 
 	@Override
 	public Site getSiteByName(String siteCode) {
+		Session session = getSession();
+		Transaction trans = session.beginTransaction();
+		
 		@SuppressWarnings("unchecked")
-		List<Site> lst = getSession().createQuery("FROM Site WHERE site_name = ? ").setParameter(0, siteCode).list();
+		List<Site> lst = session.createQuery("FROM Site WHERE site_name = ? ").setParameter(0, siteCode).list();
+		
+		trans.commit();
 		return (lst.isEmpty() ? null : lst.get(0));
 	}
 
