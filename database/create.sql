@@ -38,7 +38,7 @@ CREATE TABLE tenants (
 	ip_address varchar(15) NOT NULL UNIQUE,
 	description varchar(1000),
 	PRIMARY KEY (tenant_id),
-	FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON UPDATE CASCADE
+	FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 CREATE INDEX idx_tenants_tenant_name ON tenants(tenant_name);
 
@@ -66,7 +66,7 @@ CREATE TABLE users (
 	PRIMARY KEY (user_id),
 	FOREIGN KEY (user_type_id) REFERENCES user_types(user_type_id) ON UPDATE CASCADE,
 	FOREIGN KEY (created_by) REFERENCES users(user_id) ON UPDATE CASCADE,
-	FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON UPDATE CASCADE
+	FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 CREATE UNIQUE INDEX idx_users_username_customer_id ON users(username, customer_id);
 CREATE INDEX idx_users_user_type_id ON users(user_type_id);
@@ -80,7 +80,7 @@ CREATE TABLE services (
 	emergency boolean NOT NULL,
 	description varchar(256),
 	PRIMARY KEY (service_id),
-	FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id) ON UPDATE CASCADE,
+	FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id)  ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT UNIQUE (service_code, tenant_id)
 );
 CREATE INDEX idx_services_service_code ON services(service_code); 
@@ -102,7 +102,7 @@ CREATE TABLE weekly_schedules (
 	schedule_id int unsigned AUTO_INCREMENT,
 	schedule_name varchar(32) NOT NULL,
 	tenant_id int unsigned NOT NULL,
-	created_by int unsigned NOT NULL,	/* user id */
+	created_by int unsigned  NULL,	/* user id */
 	description varchar(256) NOT NULL,
 	mon_open_1 time DEFAULT NULL,
 	mon_close_1 time DEFAULT NULL,
@@ -133,8 +133,8 @@ CREATE TABLE weekly_schedules (
 	sun_open_2 time DEFAULT NULL,
 	sun_close_2 time DEFAULT NULL,
 	PRIMARY KEY (schedule_id),
-	FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id) ON UPDATE CASCADE,
-	FOREIGN KEY (created_by) REFERENCES users(user_id) ON UPDATE CASCADE,
+	FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id)  ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (created_by) REFERENCES users(user_id) ON DELETE SET NULL ON UPDATE CASCADE,
 	CONSTRAINT UNIQUE (schedule_name, tenant_id)
 );
 CREATE INDEX idx_weekly_schedules_tenant_id ON weekly_schedules(tenant_id);
@@ -150,7 +150,7 @@ CREATE TABLE sites (
 	emergency boolean NOT NULL,
 	description varchar(256),
 	PRIMARY KEY (site_id),
-	FOREIGN KEY (service_id) REFERENCES services(service_id) ON UPDATE CASCADE,
+	FOREIGN KEY (service_id) REFERENCES services(service_id) ON DELETE CASCADE ON UPDATE CASCADE,
 	FOREIGN KEY (location_id) REFERENCES locations(location_id) ON UPDATE CASCADE,
     FOREIGN KEY (schedule_id) REFERENCES weekly_schedules(schedule_id) ON UPDATE CASCADE,
 	CONSTRAINT UNIQUE (site_code, service_id)
@@ -179,7 +179,7 @@ CREATE TABLE holidays (
 	holiday date NOT NULL,
 	description varchar(32), 
 	PRIMARY KEY (holiday_id),
-	FOREIGN KEY (site_id) REFERENCES sites(site_id) ON UPDATE CASCADE,
+	FOREIGN KEY (site_id) REFERENCES sites(site_id)  ON DELETE CASCADE ON UPDATE CASCADE,
 	CONSTRAINT UNIQUE  (site_id, holiday)
 );
 CREATE INDEX idx_holidays_holiday ON holidays(holiday);
@@ -195,7 +195,7 @@ CREATE TABLE exceptional_days (
 	close_time_2 time DEFAULT NULL,
 	description varchar(32),
 	PRIMARY KEY (exception_id), 
-	FOREIGN KEY (site_id) REFERENCES sites(site_id) ON UPDATE CASCADE,
+	FOREIGN KEY (site_id) REFERENCES sites(site_id)  ON DELETE CASCADE ON UPDATE CASCADE,
 	CONSTRAINT UNIQUE (site_id, exception_date)
 );
 CREATE INDEX idx_exceptional_days_date ON exceptional_days(exception_date);
@@ -216,7 +216,7 @@ CREATE TABLE pin_codes(
 	free_text1 varchar(32),
 	free_text2 varchar(32),
 	PRIMARY KEY (pin_code_id),
-	FOREIGN KEY (service_id) REFERENCES services(service_id) ON UPDATE CASCADE, 
+	FOREIGN KEY (service_id) REFERENCES services(service_id)  ON DELETE CASCADE ON UPDATE CASCADE, 
 	CONSTRAINT UNIQUE (service_id, caller_name, pin_code)
 );
 CREATE UNIQUE INDEX idx_pin_codes_service_id_caller_name_pin_code ON pin_codes(service_id, caller_name, pin_code);
@@ -238,7 +238,7 @@ CREATE TABLE equipment(
 	geo_location varchar(32) NOT NULL,
 	description varchar(256),
 	PRIMARY KEY (equipment_id),
-	FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id) ON UPDATE CASCADE,
+	FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id)  ON DELETE CASCADE ON UPDATE CASCADE,
 	CONSTRAINT UNIQUE (equipment_name, tenant_id)
 );
 CREATE INDEX idx_equipment_tenant_id ON equipment(tenant_id);
@@ -253,24 +253,24 @@ CREATE TABLE user_tenant_permissions (
 	user_id int unsigned,
 	tenant_id int unsigned,
 	PRIMARY KEY (user_id, tenant_id),
-	FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE,
-	FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id) ON UPDATE CASCADE
+	FOREIGN KEY (user_id) REFERENCES users(user_id)  ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id)  ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE user_service_permissions (
 	user_id int unsigned,
 	service_id int unsigned,
 	PRIMARY KEY (user_id, service_id),
-	FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE,
-	FOREIGN KEY (service_id) REFERENCES services(service_id) ON UPDATE CASCADE
+	FOREIGN KEY (user_id) REFERENCES users(user_id)  ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (service_id) REFERENCES services(service_id)  ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE user_site_permissions (
 	user_id int unsigned,
 	site_id int unsigned,
 	PRIMARY KEY (user_id, site_id),
-	FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE,
-	FOREIGN KEY (site_id) REFERENCES sites(site_id) ON UPDATE CASCADE
+	FOREIGN KEY (user_id) REFERENCES users(user_id)  ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (site_id) REFERENCES sites(site_id)  ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 
@@ -300,8 +300,8 @@ CREATE TABLE audio_message_service (
 	service_id int unsigned NOT NULL,
 	message_id int unsigned NOT NULL, 
 	PRIMARY KEY (service_id, message_id),
-	FOREIGN KEY (service_id) REFERENCES services(service_id) ON UPDATE CASCADE,
-	FOREIGN KEY (message_id) REFERENCES audio_messages(message_id) ON UPDATE CASCADE
+	FOREIGN KEY (service_id) REFERENCES services(service_id)  ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (message_id) REFERENCES audio_messages(message_id)  ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /************** IP ***************/

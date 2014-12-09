@@ -11,8 +11,8 @@
 	<http pattern="/images/**" security="none"/>
 	
 	<!-- ********** uncomment here to active login****** -->
-<!--	<http auto-config="true" use-expressions="true"> 
-		<form-login login-page="/login" default-target-url="/"
+	<http auto-config="true" use-expressions="true"> 
+		<form-login login-page="/login" default-target-url="/login_success"
 			username-parameter="j_username" password-parameter="j_password"
 			authentication-failure-url="/login?error" always-use-default-target="false" />
 		<logout logout-success-url="/login?logout" />
@@ -20,8 +20,6 @@
 		<intercept-url pattern="/login*" access="isAnonymous() || isAuthenticated()" />
 		<intercept-url pattern="/**" access="isAuthenticated()" /> 
 	</http>
---> 
-
 
 	<!-- ********** ONLY FOR TEST without Database ****** -->
 <!-- 	<authentication-manager>

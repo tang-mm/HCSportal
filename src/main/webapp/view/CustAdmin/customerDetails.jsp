@@ -46,10 +46,10 @@
 </script>
 
 	<div class="grc-form block" style="margin: 0 auto;">
-		<form:form action="submitNewCustomer" id="newCustomerForm"
-			name="newCustomerForm" commandName="newCustomerCmd">
+		<form:form action="customerDetails" id="customerDetailsForm"
+			name="customerDetailsForm" commandName="customerCmd">
 			<div>
-				<h1>Create New Customer</h1>
+				<h1>Customer Details</h1>
 			</div>
 
 			<div class="grc-form">
@@ -57,7 +57,8 @@
 					<tbody>
 						<tr class="grc-form-input-text grc-form-no-border">
 							<td style="width: 35%"><label>Customer Name: </label></td>
-							<td colspan="2"><form:input path="customerName" value="" /></td>
+							<td colspan="2"><div>${customerName}</div>  	//TODO modify button: div -> input 
+							<form:input path="customerName" value="" /></td>
 						</tr>
 						<tr class="grc-form-no-border">
 							<td colspan="1"><label>Description: </label></td>
@@ -77,7 +78,7 @@
 				</table>
 
 				<div class="grc-application-list" style="margin: 0 auto;">
-				<p><h2>Number of Tenants: ${fn:length(newCustomerCmd.listTenants)}</h2></p>
+				<p><h2>Number of Tenants: ${fn:length(newCustomerCmd.listTenant)}</h2></p>
 					<table id="table-list-tenant">
 						<thead>
 							<tr>
@@ -88,13 +89,13 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:if test='${not empty newCustomerCmd.listTenants}'>
-								<c:forEach items="${newCustomerCmd.listTenants}" var="tenant" varStatus="status">
+							<c:if test='${not empty newCustomerCmd.listTenant}'>
+								<c:forEach items="${newCustomerCmd.listTenant}" var="tenant" varStatus="status">
 									<tr>
 										<td>${tenant.tenantName}</td>
 										<td>${tenant.ipMain}</td>
 										<td>${tenant.description}</td> 
-										<td> <a id="<c:out value="deleteTenant_${status.index}"/>" href="#" class="deleteRow">Delete</a></td>
+										<td> <a id="<c:out value="deleteTenant_${status.index}"/>" href="removeTenantFromList?name=${tenant.tenantName}" class="deleteRow">Delete</a></td>
 									</tr>
 								</c:forEach>
 							</c:if>
@@ -106,7 +107,7 @@
 
 	<a href="#newTenant" class="btn-submit" id="newTenant">Add New Tenant</a>
 
-		<form:form action="submitNewTenant" id="newTenantForm"
+		<form:form action="addNewTenantToList" id="newTenantForm"
 			name="newTenantForm" commandName="newTenantCmd" style="display: none;">
 			<div class="grc-form">
 				<table>
@@ -130,8 +131,6 @@
 							<td colspan="2"><form:textarea path="description" rows="5"
 									cols="30" /></td>
 						</tr>
-						<form:input type="hidden" path="customerId" value=""/>
-						<form:input type="hidden" path="customerName" value=""/>
 						
 						<tr class="grc-form-buttons grc-form-no-border">
 

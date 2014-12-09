@@ -4,7 +4,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import com.example.hcsweb.model.usersEnum.User;
+import com.example.hcsweb.model.users.User;
 
 public class NewUserValidator implements Validator {
 
@@ -24,7 +24,7 @@ public class NewUserValidator implements Validator {
 				"field.required", "Required field");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password",
 				"field.required", "Required field");
-		if (user.getUserTypeId() == -1)
+		if (user.getUserType() == null)					//TODO to check
 			errors.rejectValue("userTypeId", "field.required", "Required field");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmedPassword",
 				"field.required", "Required field");

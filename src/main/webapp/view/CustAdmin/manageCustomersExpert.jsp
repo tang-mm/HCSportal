@@ -3,13 +3,20 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <t:wrapper>
 <style>
 .tr-hidden-no-border {
-	display:none;
+	display: none;
 	border: 0px none;
 	background-color: #DBFFD7;
+}
+
+.line-wrap {
+	word-wrap: break-word;
+	text-align: left;
+	line-height: 150%;
 }
 </style> 
 
@@ -32,18 +39,18 @@
 
 	<!-- visible only to L3 Experts -->
 <%-- 	<c:if test="${isExpertL3}"> --%>
-	<a href="createNewCustomer" class="btn-submit" style="margin: 0 auto;">Create
-		New Customer</a>
+	<a href="createNewCustomer" class="btn-submit" style="margin: 0 auto;">Create New Customer</a>
 	<br />
 	<br />
 	<br />
 <%-- 	</c:if> --%>
+ 
 	<div class="grc-application-list" style="margin: 0 auto;">
-		<table id="table-list-customer">
+		<table id="table-list-customer" style=" table-layout: fixed;">
 			<thead>
 				<tr>
 					<th width="150px">Customer</th>
-					<th width="150px">Description</th>
+					<th width="250px">Description</th>
 <%-- 					<th width="150px">Creation Date</th> --%>
 <%-- 					<th width="150px">Last Modified</th> --%>
 					<th width="150px">Number of Tenants</th>
@@ -52,10 +59,10 @@
 			</thead>
 			<tbody>
 				<c:forEach items="${listCustomer}" var="cust" varStatus="status">
-					<tr> 
-							<td>${cust.customerName}</td>  
-							<td>${cust.description}</td>  
-							<td>${fn: length(cust.listTenant)}</td>  
+					<tr>
+						<td><a href="customerDetails?customer=${cust.customerName}">${cust.customerName}</a></td>
+						<td class="line-wrap">${cust.description} </td>
+						<td>${fn: length(cust.listTenant)}</td>
 						<td><p>
 								<span id="<c:out value="toggle_Tenant_${status.index}"/>"
 									class="grc-icone-display toggle_Tenant"></span>
@@ -63,7 +70,7 @@
 					</tr>
 					<tr id="<c:out value="toBeToggled_Tenant_${status.index}"/>"
 						class="tr-hidden-no-border">
-						<td colspan="5">
+						<td colspan="4">
 							<table id="table-list-tenant-in-customer">
 								<thead>
 									<tr>
@@ -75,10 +82,9 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${cust.listTenant}" var="tenant"
-										varStatus="status">
+									<c:forEach items="${cust.listTenant}" var="tenant" varStatus="status">
 										<tr>
-											<td>${tenant.tenantName}</td>
+											<td><a href="tenantDetails?tenant=${tenant.tenantName}">${tenant.tenantName}</a></td>
 											<td>${tenant.description}</td>
 											<td>${tenant.ipMain}</td>
 										</tr>

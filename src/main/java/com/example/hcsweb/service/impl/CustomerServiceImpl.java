@@ -50,5 +50,4 @@ public class CustomerServiceImpl implements CustomerService{
 		return customerDao.getAll();
 	}
 	
-	
 }

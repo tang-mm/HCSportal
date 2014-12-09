@@ -5,17 +5,20 @@ import java.util.List;
  
 
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.hcsweb.model.usersEnum.Supervisor;
+
+
+import com.example.hcsweb.controller.CcdmManager;
 import com.exony.resourcemanagement.access.ResourceManagementAccess;
 import com.exony.schemas._2009._10.resourcemanagement.NameValuePair;
 import com.exony.schemas._2009._10.resourcemanagement.Resource;
 
-@Controller
+//@Controller
 public class AgentController {
 
 
@@ -78,8 +81,9 @@ public class AgentController {
 
 		System.out.println("********[AgentController] create new customer********");
 		
-		ModelAndView model = new ModelAndView("UserAdmin/newAgent", "newAgentCmd", new Supervisor());
-		model.addObject("IPaddress ", "controller: new agent");
-		return model;
+////		ModelAndView model = new ModelAndView("UserAdmin/newAgent", "newAgentCmd", new User());
+//		model.addObject("IPaddress ", "controller: new agent");
+//		return model;
+		return null;
 	}
 }

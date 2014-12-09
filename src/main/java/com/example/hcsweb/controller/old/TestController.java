@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.hcsweb.model.usersEnum.User;
+//import com.example.hcsweb.model.usersEnum.User;
 import com.exony.resourcemanagement.access.ResourceManagementAccess;
 import com.exony.schemas._2009._10.resourcemanagement.ArrayOfNameValuePair;
 import com.exony.schemas._2009._10.resourcemanagement.NameValuePair;
@@ -78,9 +78,9 @@ public class TestController {
 			newUser.setChangestamp(0);
 			// set Fields
 			ArrayOfNameValuePair fields = new ArrayOfNameValuePair();
-			User.addNameValuePairCCDMResource(fields, "FolderId", folderId);
-			User.addNameValuePairCCDMResource(fields, "LoginName", "testUser2");
-			User.addNameValuePairCCDMResource(fields, "PassPhrase", "Test1234");
+//			User.addNameValuePairCCDMResource(fields, "FolderId", folderId);
+//			User.addNameValuePairCCDMResource(fields, "LoginName", "testUser2");
+//			User.addNameValuePairCCDMResource(fields, "PassPhrase", "Test1234");
 			// User.addNameValuePair(fields, "Description", "test desc");
 			// User.addNameValuePair(fields, "FirstName", "firstTest");
 			// User.addNameValuePair(fields, "LastName", "lastTest");
@@ -120,11 +120,11 @@ public class TestController {
 			newPerson.setChangestamp(0); // "Ready"
 			// set Fields
 			ArrayOfNameValuePair fields = new ArrayOfNameValuePair();
-			User.addNameValuePairCCDMResource(fields, "FolderId", folderId);
-			User.addNameValuePairCCDMResource(fields, "LoginName", "person_test");
-			User.addNameValuePairCCDMResource(fields, "Description", "test desc");
-			User.addNameValuePairCCDMResource(fields, "FirstName", "firstTest");
-			User.addNameValuePairCCDMResource(fields, "LastName", "lastTest");
+//			User.addNameValuePairCCDMResource(fields, "FolderId", folderId);
+//			User.addNameValuePairCCDMResource(fields, "LoginName", "person_test");
+//			User.addNameValuePairCCDMResource(fields, "Description", "test desc");
+//			User.addNameValuePairCCDMResource(fields, "FirstName", "firstTest");
+//			User.addNameValuePairCCDMResource(fields, "LastName", "lastTest");
 			// User.addNameValuePairCCDMResource(fields, "Expert", "1");
 			// User.addNameValuePairCCDMResource(fields, "TimeZone",
 			// "GMT Standard Time");

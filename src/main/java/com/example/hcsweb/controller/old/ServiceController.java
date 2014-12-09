@@ -21,7 +21,7 @@ import com.example.hcsweb.model.ExceptionalDay;
 import com.example.hcsweb.model.Service;
 import com.example.hcsweb.model.Tenant;
 
-@Controller
+//@Controller
 public class ServiceController {
 	@RequestMapping(value = "manageServices", method = RequestMethod.GET)
 	public ModelAndView manageServices(HttpServletRequest request) {

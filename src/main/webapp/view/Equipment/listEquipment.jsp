@@ -70,7 +70,7 @@
 				<tbody>
 					<c:forEach items="${listEquip}" var="equip" varStatus="loopStatus">
 						<tr class="${loopStatus.index % 2 == 0 ? 'even' : 'odd'}">
-							<td><a href="equipmentDetails?equipId=${equip.equipmentId}">${equip.equipmentName}</a></td>
+							<td><a href="equipmentDetails?equip=${equip.equipmentName}">${equip.equipmentName}</a></td>
 							<td>${equip.machineType}</td>
 							<td>${equip.operatingSystem}</td>
 							<td>${equip.geoLocation}</td>
