@@ -5,7 +5,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import com.example.hcsweb.model.usersEnum.User;
+import com.example.hcsweb.model.users.User;
 
 public class LoginValidator implements Validator {
 

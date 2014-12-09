@@ -1,16 +1,21 @@
 package com.example.hcsweb.model;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.example.hcsweb.dao.CustomerDao;
 import com.example.hcsweb.model.users.User;
+import com.example.hcsweb.model.users.UserType;
 import com.example.hcsweb.service.CustomerService;
 import com.example.hcsweb.service.TenantService;
 import com.example.hcsweb.service.UserService;
+import com.example.hcsweb.service.UserTypeService;
 
 public class TestHibernate {
 
@@ -19,9 +24,10 @@ public class TestHibernate {
 		System.out.println("Test: Customer - Tenant");
 
 		TestHibernate test = new TestHibernate();
+		test.testInsertUser();
 		// test.testCustService();
 		// test.testCustTenantService();
-		test.testUserTenantJoin();
+//		test.testUserTenantJoin();
 
 		System.out.println("Done");
 	}
@@ -43,6 +49,19 @@ public class TestHibernate {
 		context.close();
 	}
 
+	public void testInsertUser() {
+		ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("hibernate-context.xml");
+		CustomerService customerService = (CustomerService) context.getBean("customerService");
+		UserService userService = (UserService) context.getBean("userService");
+		
+		Customer cust = customerService.findCustomerByName("orange");
+		User user = new User("SuperAdmin", userService.encryptInputPassword("password"), new UserType(1, "SuperAdmin"), true);
+		user.setCustomer(cust);
+		user.setCreationTime(new Timestamp((new Date()).getTime()));
+		userService.saveUser(user);
+	}
+	
+	
 	public void testCustService() {
 		@SuppressWarnings("resource")
 		ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("hibernate-context.xml");

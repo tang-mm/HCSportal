@@ -1,9 +1,8 @@
-package com.example.hcsweb.controller.old;
+package com.example.hcsweb.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.example.hcsweb.model.usersEnum.User;
+ 
 import com.exony.resourcemanagement.access.ResourceManagementAccess;
 import com.exony.schemas._2009._10.resourcemanagement.ArrayOfNameValuePair;
 import com.exony.schemas._2009._10.resourcemanagement.NameValuePair;
@@ -14,23 +13,24 @@ import com.exony.schemas._2009._10.resourcemanagement.Resource;
 public class CcdmManager {
 
 	private String serverIP = "172.31.14.195";
-	private String webServiceURL = "https://" + serverIP + ":8085/ResourceManagement";
 	private String username = "admin1";
 	private String password = "Gcc6koko$$";		// base64password
 	// String username="C1sup1";
 	// String password="C1sco123";
-	private String customerName = "Customer1";
+	private String tenantName = "Customer1";
 	private ResourceManagementAccess accessObject;
+
+	private String webServiceURL = "https://" + serverIP + ":8085/ResourceManagement";
 
 	public CcdmManager() throws Exception {
 		accessObject = new ResourceManagementAccess(webServiceURL, username, password);
 	}
 
-	public CcdmManager(String serverIP, String username, String password, String customerName) throws Exception {
+	public CcdmManager(String serverIP, String username, String password, String tenantName) throws Exception {
 		this.serverIP = serverIP;
 		this.username = username;
 		this.password = password;
-		this.customerName = customerName;
+		this.tenantName = tenantName;
 		accessObject = new ResourceManagementAccess(webServiceURL, username, password);
 	}
 
@@ -67,7 +67,7 @@ public class CcdmManager {
 			ResourceManagementAccess accessObject = new ResourceManagementAccess(webServiceURL, username, password);
 
 			// search for FolderId of the customer folder
-			String searchQuery = "type:Tenant folder:/" + customerName;
+			String searchQuery = "type:Tenant folder:/" + tenantName;
 			List<Resource> searchResult = accessObject.search(null, searchQuery);
 
 			// !! ATTENTION ************* What if no sub-folder exists?********
@@ -92,9 +92,9 @@ public class CcdmManager {
 
 			// set Fields
 			ArrayOfNameValuePair fields = new ArrayOfNameValuePair();
-			User.addNameValuePairCCDMResource(fields, "FolderId", folderId);
-			User.addNameValuePairCCDMResource(fields, "LoginName", loginName);
-			User.addNameValuePairCCDMResource(fields, "PassPhrase", passPhrase);
+//			User.addNameValuePairCCDMResource(fields, "FolderId", folderId);
+//			User.addNameValuePairCCDMResource(fields, "LoginName", loginName);
+//			User.addNameValuePairCCDMResource(fields, "PassPhrase", passPhrase);
 			// User.addNameValuePair(fields, "Description", "test desc");
 			// User.addNameValuePair(fields, "FirstName", "firstTest");
 			// User.addNameValuePair(fields, "LastName", "lastTest");
@@ -124,19 +124,24 @@ public class CcdmManager {
 
 	}
 
-	public String getServer() {
+	public String getServerIP() {
 		return serverIP;
 	}
 
-	public void setServer(String server) {
-		this.serverIP = server;
+	/**
+	 * set server IP address and generate WebServiceURL
+	 * @param serverIP
+	 */
+	public void setServerIP(String serverIP) {
+		this.serverIP = serverIP;
+		this.setWebServiceURL("https://" + serverIP + ":8085/ResourceManagement");
 	}
 
 	public String getWebServiceURL() {
 		return webServiceURL;
 	}
 
-	public void setWebServiceURL(String webServiceURL) {
+	private void setWebServiceURL(String webServiceURL) {
 		this.webServiceURL = webServiceURL;
 	}
 
@@ -157,11 +162,11 @@ public class CcdmManager {
 	}
 
 	public String getCustomerName() {
-		return customerName;
+		return tenantName;
 	}
 
 	public void setCustomerName(String customerName) {
-		this.customerName = customerName;
+		this.tenantName = customerName;
 	}
 
 }

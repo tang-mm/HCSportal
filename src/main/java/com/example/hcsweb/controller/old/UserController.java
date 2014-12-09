@@ -15,15 +15,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.hcsweb.model.usersEnum.User;
-import com.example.hcsweb.model.usersEnum.UserTypeEnum;
+
+import com.example.hcsweb.controller.CcdmManager;
+//import com.example.hcsweb.model.usersEnum.User;
+//import com.example.hcsweb.model.usersEnum.UserTypeEnum;
 import com.example.hcsweb.validator.NewUserValidator;
 import com.exony.resourcemanagement.access.ResourceManagementAccess;
 import com.exony.schemas._2009._10.resourcemanagement.NameValuePair;
 import com.exony.schemas._2009._10.resourcemanagement.Resource;
 import com.mysql.jdbc.Connection;
 
-@Controller
+//@Controller
 public class UserController {
 	@RequestMapping(value = "manageUsers", method = RequestMethod.GET)
 	public ModelAndView showAllUser(HttpServletRequest request) {
@@ -68,7 +70,7 @@ public class UserController {
 		request.setAttribute("listUser", listUser);
 		return new ModelAndView("UserAdmin/manageUsers");
 	}
-
+/*
 	@RequestMapping(value = "createNewUser", method = RequestMethod.GET)
 	public ModelAndView createNewUser(HttpServletRequest request, Principal principal) {
 		// principal.getName();
@@ -103,4 +105,5 @@ public class UserController {
 		model.addAttribute("message", "success " + user.getUsername());
 		return new ModelAndView("UserAdmin/test_success", "newUserCmd", user);
 	}
+*/
 }

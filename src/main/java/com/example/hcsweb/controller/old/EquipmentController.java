@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.hcsweb.model.Equipment;
 
-@Controller
+//@Controller
 public class EquipmentController {
 	@RequestMapping(value = "manageEquipment", method = RequestMethod.GET)
 	public ModelAndView showCustomerEquipment(HttpServletRequest request) {

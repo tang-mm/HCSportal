@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
@@ -25,8 +24,7 @@
 
 	<div class="grc-tab-div" style="margin: 0 auto;">
 		<ul id="tabs">
-			<li class="tab-selected"><a href="#"> <span>General
-						Information</span>
+			<li class="tab-selected"><a href="#"> <span>General Information</span>
 			</a></li>
 			<li><a href="#"><span>Access</span></a>
 		</ul>
@@ -40,8 +38,7 @@
 		<div id="tabs-content">
 			<div id="tab-0">
 				<div id="equipDetails" class="grc-form">
-					<form:form id="equipmentDetailsForm" name="equipmentDetailsForm"
-						action="" commandName="">
+					<form:form id="equipmentDetailsForm" name="equipmentDetailsForm" action="" commandName="">
 						<table>
 							<tbody>
 								<tr class="grc-form-input-text">
@@ -88,7 +85,7 @@
 						</table>
 					</form:form>
 				</div>
-				
+
 			</div>
 
 			<div id="tab-1" style="display: none;">
@@ -103,23 +100,26 @@
 								<td></td>
 							</tr>
 							<tr class="grc-form-buttons grc-form-no-border" bgcolor="white">
-								<td colspan="2" align="right"><input value="Open Terminal"  type="button" class="grc-form-buttons-validate" onclick="#"/></td>
+								<td colspan="2" align="right"><input value="Open Terminal" type="button"
+									class="grc-form-buttons-validate" onclick="#" /></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 			</div>
-		</div>  <!--end tabs -->
-		
+		</div>
+		<!--end tabs -->
+
 		<div id="action-buttons" class="grc-form">
 			<table>
 				<tbody>
 					<tr class="grc-form-buttons grc-form-no-border">
-						<td align="right"> <input value="Back" type="button" class="grc-form-buttons-cancel" onclick="history.back()"/></td>
-						<td align="right">
-							<input value="Modify"  type="button" class="grc-form-buttons-validate" onclick="modifyEquiment?id="+${equip.equipmentId}/>
-							<input value="Delete"  type="button" class="grc-form-buttons-validate" style="margin-right: 10px;" onclick="deleteEquipment?id="+${equip.equipmentId}/>
-						</td>
+						<td align="right"><input value="Back" type="button" class="grc-form-buttons-cancel"
+							onclick="history.back()" /></td>
+						<td align="right"><input value="Modify" type="button" class="grc-form-buttons-validate"
+							onclick="modifyEquiment?id=" +${equip.equipmentId} /> <input value="Delete" type="button"
+							class="grc-form-buttons-validate" style="margin-right: 10px;" onclick="deleteEquipment?id="
+							+${equip.equipmentId} /></td>
 					</tr>
 				</tbody>
 			</table>

@@ -1,4 +1,4 @@
-package com.example.hcsweb.controller.old;
+package com.example.hcsweb.controller;
 
 import javax.servlet.http.HttpServletRequest;
 

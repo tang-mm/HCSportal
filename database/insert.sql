@@ -1,13 +1,14 @@
 INSERT INTO user_types VALUES (1, 'SuperAdmin');
-INSERT INTO user_types VALUES (2, 'Expert_L3');
-INSERT INTO user_types VALUES (3, 'Expert_L2');
-INSERT INTO user_types VALUES (4, 'Expert_L1');
-INSERT INTO user_types VALUES (5, 'Admin');
-INSERT INTO user_types VALUES (6, 'Supervisor');
-INSERT INTO user_types VALUES (7, 'Agent'); 
+INSERT INTO user_types VALUES (2, 'ExpertL3');
+INSERT INTO user_types VALUES (3, 'ExpertL2');
+INSERT INTO user_types VALUES (4, 'CustomerAdmin');
+INSERT INTO user_types VALUES (5, 'Hypervisor');
+INSERT INTO user_types VALUES (6, 'Supervisor'); 
 
-INSERT INTO customers VALUES (0, 'OBS', '0', 'reserved for OBS Experts and Super Administrator');
---INSERT INTO customers(customer_name, ip_address, description) VALUES ('testCust', 'testip', 'testtest');
+INSERT INTO customers VALUES ('Orange', 'Default value for Orange Experts and SuperAdmin');
+
+INSERT INTO `users` VALUES (1,'SuperAdmin','$2a$10$W39l39tzvAqnJyHPWGdpeOH0KVb6I1sLgGveJuIbbwq6eW6KNEceW',1,1,NULL,'2014-12-09 23:01:51',1,'2014-12-09 23:01:51',NULL,NULL);
+/*password*/
 
 /******** TEST **********/
 INSERT INTO equipment (`customer_id`,
@@ -37,7 +38,7 @@ INSERT INTO weekdays VALUES (3, 1, '8:00', '12:00', '14:00', '18:00');
 INSERT INTO weekdays VALUES (3, 2, '8:00', '12:00', '14:00', '18:00');
 
 INSERT INTO holidays VALUES (2, '2014-11-11', 'Armistice');
-INSERT INTO holidays VALUES (2, '2014-12-25', 'Noël');
+INSERT INTO holidays VALUES (2, '2014-12-25', 'NoÃ«l');
 INSERT INTO holidays VALUES (3, '2014-12-25', 'Christmas');
 
 INSERT INTO exceptional_days VALUES(2, '2014-11-11', '10:00', '16:00', null, null, 'exception');

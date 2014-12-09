@@ -1,4 +1,4 @@
-package com.example.hcsweb.controller.old;
+package com.example.hcsweb.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class CampaignController {
-	@RequestMapping(value="manageCampaigns", method=RequestMethod.GET)
+public class PinCodeController {
+
+	@RequestMapping(value="managePinCodes", method=RequestMethod.GET)
 	public ModelAndView listPinCode(HttpServletRequest request) {
 		
-		return new ModelAndView("Campaign/listCampaign");
+		return new ModelAndView("PinCode/listPinCode");
 	}
 }

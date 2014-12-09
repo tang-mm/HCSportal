@@ -2,27 +2,16 @@
 
 <div class="grc-status-box">
 	<c:if test="${not empty pageContext.request.userPrincipal}">
-	
-		<!-- ************* User Roles **********************-->
-		<c:set var="isSuperAdmin" scope="session"
-			value="${pageContext.request.isUserInRole('ROLE_SUPERADMIN')?  'true' : 'false'}" />
-		<c:set var="isExpert" scope="session"
-			value="${pageContext.request.isUserInRole('ROLE_EXPERT')?  'true' : 'false'}" />
-		<c:set var="isAdmin" scope="session"
-			value="${pageContext.request.isUserInRole('ROLE_ADMIN')?  'true' : 'false'}" />
-		<c:set var="isSupervisor" scope="session"
-			value="${pageContext.request.isUserInRole('ROLE_SUPERVISOR')?  'true' : 'false'}" />
-		<c:set var="isAgent" scope="session"
-			value="${pageContext.request.isUserInRole('ROLE_AGENT')?  'true' : 'false'}" />
 		<p>
 			<!-- Print User Role -->
 			<span>
 				Current User: <c:out value="${pageContext.request.userPrincipal.name}" /> (
 				<c:if test="${isSuperAdmin}">SuperAdministrator</c:if> 
-				<c:if test="${isExpert}">Expert</c:if> 
-				<c:if test="${isAdmin}">Administrator</c:if>
-				<c:if test="${isSupervisor}">Supervisor</c:if> 
-				<c:if test="${isAgent}">Agent</c:if>)
+				<c:if test="${isExpertL3}">Expert L3</c:if> 
+				<c:if test="${isExpertL2}">Expert L2</c:if> 	
+				<c:if test="${isCustAdmin}">Administrator</c:if>
+				<c:if test="${isHypervisor}">Hypervisor</c:if>
+				<c:if test="${isSupervisor}">Supervisor</c:if>)
 			</span> 
 			<span><a href="login?logout">Logout</a></span>
 		</p>
@@ -32,72 +21,64 @@
 <div class="grc-menu">
 	<ul class="navigation-1">
 		<c:if test="${not empty pageContext.request.userPrincipal}">
-
-			<!-- MENU -->
-			<c:if test="${!isAgent}">
-				<li><a class="" href="#"> <span>User Administration</span>
+			<c:if test="${!isSupervisor}">
+				<li><a class="" href="#"> <span>Administration</span>
 				</a>
 					<ul class="navigation-2">
-						<c:if test="${isSuperAdmin}">
+						<c:if test="${ isExpertL2 || isExpertL3}">
 							<li><a class="" href="manageCustomers"> <span>Manage Customers</span></a></li>
 						</c:if>
-						<li><a class="" href="manageUsers"> <span>Manage Users</span></a></li> 
+						<c:if test="${ isCustAdmin}">
+							<li><a class="" href="manageTenants"> <span>Manage Tenants</span></a></li>
+						</c:if>
+						<li><a class="" href="manageUsers"> <span>Manage Users</span></a></li>
 					</ul></li>
 			</c:if>
 
-			<c:if test="${isExpert}">
-				<li><a class="" href="#"> <span>Equipment</span>
-				</a>
-					<ul class="navigation-2">
-						<li><a class="" href="#"> <span>General</span>
-						</a></li>
-						<li><a class="" href="manageEquipment"> <span>Equipment Map</span>
-						</a></li>
-					</ul></li>
-			</c:if>
-
-			<c:if test="${isExpert || isAdmin || isSupervisor}">
-				<li><a class="" href="ccdmApp"
-					target="_blank"> <span>CCDM Admin</span>
+			<c:if test="${isExpertL3 || isExpertL2 || isCustAdmin}">
+			<li><a class="" href="manageEquipment"> <span>Equipment</span>
+			</a> <!-- <ul class="navigation-2"> 
+				<li><a class="" href="searchEquipment"> <span>Search Equipment</span> searchEquipment
 				</a></li>
+			</ul> --></li></c:if>
+
+			<c:if test="${!isSupervisor && !isSuperAdmin}">
+				<li><a class="" href="#"><span>Applications</span></a>
+					<ul class="navigation-2">
+						<li><a class="" href="ccdmApp" target="_blank"> <span>CCDM Admin</span></li>
+						<li><a class="" href="cucdmApp" target="_blank"> <span>CUCDM Admin</span></li>
+						<li><a class="" href="mediaSenseApp" target="iframe-main"> <span>Search and
+									Play</span>
+						</a></li>
+					</ul></li>
 			</c:if>
 
 			<c:if test="${!isSuperAdmin}">
-				<li><a class="" href="cucdmApp" target="_blank"> <span>CUCDM
-							Admin</span>
-				</a></li>
-			</c:if>
-
-			<c:if test="${isExpert || isAdmin}">
-				<li><a class="" href="#"> <span>Routing</span>
+				<li><a class="" href="#"> <span>Service Management</span>
 				</a>
 					<ul class="navigation-2">
-						<c:if test="${isExpert || isAdmin}">
-							<li><a class="" href="manageServices"> <span>Manage Services</span></a></li>
-							<li><a class="" href="managePinCodes"> <span>PIN Codes</span></a></li>
-						</c:if>
-						<c:if test="${isAdmin}">
-							<li><a class="" href="scriptEditorApp"> <span>Internet Script
-										Editor</span></a></li>
+						<li><a class="" href="manageServices"> <span>Services & Sites</span></a></li>
+						<li><a class="" href="manageMessages"> <span>Audio Messages</span></a></li>
+						<li><a class="" href="managePinCodes"> <span>PIN Codes</span></a></li>
+						<c:if test="${!isSupervisor}">
+							<li><a class="" href="scriptEditorApp"> <span>Internet Script Editor</span></a></li>
 						</c:if>
 					</ul></li>
 			</c:if>
-
-			<c:if test="${isExpert || isAdmin}">
-				<li><a class="" href="#"> <span>Outbound</span>
-				</a>
-					<ul class="navigation-2">
-						<li><a class="" href="manageCampaigns"> <span>Campaign
-									Management</span></a></li>
-					</ul></li>
+			
+			<c:if test="${!isSuperAdmin && !isSupervisor}">
+			<li><a class="" href="#"> <span>Outbound</span>
+			</a>
+				<ul class="navigation-2">
+					<li><a class="" href="manageCampaigns"> <span>Campaign Management</span></a></li>
+				</ul></li>
 			</c:if>
 
-			<c:if test="${isExpert}">
+			<c:if test="${isExpertL3 || isExpertL2 || isCustAdmin}">
 				<li><a class="" href="#"> <span>Support</span>
 				</a>
 					<ul class="navigation-2">
-						<li><a class="" href="pcaApp"
-							target="iframe-main"> <span>PCA Supervision</span></a></li>
+						<li><a class="" href="pcaApp" target="iframe-main"> <span>PCA Supervision</span></a></li>
 						<li><a class="" href="#"> <span>Request Tracking</span></a>
 							<ul class="navigation-3">
 								<li><a class="" href="#"> <span>Incidents</span>
@@ -109,45 +90,11 @@
 					</ul></li>
 			</c:if>
 
-			<c:if test="${isExpert || isAdmin}">
-				<li><a class=""
-					href="cuicApp"
-					target="iframe-main"> <span>Statistics</span>
-						<ul class="navigation-2">
-							<c:if test="${isExpert || isAgent}">
-								<li><a class="" href="#"> <span>Global</span></a></li>
-								<li><a class="" href="#"> <span>Customer</span></a></li>
-							</c:if>
-						</ul>
+			<c:if test="${!isSuperAdmin}">
+				<li><a class="" href="cuicApp" target="iframe-main"> <span>Statistics</span>
 				</a></li>
 			</c:if>
-
-			<c:if test="${isSupervisor || isAgent}">
-				<li><a class="" href="#"> <span>Finesse</span> <!--onclick='document.getElementByName("iframe-main").src="https://172.31.14.72/cfadmin"'   -->
-				</a>
-					<ul class="navigation-2">
-						<li><a class="" href="https://172.31.14.72/desktop/"
-							target="iframe-main"> <span>Finesse Desktop</span></a></li>
-					</ul></li>
-			</c:if>
-
-			<c:if test="${isSupervisor || isAgent}">
-				<li><a class="" href="#"> <span>EIM / WIM</span>
-				</a>
-					<ul class="navigation-2">
-						<li><a class="" href="#"> <span>EIM / WIM User</span></a></li>
-					</ul></li>
-			</c:if>
-
-			<c:if test="${isExpert || isAdmin || isSupervisor }">
-				<li><a class="" href="#"> <span>MediaSense</span>
-				</a>
-					<ul class="navigation-2">
-						<li><a class="" href="mediaSenseApp"
-							target="iframe-main"> <span>Search and Play</span></a></li>
-					</ul></li>
-			</c:if>
-
+			
 			<li><a class="" href="settings"> <span>System Settings</span>
 			</a></li>
 		</c:if>
