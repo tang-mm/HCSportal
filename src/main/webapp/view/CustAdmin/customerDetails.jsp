@@ -125,6 +125,7 @@
 			</div>
 		</form:form>
 
+deactivate Modify while refreshing
 //TODO use Ajax : http://madushankaperera.wordpress.com/2013/03/12/submitting-jsp-form-data-to-servlet-with-jquery-ajax/
 	<a href="#newTenant" class="modify_toShowUp btn-submit" id="newTenant">Add New Tenant</a>
 
