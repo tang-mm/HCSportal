@@ -31,7 +31,11 @@
 						<td colspan="2"><form:textarea path="description" value="" rows="5" cols="30" /></td>
 					</tr>
 					<tr class="grc-form-buttons grc-form-no-border">
-						<td colspan="3"><input type="submit" class="grc-form-buttons-validate" value="Submit"
+							<c:if test='${not empty messageCustomer}'>
+								<td colspan="1"></td>
+								<td colspan="2"><div style="color: red; margin-left: auto;">${messageCustomer}</div></td>
+							</c:if>
+							<td colspan="3"><input type="submit" class="grc-form-buttons-validate" value="Submit"
 							name="Submit"></input></td>
 					</tr>
 				</tbody>

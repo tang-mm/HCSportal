@@ -37,7 +37,7 @@
 		
 </script>
 
-	<!-- visible only to L3 Experts -->
+	<!-- visible only to L3 Experts --> 
 <%-- 	<c:if test="${isExpertL3}"> --%>
 	<a href="createNewCustomer" class="btn-submit" style="margin: 0 auto;">Create New Customer</a>
 	<br />

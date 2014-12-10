@@ -1,9 +1,11 @@
 package com.example.hcsweb.controller;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,7 +24,7 @@ public class LoginController {
 	private UserService userService;
 	
 	/**
-	 * initiate session variables
+	 * initiate session variables, record login information
 	 * @param request
 	 * @return
 	 */
@@ -46,6 +48,9 @@ public class LoginController {
 		if (username != null) {
 			// init User object
 			com.example.hcsweb.model.users.User user = userService.findUserByUsername(username);
+			// update last login time
+			user.setLastLoggedIn(new Timestamp(new Date().getTime()));
+			userService.saveUser(user);
 			// set session variable
 			HttpSession session = request.getSession();
 			session.setAttribute("currentUser", user);

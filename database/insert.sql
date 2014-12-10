@@ -5,9 +5,10 @@ INSERT INTO user_types VALUES (4, 'CustomerAdmin');
 INSERT INTO user_types VALUES (5, 'Hypervisor');
 INSERT INTO user_types VALUES (6, 'Supervisor'); 
 
-INSERT INTO customers VALUES ("Orange", "Default value for Orange Experts and SuperAdmin");
+INSERT INTO customers VALUES ('Orange', 'Default value for Orange Experts and SuperAdmin');
 
-
+INSERT INTO `users` VALUES (1,'SuperAdmin','$2a$10$W39l39tzvAqnJyHPWGdpeOH0KVb6I1sLgGveJuIbbwq6eW6KNEceW',1,1,NULL,'2014-12-09 23:01:51',1,'2014-12-09 23:01:51',NULL,NULL);
+/*'password'*/
 
 /******** TEST **********/
 INSERT INTO equipment (`customer_id`,
