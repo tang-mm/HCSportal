@@ -79,10 +79,8 @@
 
 		$('.deleteRow').click(function(event) {
 			var button_id = event.target.id;
-			window.alert(button_id);
 			var array = button_id.split("_");
 			var index = array[array.length - 1];
-			window.alert(index);
 			document.getElementById(
 					'table-list-tenant').deleteRow(
 					index + 1);

@@ -61,7 +61,7 @@
 				<c:forEach items="${listCustomer}" var="cust" varStatus="status">
 					<tr>
 						<td><a href="customerDetails?customer=${cust.customerName}">${cust.customerName}</a></td>
-						<td class="line-wrap">${cust.description} </td>
+						<td class="line-wrap"><c:out value="${not empty cust.description ? cust.description : '-'}"/> </td>
 						<td>${fn: length(cust.listTenant)}</td>
 						<td><p>
 								<span id="<c:out value="toggle_Tenant_${status.index}"/>"
@@ -85,7 +85,7 @@
 									<c:forEach items="${cust.listTenant}" var="tenant" varStatus="status">
 										<tr>
 											<td><a href="tenantDetails?tenant=${tenant.tenantName}">${tenant.tenantName}</a></td>
-											<td>${tenant.description}</td>
+											<td><c:out value="${not empty tenant.description ? tenant.description : '-'}"/></td>
 											<td>${tenant.ipMain}</td>
 										</tr>
 									</c:forEach>

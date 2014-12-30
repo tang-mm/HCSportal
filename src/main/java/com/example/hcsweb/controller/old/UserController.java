@@ -27,6 +27,7 @@ import com.mysql.jdbc.Connection;
 
 //@Controller
 public class UserController {
+	
 	@RequestMapping(value = "manageUsers", method = RequestMethod.GET)
 	public ModelAndView showAllUser(HttpServletRequest request) {
 		boolean isSuperAdmin = Boolean.parseBoolean((String) request.getSession().getAttribute("isSuperAdmin"));
