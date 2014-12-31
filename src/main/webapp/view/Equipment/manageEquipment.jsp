@@ -3,6 +3,8 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+ 
 <t:wrapper>
 	<!-- list of all customers -->
 	<a href="searchEquipment" class="btn-submit" style="margin: 0 auto;">Search
@@ -17,16 +19,19 @@
 			<thead>
 				<tr>
 					<th width="100px">Customer</th>
+					<th width="100px">Tenant</th>
 					<th width="80px">Total Number</th>
 				</tr>
 			</thead>
-			<tbody>
-				<c:forEach items="${listCustomer}" var="cust">
+			<tbody> 
+				<c:forEach items="${listTenant}" var="tenant">
 					<tr>
+						<td>${tenant.customer.customerName}</td>
 						<td><a
-							href="listEquipment?custId=${cust[0]}&custName=${cust[1]}">
-								${cust[1]} </a></td>
-						<td>${cust[2]}</td>
+							href="listEquipment?tenantId=${tenant.tenantId}&tenantName=${tenant.tenantName}">
+								${tenant.tenantName} </a></td>
+						<td>N/A
+<%-- 						<c:if test="${not empty tenant.listEquipment}">${fn: length(tenant.listEquipment)}</c:if>-->--%></td> 
 					</tr>
 				</c:forEach>
 			</tbody>

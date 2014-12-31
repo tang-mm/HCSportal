@@ -3,8 +3,7 @@ package com.example.hcsweb.service.impl;
 import java.util.List;
 
 import org.hibernate.HibernateException;
-import org.hibernate.criterion.Criterion;
-import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.hcsweb.dao.ServiceDao;
@@ -15,6 +14,7 @@ import com.example.hcsweb.service.ServiceService;
 @Transactional
 public class ServiceServiceImpl implements ServiceService {
 
+	@Autowired
 	private ServiceDao serviceDao;
 	
 	@Override

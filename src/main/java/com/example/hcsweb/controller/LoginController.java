@@ -51,25 +51,43 @@ public class LoginController {
 			// update last login time
 			user.setLastLoggedIn(new Timestamp(new Date().getTime()));
 			userService.saveUser(user);
-			// set session variable
+			
+			// set session scope variables : current user
 			HttpSession session = request.getSession();
 			session.setAttribute("currentUser", user);
 			
+			// set session scope variables : user type
 			String userType = user.getUserType().getUserType();
-			
+
 			if (userType.equalsIgnoreCase("SuperAdmin"))
 				session.setAttribute("isSuperAdmin", true);
-			else if (userType.equalsIgnoreCase("expertL3"))
-				session.setAttribute("isExpertL3", true);
-			else if (userType.equalsIgnoreCase("expertL2"))
-				session.setAttribute("isExpertL2", true);
-			else if (userType.equalsIgnoreCase("customerAdmin"))
-				session.setAttribute("isCustAdmin", true);
-			else if (userType.equalsIgnoreCase("hypervisor"))
-				session.setAttribute("isHypervisor", true);
-			else if (userType.equalsIgnoreCase("supervisor"))
-				session.setAttribute("isSupervisor", true);
+			else
+				session.setAttribute("isSuperAdmin", false);
 			
+			if (userType.equalsIgnoreCase("expertL3"))
+				session.setAttribute("isExpertL3", true);
+			else
+				session.setAttribute("isExpertL3", false);
+			
+			if (userType.equalsIgnoreCase("expertL2"))
+				session.setAttribute("isExpertL2", true);
+			else
+				session.setAttribute("isExpertL2", false);
+			
+			if (userType.equalsIgnoreCase("customerAdmin"))
+				session.setAttribute("isCustAdmin", true);
+			else
+				session.setAttribute("isCustAdmin", false);
+			
+			if (userType.equalsIgnoreCase("hypervisor"))
+				session.setAttribute("isHypervisor", true);
+			else
+				session.setAttribute("isHypervisor", false);
+			if (userType.equalsIgnoreCase("supervisor"))
+				session.setAttribute("isSupervisor", true);
+			else
+				session.setAttribute("isSupervisor", false);
+						
 		}
 		// direct to index page
 		ModelAndView model = new ModelAndView("redirect:/");
