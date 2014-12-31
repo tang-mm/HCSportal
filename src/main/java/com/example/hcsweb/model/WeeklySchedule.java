@@ -122,7 +122,7 @@ public class WeeklySchedule implements AbstractBean{
 	}
 	
 	@ManyToOne (cascade = CascadeType.ALL)
-	@JoinColumn (name = "user_id")
+	@JoinColumn (name = "created_by")
 	@LazyCollection(LazyCollectionOption.TRUE)
 	public User getCreatedBy() {
 		return createdBy;

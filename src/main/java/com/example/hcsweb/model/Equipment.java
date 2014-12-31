@@ -65,7 +65,7 @@ public class Equipment implements AbstractBean{
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "tenant_id")
-	@LazyCollection(LazyCollectionOption.TRUE)
+	@LazyCollection(LazyCollectionOption.EXTRA)
 	public Tenant getTenant() {
 		return tenant;
 	}

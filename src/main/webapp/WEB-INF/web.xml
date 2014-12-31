@@ -5,7 +5,7 @@
     http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
 
-	<display-name>HCS web</display-name>
+	<display-name>MCC web</display-name>
 
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>

@@ -1,24 +1,36 @@
 package com.example.hcsweb.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.hcsweb.model.Customer;
 import com.example.hcsweb.model.Equipment;
+import com.example.hcsweb.model.Tenant;
+import com.example.hcsweb.service.EquipmentService;
+import com.example.hcsweb.service.TenantService;
  
 @Controller
 public class EquipmentController {
-	
+	@Autowired
+	private EquipmentService equipService;
+	@Autowired
+	private TenantService tenantService;
 
 	@RequestMapping(value = "manageEquipment", method = RequestMethod.GET)
 	public ModelAndView showCustomerEquipment(HttpServletRequest request) {
 		System.out.println("********[EquipmentController] manage equipment********");
 		
 		// show list customer - tenant for Experts
-		return null;
+		List<Tenant> listTenant = tenantService.getAllTenants();
+		request.setAttribute("listTenant", listTenant);
+		return new ModelAndView("Equipment/manageEquipment");
 	
 	}
 
@@ -26,7 +38,14 @@ public class EquipmentController {
 	@RequestMapping(value = "listEquipment", method = RequestMethod.GET)
 	public ModelAndView listEquipment(HttpServletRequest request) {
 		System.out.println("********[EquipmentController] list equipment********");
-		return null;
+		int tenantId = Integer.parseInt(request.getParameter("tenantId"));
+		String tenantName = request.getParameter("tenantName");
+
+		List<Equipment> listEquip = equipService.findEquipmentByTenantId(tenantId);
+		ModelAndView model = new ModelAndView("Equipment/listEquipment");
+		model.addObject("tenantName", tenantName);
+		model.addObject("listEquip", listEquip);
+		return model;
 	}
 	
 	

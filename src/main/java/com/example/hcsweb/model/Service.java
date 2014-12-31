@@ -16,13 +16,17 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import com.example.hcsweb.model.users.User;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 @Table(name="services")
+@JsonSerialize(include=JsonSerialize.Inclusion.NON_DEFAULT)
 public class Service implements AbstractBean {
 	/**
 	 * 
@@ -114,7 +118,7 @@ public class Service implements AbstractBean {
 		this.listSite = listSite;
 	}
 	
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "listService")
+	@ManyToMany(mappedBy = "listService")
 	public List<User> getListUserAccess() {
 		return listUserAccess;
 	}

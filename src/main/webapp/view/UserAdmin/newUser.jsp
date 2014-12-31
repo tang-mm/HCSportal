@@ -15,7 +15,7 @@
 			name="newUserForm" commandName="newUserCmd">
 			<div class="grc-form">
 				<div>
-					<h1>Create New User ${message}</h1>
+					<h1>Create New User</h1>
 				</div>
 				<table>
 					<tbody>
@@ -23,20 +23,19 @@
 							<td style="width: 35%"><form:label path="username">Username: *</form:label></td>
 							<td colspan="2"><form:input path="username" /></td>
 							<td colspan="3"><form:errors path="username"
-									cssClass="error" />aaa</td>
+									cssClass="error" />test</td>
 						</tr>
 
 						<tr class="grc-form-input-select">
-							<td><form:label path="userTypeId">User Type: *</form:label></td>
-							<td colspan="2"><form:select path="userTypeId">
-									<form:option value="-1" label="--Please select--" />
-									<form:options items="${userTypes}" itemValue="id"
-										itemLable="type" />
-								</form:select></td>
-							<td colspan="3"><form:errors path="userTypeId"
-									cssClass="error" /></td>
+							<td><label>User Type: *</label></td>
+							<td colspan="3"><select>
+									<option value="-1" label="--Please select--" />
+									<options items="${userTypes}" itemValue="userTypeId"
+										itemLable="userType" />
+								</select></td>
 						</tr>
 
+<!-- 					to add: choose customer -->
 
 						<tr class="grc-form-input-text">
 							<td><form:label path="password">Password: *</form:label></td>
@@ -45,7 +44,7 @@
 									cssClass="error" /></td>
 						</tr>
 						<tr class="grc-form-input-text">
-							<td><form:label path="password">Confirm Password: *</form:label></td>
+							<td><label>Confirm Password: *</label></td>
 							<td colspan="2"><form:input type="password"
 									path="confirmedPassword" /></td>
 							<td colspan="3"><form:errors path="confirmedPassword"
@@ -55,6 +54,7 @@
 							<td colspan="3"><input type="submit"
 								class="grc-form-buttons-validate" value="Submit" name="Submit"></input></td>
 						</tr>
+						<tr class="error">${message }</tr>
 					</tbody>
 				</table>
 			</div>
