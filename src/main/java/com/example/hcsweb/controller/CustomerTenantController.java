@@ -29,8 +29,7 @@ public class CustomerTenantController {
 	@RequestMapping(value = "manageCustomers", method = RequestMethod.GET)
 	public ModelAndView listCustomers(HttpServletRequest request) {
 		System.out.println("********[CostumerController] manage customers********");
-		boolean isAdmin = Boolean.parseBoolean((String) request.getSession().getAttribute(
-				"isCustAdmin"));
+		boolean isAdmin = ((Boolean) request.getSession().getAttribute("isCustAdmin")).booleanValue();
 		System.out.println("admin: " + isAdmin);
 		if (!isAdmin) { // Expert: retrieve list of customers and tenants
 			List<Customer> listCustomer = customerService.getAllCustomers();

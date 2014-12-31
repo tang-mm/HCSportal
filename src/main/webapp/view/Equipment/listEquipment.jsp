@@ -53,7 +53,7 @@
 		New Equipment</a>
 	<div class="grc-form block">
 		<div>
-			<h1>List >> ${custName}</h1>
+			<h1>List >> ${tenantName}</h1>
 		</div>
 		<br />
 		<div class="grc-table">

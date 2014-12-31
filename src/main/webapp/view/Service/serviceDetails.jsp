@@ -163,11 +163,11 @@
 								</tr>
 								<tr class="grc-form-input-text">
 									<td><label>Location:</label></td>
-									<td>${service.location}</td>
+									<td>${site.location.city}, ${site.location.country }</td>
 								</tr>
 								<tr class="grc-form-input-text">
 									<td><label>Time Zone:</label></td>
-									<td>${service.timeZone}</td>
+									<td>${site.location.timeZone}</td>
 								</tr>
 								<tr class="grc-form-input-text">
 									<td><label>Local Time:</label></td>
@@ -215,7 +215,7 @@
 									<td colspan="2"><h2>Description:</h2></td>
 								</tr>
 								<tr class="grc-form-no-border" bgcolor="white">
-									<td colspan="2">${equip.description }</td>
+									<td colspan="2">${service.description }</td>
 								</tr>
 							</tbody>
 						</table>
@@ -239,29 +239,89 @@
 							</tr>
 						</thead>
 						<tbody>
-<%-- 							<c:forEach items="${weekdayHours}" var="entry" varStatus="status"> --%>
-<%-- 								<trclass="grc-form-input-text"> --%>
-<%-- 								<td><label>${weekdayNames[status.index]}</label></td> --%>
-<%-- 								<td style="text-align: center"><c:out --%>
-<%-- 										value="${not empty entry.openingTime1 ?  entry.openingTime1 : '-'}" /></td> --%>
-<%-- 								<td style="text-align: center"><c:out --%>
-<%-- 										value="${not empty entry.closingTime1 ?  entry.closingTime1 : '-'}" /></td> --%>
-<%-- 								<td style="text-align: center"><c:out --%>
-<%-- 										value="${not empty entry.openingTime2 ?  entry.openingTime2 : '-'}" /></td> --%>
-<%-- 								<td style="text-align: center"><c:out --%>
-<%-- 										value="${not empty entry.closingTime2 ?  entry.closingTime2 : '-'}" /></td> --%>
-<%-- 								</tr> --%>
-<%-- 							</c:forEach> --%>
-							
-								<c:forEach items="${weekdayHours}" var="entry" varStatus="status">
-								<trclass="grc-form-input-text">
+							<!-- Monday -->
+							<tr class="grc-form-input-text">
 								<td><label>${weekdayNames[status.index]}</label></td>
-								<td><input type="text" placeholder="08:00" size="8"></input></td>
-								<td align="right"><input type="text" placeholder="12:00" size="8"></input></td>
-								<td style="text-align: center"><input type="text" placeholder="13:00" size="8"></input></td>
-								<td style="text-align: center"><input type="text" placeholder="19:00" size="8"></input></td>
-								</tr>
-							</c:forEach>
+								<td><input type="text" placeholder="08:00" size="8">${site.schedule.mondayOpen1}</input></td>
+								<td align="right"><input type="text" placeholder="12:00"
+									size="8">${site.schedule.mondayClose1}</input></td>
+								<td style="text-align: center"><input type="text"
+									placeholder="13:00" size="8">${site.schedule.mondayOpen2}</input></td>
+								<td style="text-align: center"><input type="text"
+									placeholder="19:00" size="8">${site.schedule.mondayClose2}</input></td>
+							</tr>
+							
+							<!-- tuesday -->
+							<tr class="grc-form-input-text">
+								<td><label>${weekdayNames[status.index]}</label></td>
+								<td><input type="text" placeholder="08:00" size="8">${site.schedule.tuesdayOpen1}</input></td>
+								<td align="right"><input type="text" placeholder="12:00"
+									size="8">${site.schedule.tuesdayClose1}</input></td>
+								<td style="text-align: center"><input type="text"
+									placeholder="13:00" size="8">${site.schedule.tuesdayOpen2}</input></td>
+								<td style="text-align: center"><input type="text"
+									placeholder="19:00" size="8">${site.schedule.tuesdayClose2}</input></td>
+							</tr>
+							
+							<!-- wednesday -->
+							<tr class="grc-form-input-text">
+								<td><label>${weekdayNames[status.index]}</label></td>
+								<td><input type="text" placeholder="08:00" size="8">${site.schedule.wednesdayOpen1}</input></td>
+								<td align="right"><input type="text" placeholder="12:00"
+									size="8">${site.schedule.wednesdayClose1}</input></td>
+								<td style="text-align: center"><input type="text"
+									placeholder="13:00" size="8">${site.schedule.wednesdayOpen2}</input></td>
+								<td style="text-align: center"><input type="text"
+									placeholder="19:00" size="8">${site.schedule.wednesdayClose2}</input></td>
+							</tr>
+							
+							<!-- thursday -->
+							<tr class="grc-form-input-text">
+								<td><label>${weekdayNames[status.index]}</label></td>
+								<td><input type="text" placeholder="08:00" size="8">${site.schedule.thursdayOpen1}</input></td>
+								<td align="right"><input type="text" placeholder="12:00"
+									size="8">${site.schedule.thursdayClose1}</input></td>
+								<td style="text-align: center"><input type="text"
+									placeholder="13:00" size="8">${site.schedule.thursdayOpen2}</input></td>
+								<td style="text-align: center"><input type="text"
+									placeholder="19:00" size="8">${site.schedule.thursdayClose2}</input></td>
+							</tr>
+							
+							<!-- friday -->
+							<tr class="grc-form-input-text">
+								<td><label>${weekdayNames[status.index]}</label></td>
+								<td><input type="text" placeholder="08:00" size="8">${site.schedule.fridayOpen1}</input></td>
+								<td align="right"><input type="text" placeholder="12:00"
+									size="8">${site.schedule.fridayClose1}</input></td>
+								<td style="text-align: center"><input type="text"
+									placeholder="13:00" size="8">${site.schedule.fridayOpen2}</input></td>
+								<td style="text-align: center"><input type="text"
+									placeholder="19:00" size="8">${site.schedule.fridayClose2}</input></td>
+							</tr>
+							
+							<!-- saturday -->
+							<tr class="grc-form-input-text">
+								<td><label>${weekdayNames[status.index]}</label></td>
+								<td><input type="text" placeholder="08:00" size="8">${site.schedule.saturdayOpen1}</input></td>
+								<td align="right"><input type="text" placeholder="12:00"
+									size="8">${site.schedule.saturdayClose1}</input></td>
+								<td style="text-align: center"><input type="text"
+									placeholder="13:00" size="8">${site.schedule.saturdayOpen2}</input></td>
+								<td style="text-align: center"><input type="text"
+									placeholder="19:00" size="8">${site.schedule.saturdayClose2}</input></td>
+							</tr>
+							
+							<!-- sunday -->
+							<tr class="grc-form-input-text">
+								<td><label>${weekdayNames[status.index]}</label></td>
+								<td><input type="text" placeholder="08:00" size="8">${site.schedule.sundayOpen1}</input></td>
+								<td align="right"><input type="text" placeholder="12:00"
+									size="8">${site.schedule.sundayClose1}</input></td>
+								<td style="text-align: center"><input type="text"
+									placeholder="13:00" size="8">${site.schedule.sundayOpen2}</input></td>
+								<td style="text-align: center"><input type="text"
+									placeholder="19:00" size="8">${site.schedule.sundayClose2}</input></td>
+							</tr>
 						</tbody>
 					</table>
 				</div>

@@ -18,7 +18,7 @@
 	
 	// retrieve serviceList
 	function retrieveList(custId) {
-		$.getJSON("listServices?custId=" + custId, function(result, textStatus, jqXHR) {
+		$.getJSON("listServices?tenantId=" + custId, function(result, textStatus, jqXHR) {
 			var d = new Date($.now()); 
 			var time = d.getHours() + ":" + (d.getMinutes()<10 ? "0" : "") + d.getMinutes() +":"
 						+ (d.getSeconds()<10 ? "0" : "") + d.getSeconds();
@@ -72,8 +72,8 @@
 			<h1>Please select a tenant:</h1><br/>
 			<select id="selectCust" >
 				<option value="">--</option>
-				<c:forEach items="${listCustomer}" var="tenant">
-					<option value="${tenant.tenantId}">${tenant.tenantName}</option>
+				<c:forEach items="${listTenant}" var="tenant">
+					<option value="${tenant.tenantId}">${tenant.tenantName}, ${tenant.tenantId }</option>
 				</c:forEach>
 			</select> <input type="submit" value="Confirm" id="selectCustomerBtn"></input>
 		</form> 
@@ -83,7 +83,7 @@
 			<table id="serviceList" class="hidden">
 				<thead>
 					<tr>
-						<th class="table-col1" >Site Code</th>
+						<th class="table-col1" >Service Code</th>
 						<th class="table-col2" >Location</th>
 						<th class="table-col2" >Time Zone</th>
 						<th class="table-col2" >Local Time</th>
@@ -91,7 +91,12 @@
 					</tr>
 				</thead>
 				<tbody>
-					
+					<tr><td>${serv.serviceCode}</td>
+					<td>${site.location.city}, ${site.location.country}</td>
+					<td>${site.location.timeZone}</td>
+					<td>-</td>
+					<td><div class="status_open green">Open</div></td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
