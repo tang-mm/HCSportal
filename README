@@ -1,0 +1,90 @@
+=========================
+General Information
+=========================
+
+* Project name: 
+	Managed Contact Center web portal (aka. HCS web portal)
+
+* Distribution:
+	Internal Use Only
+	
+* Status:
+	Unfinished
+	
+* Author: 
+	Mengmeng TANG
+
+* Last modified date: 
+	January 09th, 2015
+
+This is JavaEE web application implemented with Spring Framework (including Spring MVC, Spring Security and so on). Maven has been used to build the project. Library dependencies are declared in ./pom.xml file.
+
+URL: http://localhost:8080/HCSWebApp/
+
+=========================
+Project Organization
+=========================
+.
+|---database (contains database design and related SQL script)
+|---src
+    |---main
+		|---java
+		|	|---com.example.hcsweb
+		|		|---controller 
+		|		|---dao
+		|		|   |---impl (implementation of DAO layer)
+		|		|---model
+		|		|   |---misc
+		|		|   |---users
+		|		|---service
+		|		|   |---impl (implementation of Service layer)
+		|		|---validator (user-typed data validation while submitting forms) 
+		|---resources (Hibernate ORM database configuration files)
+		|---webapp
+			|---css
+			|---images
+			|---js
+			|---view 
+			|---WEB-INF (important xml files for application configuration )
+				|---lib (contains temporary library generated from Cisco sample code "CCDM-Sample-WebServices-App/ResourceManagerGUIClient")
+				|---tags (custom tags used as web page templates)	
+				
+
+=========================
+Testing Environment
+=========================
+- JavaSE-1.7 (jdk 1.7.0.67)
+- Apache Tomcat v7.0 (7.0.55)
+- MySQL 5.6.21 win32
+	
+
+=========================
+Related Documents
+=========================
+- MCC Web Portal Functional Specifications - HCS for CC 10.0
+- Web Services Reference for Cisco Unified Contact Center Domain Manager, Release 10.0.1			
+
+
+=========================
+Additional details
+=========================
+- Some session-scope variables are initialized in LoginController
+- Access of main menu is currently controlled by "menu.jsp"; "menu_full.jsp" is used only for testing.
+- Several third-part Jquery libraries are used to generate dynamic user interface: e.g. Calendar view, list sorting for Equipment list.
+- bugs exist in Ajax while retrieving Service list in "listServiceExpert.jsp"
+ 
+
+=========================
+TODO
+=========================
+- Database design not up-to-date:
+	-- Call flows, Targets and Campaigns are not taken into consideration; 
+	-- association between Service and Site should be re-designed; 
+	-- views might be created for each customer 
+	
+- User account synchronization for CCDM and other associated applications
+- Multi-language interface
+- Time zone conversion  
+
+
+%%% End of README file %%%

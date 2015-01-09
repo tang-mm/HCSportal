@@ -14,7 +14,7 @@ public class CcdmManager {
 
 	private String serverIP = "172.31.14.195";
 	private String username = "admin1";
-	private String password = "Gcc6koko$$";		// base64password
+	private String password = "Gcc6koko$$";		// password to be encrypted
 	// String username="C1sup1";
 	// String password="C1sco123";
 	private String tenantName = "Customer1";
@@ -56,6 +56,7 @@ public class CcdmManager {
 		return searchResult;
 	}
 
+	// --------TEST-------------
 	public void createUserCCDM(String loginName, String passPhrase) {
 		Resource newUser = new Resource();
 		List<Resource> listResource = new ArrayList<Resource>();

@@ -20,6 +20,7 @@ DROP TABLE IF EXISTS user_types ;
 DROP TABLE IF EXISTS customers ;
 
 
+
 CREATE TABLE customers (
 	customer_id int unsigned AUTO_INCREMENT,
 	customer_name varchar(32) NOT NULL UNIQUE,

@@ -69,24 +69,3 @@ VALUES ('test-schedule', 1, 5, 'test test',
 INSERT INTO `hcsportal`.`sites`
 (`site_code`,`service_id`,`location_id`,`schedule_id`,`emergency`,`description`)
 VALUES ('Site_Paris', 1, 1, 1, false, 'test site 1');
----------------------------------------------
-INSERT INTO locations(country, city, time_zone) VALUES ('France', 'Paris', '+1:00');
-INSERT INTO locations(country, city, time_zone) VALUES ('UK', 'London', '+0:00');
-
-INSERT INTO services(service_code, customer_id, location_id, emergency_state) VALUES ('Serv_FRA_1', 9, 1, false); 
-INSERT INTO services(service_code, customer_id, location_id, emergency_state) VALUES ('Serv_UK_1', 9, 2, false); 
-
-INSERT INTO weekdays VALUES (2, 1, '8:00', '18:00', null, null);
-INSERT INTO weekdays VALUES (2, 2, '8:00', '18:00', null, null);
-INSERT INTO weekdays VALUES (2, 3, '8:00', '18:00', null, null);
-INSERT INTO weekdays VALUES (2, 4, '8:00', '18:00', null, null);
-INSERT INTO weekdays VALUES (2, 5, '8:00', '18:00', null, null);
-
-INSERT INTO weekdays VALUES (3, 1, '8:00', '12:00', '14:00', '18:00');
-INSERT INTO weekdays VALUES (3, 2, '8:00', '12:00', '14:00', '18:00');
-
-INSERT INTO holidays VALUES (2, '2014-11-11', 'Armistice');
-INSERT INTO holidays VALUES (2, '2014-12-25', 'Noël');
-INSERT INTO holidays VALUES (3, '2014-12-25', 'Christmas');
-
-INSERT INTO exceptional_days VALUES(2, '2014-11-11', '10:00', '16:00', null, null, 'exception');

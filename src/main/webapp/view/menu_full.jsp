@@ -4,16 +4,11 @@
 	<c:if test="${not empty pageContext.request.userPrincipal}">
 		<p>
 			<!-- Print User Role -->
-			<span>
-				Current User: <c:out value="${pageContext.request.userPrincipal.name}" /> (
-				<c:if test="${sessionScope.isSuperAdmin}">SuperAdministrator</c:if> 
-				<c:if test="${isExpertL3}">Expert L3</c:if> 
-				<c:if test="${isExpertL2}">Expert L2</c:if> 	
-				<c:if test="${isCustAdmin}">Administrator</c:if>
-				<c:if test="${isHypervisor}">Hypervisor</c:if>
-				<c:if test="${isSupervisor}">Supervisor</c:if>)
-			</span> 
-			<span><a href="login?logout">Logout</a></span>
+			<span> Current User: <c:out value="${pageContext.request.userPrincipal.name}" /> ( <c:if
+					test="${sessionScope.isSuperAdmin}">SuperAdministrator</c:if> <c:if test="${isExpertL3}">Expert L3</c:if>
+				<c:if test="${isExpertL2}">Expert L2</c:if> <c:if test="${isCustAdmin}">Administrator</c:if> <c:if
+					test="${isHypervisor}">Hypervisor</c:if> <c:if test="${isSupervisor}">Supervisor</c:if>)
+			</span> <span><a href="login?logout">Logout</a></span>
 		</p>
 	</c:if>
 </div>
@@ -29,8 +24,7 @@
 			</ul></li>
 
 		<li><a class="" href="manageEquipment"> <span>Equipment</span>
-		</a>
-			<!-- <ul class="navigation-2"> 
+		</a> <!-- <ul class="navigation-2"> 
 				<li><a class="" href="searchEquipment"> <span>Search Equipment</span> searchEquipment
 				</a></li>
 			</ul> --></li>
@@ -42,16 +36,19 @@
 				<li><a class="" href="mediaSenseApp" target="iframe-main"> <span>Search and Play</span></a></li>
 			</ul></li>
 
-		</a></li>
-
 		<li><a class="" href="#"> <span>Service Management</span>
 		</a>
 			<ul class="navigation-2">
 				<li><a class="" href="manageServices"> <span>Services & Sites</span></a></li>
 				<li><a class="" href="manageMessages"> <span>Audio Messages</span></a></li>
 				<li><a class="" href="managePinCodes"> <span>PIN Codes</span></a></li>
-				<li><a class="" href="scriptEditorApp"> <span>Internet Script
-							Editor</span></a></li>
+			</ul></li>
+
+		<li><a class="" href="#"> <span>Call Flow</span>
+		</a>
+			<ul class="navigation-2">
+				<li><a class="" href=""> <span>Targets</span></a></li>
+				<li><a class="" href="scriptEditorApp"> <span>Internet Script Editor</span></a></li>
 			</ul></li>
 
 		<li><a class="" href="#"> <span>Outbound</span>
@@ -63,21 +60,21 @@
 		<li><a class="" href="#"> <span>Support</span>
 		</a>
 			<ul class="navigation-2">
-						<li><a class="" href="pcaApp" target="iframe-main"> <span>PCA Supervision</span></a></li>
-	<li><a class="" href="#"> <span>Request Tracking</span></a>
+				<li><a class="" href="pcaApp" target="iframe-main"> <span>PCA Supervision</span></a></li>
+				<li><a class="" href="#"> <span>Request Tracking</span></a>
 					<ul class="navigation-3">
 						<li><a class="" href="#"> <span>Incidents</span>
 						</a></li>
 						<li><a class="" href="#"> <span>Changes</span>
 						</a></li>
 					</ul></li>
-					<li><a class="" href="#"> <span>Billing</span></a></li>
+				<li><a class="" href="#"> <span>Billing</span></a></li>
 			</ul></li>
 
 		<li><a class="" href="cuicApp" target="iframe-main"> <span>Statistics</span>
-		</a></li> 
-		
+		</a></li>
+
 		<li><a class="" href="settings"> <span>System Settings</span>
 		</a></li>
 	</ul>
-</div> 
+</div>
